@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tao Form don gian phan 2</title>
+
+    <style>
+        .app {
+            font-family: Arial, Helvetica, sans-serif;
+            margin: 0 300px;
+            background-color: rgb(229, 240, 136);
+        }
+        .heading{
+            background-color: rgb(100, 218, 115);
+            width: 100%;
+            height: 50px;
+        }
+        .heading h1{
+            text-align: left;
+            margin-top: auto;
+            padding-top: 10px;
+            color: blue;
+            margin-left: 10px;
+        }
+        .td1{
+            font-size: 25px;
+            padding-left: 10px;
+            width: 200px;
+            height: 50px;
+            color: blue;
+        }
+        
+        .input-text{
+            width: 350px;
+            height: 30px;
+            margin-left: 10px;
+        }
+        
+        .content{
+            margin-top: 20px;
+        }
+        button{
+            padding: 10px 25px;
+            font-size: 20px;
+        }
+        .input-radio{
+            width: 20px;
+            height: 20px;
+        }
+    </style>
+
+</head>
+<body>
+    <div class="app">
+        <div class="heading" >
+            <h1 class="a">ĐĂNG KÝ HỌC VIÊN</h1>
+        </div>
+        <div class="content">
+            <table>
+                <tr>
+                    <td class="td1">Họ và tên</td>
+                    <td >
+                        <input class="input-text" type="text">
+                    </td>
+                </tr>
+                <tr>
+                    <td class="td1">Ngày sinh</td>
+                    <td >
+                        <input class="input-text" type="text">
+                    </td>
+                </tr>
+                <tr>
+                    <td class="td1">Giới tính</td>
+                    <td >
+                        <input class="input-radio"  type="radio" id="" name="gendẻ" value="nam">
+                        <span style="font-size: 20px;">Nam</span> 
+                        <input class="input-radio"  type="radio" id="" name="gendẻ" value="nữ">
+                        <span style="font-size: 20px;">Nữ</span>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="td1">Địa chỉ</td>
+                    <td >
+                        <textarea style="width: 360px;margin-left: 10px;" name="Adress" id="" cols="30" rows="10"></textarea>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="td1">Lớp</td>
+                    <td >
+                        <select style="margin-left: 10px;" name="class" id="">
+                            <option value="">--Chon lop--</option>
+                            <option value="">Lop 1</option>
+                            <option value="">Lop 2</option>
+                            <option value="">Lop 3</option>
+                        </select>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="td1">Email</td>
+                    <td >
+                        <input class="input-text" type="text">
+                    </td>
+                </tr>
+                <tr>
+                    <td class="td1">Điện thoại</td>
+                    <td >
+                        <input class="input-text" type="text">
+                    </td>
+                </tr>
+               
+                <tr>
+                    <td class="td1"></td>
+                    <td style="padding-left: 10px;">
+                        <button>Đăng Ký</button>
+                        <button>Đăng Nhập</button>
+                    </td>
+                </tr>
+            </table>
+        </div>
+
+
+    </div>
+</body>
+</html>
