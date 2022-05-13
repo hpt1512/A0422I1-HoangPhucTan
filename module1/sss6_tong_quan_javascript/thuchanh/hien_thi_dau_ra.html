@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hiển Thị Đầu Ra</title>
+    <style>
+        button{
+            padding: 10px;
+            margin-top: 10px;
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- Bài 1 -->
+    <button type="button" onclick="showMessage_Bai1();">Click Me!--Bài tập 1</button><br>
+    <!-- Bài 2 -->
+    <div id="messageDiv"></div>
+    <button type="button" onclick="showMessage_Bai2();">Click Me!--Bài tập 2</button><br>
+    <!-- Bài 3 -->
+    <button type="button" onclick="showMessage_Bai3();">Click Me!--Bài tập 2</button><br>
+    <!-- Bài 4 -->
+    <button type="button" onclick="showMessage_Bai4();">Click Me!--Bài tập 4</button><br>
+
+
+    <script>
+        // Bài 1
+        function showMessage_Bai1(){
+            alert('Xin chào! - Bài 1');
+        }
+        // Bài 2
+        var a = document.getElementById('messageDiv');
+
+        function showMessage_Bai2(){
+            a.innerHTML = 'Xin chào ! - Bài 2'
+        }
+        // Bài 3
+        function showMessage_Bai3(){
+            document.write('Xin chào! - Bài 3');
+        }
+        // Bài 4
+        function showMessage_Bai4(){
+            console.log('Xin chào! - Bài 4');
+        }
+    </script>
+
+    
+</body>
+
+</html>
