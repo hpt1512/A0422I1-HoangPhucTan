@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bài 1</title>
+</head>
+<body>
+    <script>
+        //Viết chương trình nhập điểm của một sinh viên cho các môn: 
+        //Vật lý, Hóa học, và Sinh học. Sau đó hiển thị điểm trung bình và tổng của những điểm này.
+        let physics = parseFloat(prompt('Nhập điểm vật lý: '));
+        let chemistry = parseFloat(prompt('Nhập điểm hoá: '));
+        let biological = parseFloat(prompt('Nhập điểm sinh: '));  
+
+        let dtb = (physics + chemistry + biological) / 3;
+
+        document.write('Điểm trung bình : '+ dtb);
+        
+    </script>
+</body>
+</html>

@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ứng dụng chuyển đổi tiền tệ</title>
+    <style>
+        .item{
+            background-color: blanchedalmond;
+            width: 200px;
+            height: 50px;
+            text-align: center;
+            display: inline-block;
+        }
+        .item-btn{
+            display: inline-block;
+            margin-left: 10px;
+        }
+        .item-btn button{
+            width: 80px;
+            background-color: blueviolet;
+            color: white;
+            border-radius: 5px;
+        }
+    </style>
+</head>
+<body>
+    <form action="">
+        <div class="item">
+            <Span>Amount</Span><br>
+            <input type="number" name="amount" id="amount" value="">
+        </div>
+        <div class="item">
+            <Span>From Currency</Span><br>
+            <select name="type-money" id="fromCurrency">
+                <option value="VietNam">VietNam</option>
+                <option value="USD">USD</option>
+            </select>
+        </div>
+        <div class="item">
+            <Span>To Currency</Span><br>
+            <select name="type-money" id="toCurrency">
+                <option value="USD">USD</option>
+                <option value="VietNam">VietNam</option>
+            </select>
+        </div>
+        <div class="item-btn">
+            <button id="convert_btn">Convert</button>
+        </div>
+        <div class="result" id="result">
+            Result : 
+        </div>
+    </form>
+    <script src="./main.js"></script>
+</body>
+</html>
