@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Leap year</title>
+</head>
+<body>
+    <script>
+        var year = parseInt(prompt("Enter a year"));
+        if(year % 4 == 0){
+            if(year % 100 == 0 && year % 400 != 0){
+                alert(year + ' khong phai nam nhuan');
+            }
+            else{
+                alert(year + ' la nam nhuan');
+            }
+        }
+        else{
+            alert(year + ' khong phai nam nhuan');
+        }
+    </script>
+</body>
+</html>
