@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bai 7</title>
+</head>
+
+<body>
+    <script>
+        // Tính cước điện thoại cho một hộ gia đình với các thông số đã cho
+    
+        let sophut, phi = 0;
+        let tong;
+        const  phicodinh = 25;
+        sophut = parseFloat(prompt("Nhap so phut da su dung : "));
+        if (sophut > 200)
+            phi = (sophut - 200) * 200 + 150 * 400 + 50 * 600;
+        else if (sophut > 50)
+            phi = (sophut - 50) * 400 + 50 * 600;
+        else
+            phi = sophut * 600;
+        tong = 0.01 * phi + phicodinh;
+        
+        alert("So tien phai nop cua ban la " + tong );
+
+
+    </script>
+</body>
+
+</html>

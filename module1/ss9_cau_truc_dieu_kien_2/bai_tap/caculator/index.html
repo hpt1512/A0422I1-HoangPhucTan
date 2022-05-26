@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Caculator</title>
+    <link rel="stylesheet" href="./css/style.css">
+
+
+    <style>
+        button{
+            width: 50px;
+            height: 50px;
+            margin-bottom: 5px;
+            color: blue;
+            font-weight: bold;
+        }
+        #result{
+            width: 205px;
+            height: 30px;
+            margin-bottom: 5px;
+            margin-top: 5px;
+        }
+        .container-grid{
+            border: 5px solid black;
+            width: 230px;
+            text-align: center;
+        }
+    </style>
+
+
+
+</head>
+
+<body>
+    <div class="container-grid">
+        <input type="text" id="result">
+        <div class="number">
+            <button class="btn" value="1">1</button>
+            <button class="btn" value="2">2</button>
+            <button class="btn" value="3">3</button>
+            <button class="btn" value="+">+</button>
+            <br>
+            <button class="btn" value="4">4</button>
+            <button class="btn" value="5">5</button>
+            <button class="btn" value="6">6</button>
+            <button class="btn" value="-">-</button>
+            <br>
+            <button class="btn" value="7">7</button>
+            <button class="btn" value="8">8</button>
+            <button class="btn" value="9">9</button>
+            <button class="btn" value="*">*</button>
+            <br>
+            <button class="btn" onclick="clearValue()">C</button>
+            <button class="btn" value="0">0</button>
+            <button class="btn" value=".">.</button>
+            <button class="btn" value="/">/</button>
+            <br>
+            <button class="btn" value="">(</button>
+            <button class="btn" value="">)</button>
+            <button class="btn" onclick="undo()">DEL</button>
+            <button class="btn" onclick="equal()">=</button>
+        </div>
+        
+            
+    </div>
+    <script src="./js/main.js"></script>
+</body>
+
+</html>

@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bai 6</title>
+</head>
+<body>
+    <script>
+        // Tính hoa hồng nhận được tuỳ theo mức doanh số bán hàng
+        let tongDoanhSo = parseInt(prompt('Nhập tổng doanh số: (triệu)'));
+        let hoaHong;
+        if(tongDoanhSo <= 100){
+            hoaHong = tongDoanhSo * 5 / 100;
+        }
+        else{
+            hoaHong = tongDoanhSo * 10 / 100;
+        }
+        alert(hoaHong);
+    </script>
+</body>
+</html>

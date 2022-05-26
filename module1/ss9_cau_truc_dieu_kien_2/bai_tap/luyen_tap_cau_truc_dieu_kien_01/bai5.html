@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bai 5</title>
+</head>
+<body>
+    <script>
+        // Xếp hạng học lực của học sinh dựa trên các điểm bài kiểm tra, 
+        // điểm thi giữa kỳ, điểm thi cuối kỳ
+        let diemKiemTra = parseFloat(prompt('Nhap diem kiem tra: '));
+        let diemGiuaKy = parseFloat(prompt('Nhap diem giua ky: '));
+        let diemCuoiKy = parseFloat(prompt('Nhap diem cuoi ky: '));
+
+        let avg = (diemKiemTra + diemGiuaKy + diemCuoiKy) / 3;
+
+        if(avg >= 8){
+            alert('Hoc luc : Gioi');
+        }
+        else if(avg >= 6.5){
+            alert('Hoc luc : Kha');
+        }
+        else if(avg >= 5){
+            alert('Hoc luc : Trung Binh');
+        }
+        else {
+            alert('Hoc luc : Yeu');
+        }
+    </script>
+</body>
+</html>
