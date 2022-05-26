@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bai 11</title>
+</head>
+
+<body>
+    <script>
+        // Viết chương trình tính thuế thu nhập cá nhân.
+
+        let thuNhap = parseInt(prompt('Nhap thu nhap ca nhan (trieu): '));
+
+        if(thuNhap < 0) {
+            alert('Nhap sai');
+        }
+        else if (thuNhap <= 5) {
+            thue = thuNhap / 100 * 5 ;
+            alert('Thue thu nhap ca nhan cua ban la: '+ thue +' trieu');
+
+        }
+        else if (thuNhap <= 10) {
+            thue = thuNhap / 100 * 10;
+            alert('Thue thu nhap ca nhan cua ban la: '+ thue +' trieu');
+        }
+        else if (thuNhap <= 18) {
+            thue = thuNhap / 100 * 15;
+            alert('Thue thu nhap ca nhan cua ban la: '+ thue +' trieu');
+
+        }
+        else if (thuNhap <= 32) {
+            thue = thuNhap / 100 * 20;
+            alert('Thue thu nhap ca nhan cua ban la: '+ thue +' trieu');
+
+        }
+        else if (thuNhap <= 52) {
+            thue = thuNhap / 100 * 25;
+            alert('Thue thu nhap ca nhan cua ban la: '+ thue +' trieu');
+
+        }
+        else if (thuNhap <= 80) {
+            thue = thuNhap / 100 * 30;
+            alert('Thue thu nhap ca nhan cua ban la: '+ thue +' trieu');
+
+        }
+        else {
+            thue = thuNhap / 100 * 35;
+            alert('Thue thu nhap ca nhan cua ban la: '+ thue +' trieu');
+
+        }
+
+
+
+    </script>
+</body>
+
+</html>
