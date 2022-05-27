@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Do you love me</title>
+    <style>
+        .content{
+            width: 300px;
+            height: 100px;
+            margin: auto;
+        }
+        #btn-No{
+            position: relative;
+            top: 0px;
+            left: 0px;
+            right: 0px;
+            bottom: 0px;
+        }
+    </style>
+</head>
+<body>
+    <div class="content">
+        <h1>Do you love me ?</h1>
+        <button>Yes</button>
+        <button id="btn-No" onmouseover="callHoverEvent()">No</button>
+    </div>
+    <script>
+        function callHoverEvent(){
+            let btn_No = document.getElementById('btn-No');
+
+            btn_No.style.top = isNaN(parseInt(btn_No.style.top))?0:parseInt(btn_No.style.top) + parseInt(Math.random()*100) + 'px';
+            btn_No.style.left = isNaN(parseInt(btn_No.style.left))?0:parseInt(btn_No.style.left) - parseInt(Math.random()*100) + 'px';
+            btn_No.style.bottom = isNaN(parseInt(btn_No.style.bottom))?0:parseInt(btn_No.style.bottom) + parseInt(Math.random()*100) + 'px';
+            btn_No.style.right = isNaN(parseInt(btn_No.style.right))?0:parseInt(btn_No.style.right) - parseInt(Math.random()*100) + 'px';
+            
+
+            
+        }
+    </script>
+</body>
+</html>

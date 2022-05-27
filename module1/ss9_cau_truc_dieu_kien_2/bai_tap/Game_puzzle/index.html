@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Game puzzle</title>
+
+    <style>
+        .container {
+            width: 500px;
+            margin: auto;
+
+        }
+
+        .container img {
+            display: block;
+            margin-bottom: 5px;
+            box-shadow: 2px 2px;
+        }
+    </style>
+
+</head>
+
+<body>
+    <div class="container">
+        <img id="img-a" src="./img/a1.jpg" height="130" width="500" alt="" onclick="changeImageA()">
+        <img id="img-b" src="./img/b1.jpg" height="130" width="500" alt="" onclick="changeImageB()">
+        <img id="img-c" src="./img/c1.jpg" height="130" width="500" alt="" onclick="changeImageC()">
+        <img id="img-d" src="./img/d1.jpg" height="130" width="500" alt="" onclick="changeImageD()">
+        <img id="img-e" src="./img/e1.jpg" height="130" width="500" alt="" onclick="changeImageE()">
+    </div>
+
+
+    <script>
+        let tempA = 0;
+        let tempB = 0;
+        let tempC = 0;
+        let tempD = 0;
+        let tempE = 0;
+
+        function changeImageA() {
+            if (tempA == 0) {
+                document.getElementById("img-a").src = "./img/a2.jpg";
+                tempA++;
+                check();
+
+            } else if (tempA == 1) {
+                document.getElementById("img-a").src = "./img/a3.jpg";
+                tempA++;
+                check();
+
+            } else {
+                document.getElementById("img-a").src = "./img/a1.jpg";
+                tempA = 0;
+                check();
+
+            }
+        }
+
+        
+        function changeImageB() {
+            if (tempB == 0) {
+                document.getElementById("img-b").src = "./img/b2.jpg";
+                tempB++;
+                check();
+
+            } else if (tempB == 1) {
+                document.getElementById("img-b").src = "./img/b3.jpg";
+                tempB++;
+                check();
+
+            } else {
+                document.getElementById("img-b").src = "./img/b1.jpg";
+                tempB = 0;
+                check();
+
+            }
+        }
+
+        
+        function changeImageC() {
+            if (tempC == 0) {
+                document.getElementById("img-c").src = "./img/c2.jpg";
+                tempC++;
+                check();
+
+            } else if (tempC == 1) {
+                document.getElementById("img-c").src = "./img/c3.jpg";
+                tempC++;
+                check();
+
+            } else {
+                document.getElementById("img-c").src = "./img/c1.jpg";
+                tempC = 0;
+                check();
+
+            }
+        }
+
+        
+        function changeImageD() {
+            if (tempD == 0) {
+                document.getElementById("img-d").src = "./img/d2.jpg";
+                tempD++;
+                check();
+
+            } else if (tempD == 1) {
+                document.getElementById("img-d").src = "./img/d3.jpg";
+                tempD++;
+                check();
+
+            } else {
+                document.getElementById("img-d").src = "./img/d1.jpg";
+                tempD = 0;
+                check();
+
+            }
+        }
+
+        
+        function changeImageE() {
+            if (tempE == 0) {
+                document.getElementById("img-e").src = "./img/e2.jpg";
+                tempE++;
+                check();
+
+            } else if (tempE == 1) {
+                document.getElementById("img-e").src = "./img/e3.jpg";
+                tempE++;
+                check();
+
+            } else {
+                document.getElementById("img-e").src = "./img/e1.jpg";
+                tempE = 0;
+                check();
+
+            }
+        }
+
+
+        function check() {
+            if (tempA == tempB && tempB == tempC && tempC == tempD && tempD == tempE) {
+                // alert("Chúc mừng ghép đúng")
+
+                setTimeout(function show() {
+                    alert("Chúc mừng ghép đúng");
+                }, 100);
+            }
+        }
+    </script>
+
+</body>
+
+</html>
