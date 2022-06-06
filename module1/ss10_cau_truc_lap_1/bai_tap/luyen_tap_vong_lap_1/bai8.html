@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+
+    <br><input type="button" value="CHƠI" onclick="bai_8()">
+
+    <script>
+        function bai_8() {
+            let phamVi = Number(prompt("Trò chơi đoán số từ 0 - "));
+            let soNhapVao = Number(prompt("Nhập vào số muốn đoán"));
+            let soRamdom;
+            if (phamVi) {
+                soRamdom = Math.floor(Math.random() * phamVi);
+                if (soRamdom == soNhapVao) {
+                    alert("Bạn đã đoán đung");
+                } else {
+                    let soLanDoan = 0;
+                    while (soRamdom != soNhapVao) {
+                        alert("Bạn đoán sai, số đúng là " + soRamdom);
+                        soLanDoan++;
+                        soNhapVao = Number(prompt("Nhập vào số muốn đoán"));
+
+                        if(soLanDoan > 1) {
+                            break;
+                        }
+                    }
+                    alert("Bạn đoán đúng");
+                }
+            }
+        }
+    </script>
+</body>
+
+</html>

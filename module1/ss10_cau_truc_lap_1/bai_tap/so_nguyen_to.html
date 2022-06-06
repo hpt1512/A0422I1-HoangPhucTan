@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+
+        // Hiển thị các số nguyên tố đầu tiên
+        let number = parseInt(prompt('Nhap so luong so nguyen to can in ra : '));
+        let count = 0; // dem tong so nguyen to
+        let N = 2;   // tim so nguyen to bat dau tu so 2
+        let dem; // dem xem N chia het cho bao nhieu so
+
+        document.write(number + ' so nguyen to dau tien la : <br>');
+
+        while (count < number) {
+            dem = 0;
+            for(let i = 1; i <= N; i++) {
+                if(N % i == 0){
+                    dem = dem + 1;
+                }
+            }
+            if(dem == 2) {
+                document.write(N +'&nbsp');
+                count++;
+            }
+            
+            N++;
+            
+        }
+
+
+    </script>
+</body>
+
+</html>

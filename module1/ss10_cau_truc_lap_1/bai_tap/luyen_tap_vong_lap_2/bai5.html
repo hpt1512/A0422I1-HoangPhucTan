@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        // Viết chương trình tính lãi ngân hàng (lãi mẹ đẻ lãi con) khi biết số tiền ban đầu,
+        // số tháng cho vay và lãi xuất hàng tháng.
+        let soTienBanDau ;
+        let soThangChoVay ;
+        let laiSuatHangThang ;
+
+
+        do {
+            soTienBanDau = parseInt(prompt('Nhap so tien ban dau: '));
+            soThangChoVay = parseInt(prompt('Nhap so thang cho vay: '));
+            laiSuatHangThang = parseInt(prompt('Nhap lai suat hang thang (%): '));
+
+
+        } while (soTienBanDau <= 0 || soThangChoVay <= 0 || laiSuatHangThang <= 0)
+
+        
+        laiNganHang = (soTienBanDau / 100 * laiSuatHangThang) * soThangChoVay;
+
+        alert('Lai ngan hang: ' + laiNganHang);
+
+    </script>
+</body>
+
+</html>

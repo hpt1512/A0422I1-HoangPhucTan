@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        // In tam giác vuông. Các góc vuông nằm ở các vị trí khác nhau
+
+        for (let i = 0; i < 5; i++) {
+            for (let j = 0; j < i + 1; j++) {
+                document.write("*");
+            }
+            document.write("<br>")
+        }
+
+        document.write('<br><br><br>');
+
+        for (let i = 0; i < 5; i++) {
+            for (let j = 0; j < 5 - i; j++) {
+                document.write("*");
+            }
+            document.write("<br>")
+        }
+
+        document.write('<br><br><br>');
+
+
+        let t = 4;
+        for (let i = 0; i < 5; i++) {
+            for (let j = 4; j >= 0; j--) {
+                if(j < t){
+                    document.write('&nbsp');
+                }
+                else{
+                    document.write('*');
+                }
+            }
+            document.write("<br>");
+            t--;
+        }
+
+    </script>
+</body>
+
+</html>
