@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        // Viết chương trình khởi tạo mảng số nguyên gồm 10 phần tử. 
+        // Chương trình thực hiện tính và hiển thị xem có bao nhiêu số nguyên lớn hơn hoặc bằng 10.
+
+        let Numbers = [1,5,12,10,3,16,7,9,11,18];
+
+        let count = 0;
+        let result = "";
+
+        for(let i of Numbers) {
+            if(i >= 10) {
+                result += i +"&nbsp&nbsp" 
+                count++;
+            }
+        }
+
+        document.write('Có '+count+' số lớn hơn hoặc bằng 10 :<br> ' +result);
+    </script>
+</body>
+</html>

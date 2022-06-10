@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        // Viết chương trình khởi tạo/nhập vào một mảng số nguyên 
+        // và đảo ngược các phần tử trong mảng đó.
+
+        let Numbers = [];
+
+        for(let i = 0; i < 5; i++) {
+            let number = parseInt(prompt('Nhập số thứ '+(parseInt(i)+1)+' :'));
+            Numbers.push(number);
+        }
+
+        let first = 0;
+        let last = Numbers.length - 1;
+
+        while(first < last){
+            let b = Numbers[first];
+            Numbers[first] = Numbers[last];
+            Numbers[last] = b;
+            first ++;
+            last --;
+        }
+
+        document.write(Numbers);
+    </script>
+</body>
+</html>

@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        // Viết chương trình khởi tạo/nhập vào một mảng số nguyên gồm 10 phần tử. 
+        // Chương trình sắp xếp mảng theo thứ tự giảm dần và hiển thị ra mảng đã được sắp xếp.
+        let Numbers = [];
+
+        for (let i = 0; i < 10; i++) {
+            let number = parseInt(prompt('Nhập mảng - Nhập số thứ ' + (parseInt(i) + 1) + ' :'));
+            Numbers.push(number);
+        }
+
+        let max = Numbers[0];
+        let index = 0;
+        let tg = 0;
+
+        
+        for (let i = 0; i < Numbers.length - 1; i++) {
+            for (let j = i + 1; j < Numbers.length; j++) {
+                if (Numbers[i] < Numbers[j]) {
+                    // 
+                    tg = Numbers[i];
+                    Numbers[i] = Numbers[j];
+                    Numbers[j] = tg;
+                }
+            }
+        }
+
+        document.write(Numbers);
+
+    </script>
+</body>
+
+</html>

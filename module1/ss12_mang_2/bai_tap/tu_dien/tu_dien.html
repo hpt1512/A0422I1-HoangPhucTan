@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h3>Từ có thể tìm: 'code', 'loop', 'array', 'function', 'object'</h3>
+    <input type="text" id="inputValue">
+    <button id="btnSearch">Search</button>
+
+    <script>
+        let arrsEL = ['code','loop','array','function','object'];
+        let arrsVN = ['mã','vòng lặp','mảng','hàm','đối tượng'];
+
+
+
+        let btnSearch = document.getElementById('btnSearch');
+        btnSearch.addEventListener('click', functionSearch);
+        
+        function functionSearch() {
+            let inputValue = document.getElementById('inputValue').value;
+            let inputCard = document.getElementById('inputValue');
+
+            for(let i = 0; i < arrsEL.length; i++) {
+                if(inputValue == arrsEL[i]) {
+                    alert(arrsVN[i]);
+                }
+            }
+
+            inputCard.value = "";
+
+        }
+
+    </script>
+</body>
+</html>
