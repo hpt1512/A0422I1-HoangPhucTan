@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        let arrStar = ['Polaris', 'Aldebaran', 'Deneb', 'Vega', 'Altair', 'Dubhe', 'Regulus'];
+        let arrConstellation = ['Ursa Minor', 'Tarurus', 'Cygnus', 'Lyra', 'Aquila', 'Ursa Major', 'Leo'];
+
+        function findStarName(star) {
+            let count = 0;
+            for(let i = 0; i < arrStar.length; i++) {
+                if(star === arrStar[i]) {
+                    alert(arrConstellation[i]);
+                    count++;
+                }
+            }
+            if(count == 0) {
+                alert('Không tồn tại ngôi sao này');
+            }
+        }
+
+        let star = prompt('Nhập tên ngôi sao cần tìm: ');
+        findStarName(star);
+        
+
+    </script>
+</body>
+</html>

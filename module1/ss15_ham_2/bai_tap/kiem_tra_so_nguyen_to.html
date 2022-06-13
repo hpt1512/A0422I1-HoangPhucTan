@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+
+        function isPrime(number){
+            let count = 0;
+            for(let i = 1; i <= number; i++) {
+                if(number % i == 0) {
+                    count++;
+                }
+            }
+            if(count == 2) {
+                return 1;
+            }
+            else {
+                return 0;
+            }
+        }
+
+
+        let number = parseInt(prompt('Enter a number: '));
+        let result = isPrime(number);
+
+        if(result == 1) {
+            alert(number + ' la so nguyen to');
+        }
+        else if(result == 0) {
+            alert(number + ' khong phai la so nguyen to');
+        }
+
+
+    </script>
+</body>
+</html>
