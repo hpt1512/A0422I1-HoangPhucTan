@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        // Viết hàm truyền vào một mảng ký tự, và một ký tự bất kỳ, kiểm tra xem ký tự bất kỳ đó có nằm trong mảng không. 
+        // Nếu có trả về số lần xuất hiện của ký tự đó, nếu không trả về -1. 
+        function findCharacter(arrs, character) {
+            let count = 0;
+            for(let i = 0; i < arrs.length; i++) {
+                if(arrs[i] == character) {
+                    count++;
+                }     
+            }
+            if(count > 0) {
+                    console.log(count);
+                    return count;
+                }
+                else if(count == 0) {
+                    return -1;
+                }
+        }
+
+
+        let arrs = ['a','a','-','@','b','@'];
+        let character = prompt('Enter a character: ');
+
+        let result = findCharacter(arrs, character);
+        alert(result);
+
+    </script>
+</body>
+</html>

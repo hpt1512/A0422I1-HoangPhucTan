@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        // Viết hàm truyền vào mảng số nguyên bất kỳ, sau đó đảo ngược mảng số nguyên đó.
+
+        function swapArray(arrs) {
+            let first = 0;
+            let last = arrs.length - 1;
+
+            while (first < last) {
+                let b = arrs[first];
+                arrs[first] = arrs[last];
+                arrs[last] = b;
+                first++;
+                last--;
+            }
+        }
+
+        let arrs = [];
+        for (let i = 0; i < 5; i++) {
+            let number = parseInt(prompt('Nhập số thứ ' + (parseInt(i) + 1) + ' :'));
+            arrs.push(number);
+        }
+        swapArray(arrs);
+        document.write(arrs);
+
+    </script>
+</body>
+
+</html>

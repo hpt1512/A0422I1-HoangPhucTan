@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        // Viết hàm truyền vào 2 số nguyên bất kì, thực hiện đổi chỗ hai số nguyên đó.
+        function swap(arrs) {
+            let temp;
+            temp = arrs[0];
+            arrs[0] = arrs[1];
+            arrs[1] = temp;
+            
+        }
+
+        let arrs = [1,5];
+
+        swap(arrs);
+
+        document.write(arrs);
+
+    </script>
+</body>
+</html>

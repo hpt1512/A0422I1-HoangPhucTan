@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        //  Viết hàm tính diện tích, hàm tính chu vi hình tròn. Gọi hàm vừa xây dựng được
+        function areaCircle(radius) {
+            result = Math.PI * radius * radius;
+            return result;
+        }
+        function perimeterCircle(radius) {
+            result = 2 * Math.PI * radius;
+            return result;
+        }
+
+        let radius = parseFloat(prompt('Enter the radius: '));
+        let area = areaCircle(radius);
+        let perimeter = perimeterCircle(radius);
+
+        alert('Area = '+ area);
+        alert('Perimeter = '+ perimeter);
+
+
+    </script>
+</body>
+</html>

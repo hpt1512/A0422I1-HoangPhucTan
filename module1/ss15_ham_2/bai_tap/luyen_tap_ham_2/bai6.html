@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        // Viết hàm nhận vào một số, kiểm tra xem nếu số đưa vào có phải là nguyên dương không. 
+        // Nếu là nguyên dương trả về true, ngược lại trả về false.
+
+        function laSoNguyenDuong(value) {
+            if (Number.isInteger(value) && value > 0) {
+                return true;
+            }
+            else {
+                return false;
+            }
+        }
+
+        console.log(laSoNguyenDuong(1)); // true
+        console.log(laSoNguyenDuong(1.2)); // false
+        console.log(laSoNguyenDuong(3)); // true
+        console.log(laSoNguyenDuong(0)); // false
+
+
+
+    </script>
+</body>
+
+</html>
