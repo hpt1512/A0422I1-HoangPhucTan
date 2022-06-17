@@ -1,0 +1,31 @@
+.app{
+    padding: 0 50px;
+}
+.add__new-product__content{
+    width: 300px;
+    height: 30px;
+    background-color: rgba(128, 128, 128, 0.259);
+    text-align: center;
+    display: flex;
+    justify-content: center;
+    padding: 10px 0;
+}
+button{
+    background-color: green;
+    color: white;
+    border: none;
+    margin-left: 10px;
+    border-radius: 5px;
+    width: 50px;
+    cursor: pointer;
+    padding: 5px;
+    text-align: center ;
+}
+.table__header{
+    font-size: 20px;
+    font-weight: bold;
+}
+tr{
+    height: 50px;
+}
+
