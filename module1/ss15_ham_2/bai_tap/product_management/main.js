@@ -30,10 +30,19 @@ let btn_add = document.getElementById('btn_add');
 btn_add.addEventListener('click', addNewProduct);
 
 function addNewProduct() {
-    let newProduct = document.getElementById('addProduct').value;
+    let newProduct = document.getElementById('newProduct').value;
     productArray.push(newProduct);
-    document.getElementById('addProduct').value = '';
+    document.getElementById('newProduct').value = '';
     all_product.innerHTML = "";
     showProduct();
+
+}
+
+// Delete
+let btn_delete = document.getElementById('btn_delete');
+btn_delete.addEventListener('click', deleteProduct);
+
+function deleteProduct(i) {
+    
 
 }
