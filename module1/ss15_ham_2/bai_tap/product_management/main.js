@@ -43,6 +43,7 @@ let btn_delete = document.getElementById('btn_delete');
 btn_delete.addEventListener('click', deleteProduct);
 
 function deleteProduct(i) {
-    
-
+    productArray.splice(i,1);
+    all_product.innerHTML = "";
+    showProduct();
 }
