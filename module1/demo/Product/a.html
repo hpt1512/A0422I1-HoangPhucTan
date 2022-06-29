@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link rel="stylesheet" href="./style.css">
+</head>
+
+<body>
+
+    <div class="app">
+
+        <div class="add__new-product">
+            <h2>Add New Product</h2>
+            <div class="add__new-product__content">
+                <input id="id" type="text" placeholder="Nhập id">
+                <input id="name" type="text" placeholder="Nhập Name">
+                <input id="price" type="text" placeholder="Nhập price">
+                <button id="btn_add" onclick="addNewProduct()">Add</button>
+            </div>
+        </div>
+        <div class="display__product">
+
+            <h2>All Product</h2>
+            
+            <h3 style="color: red;">Số lượng: <span id="countProduct"></span></h3>
+        </div>
+
+        <p id="result"></p>
+    </div>
+
+    <script>
+        class Product {
+            constructor(id, name, price) {
+                this.id = id;
+                this.name = name;
+                this.price = price;
+            }
+            setId(id) {
+                this.id = id;
+            }
+            getId() {
+                return this.id;
+            }
+            setName(name) {
+                this.name = name;
+            }
+            getName() {
+                return this.name
+            }
+            setPrice(price) {
+                this.price = price;
+            }
+            getPrice() {
+                return this.price
+            }
+        }
+        // Show Product
+        function display(products) {
+            let tableString = `<table class="table_product" border="1">` + 
+                '    <tr>\n' +
+                '        <th>STT</th>\n' +
+                '        <th>id</th>\n' +
+                '        <th>Name</th>\n' +
+                '        <th>Price</th>\n' +
+                '        <th>Delete</th>\n' +
+                '    </tr>';
+
+            for (let i = 0; i < products.length; i++) {
+                tableString += '<tr>\n' +
+                    '        <td style="width: 100px; text-align: center;">' + (1 + i) + '</td>\n' +
+                    '        <td style="width: 100px; text-align: center;">' + products[i].getId() + '</td>\n' +
+                    '        <td style="width: 100px; text-align: center;">' + products[i].getName() + '</td>\n' +
+                    '        <td style="width: 100px; text-align: center;">' + products[i].getPrice() + '</td>\n' +
+                    '        <td style="width: 100px; text-align: center;"><button type="button" onclick="deleteProduct(' + i + ')">Delete</button></td>\n' +
+                    '    </tr>';
+            }
+            tableString += '</table>'
+            document.getElementById("result").innerHTML = tableString;
+            document.getElementById("countProduct").innerHTML = products.length;
+            console.log(productList);
+        }
+        // Add Product
+        function addNewProduct() {
+            let id = document.getElementById("id").value;
+            let name = document.getElementById("name").value;
+            let price = document.getElementById("price").value;
+            let newProduct = new Product(id, name, price);
+            productList.push(newProduct);
+            display(productList)
+        }
+        // Delete Product
+        function deleteProduct(index) {
+            let conf = confirm("Bạn có muốn xóa sản phầm : " + productList[index].getName());
+            if (conf) {
+                productList.splice(index, 1);
+            }
+            display(productList);
+        }
+        // Main
+        let productList = [];
+        productList.push(new Product("001", "sam sung1", 10000));
+        productList.push(new Product("002", "sam sung2", 10000));
+        productList.push(new Product("003", "sam sung3", 10000));
+        display(productList);
+    </script>
+</body>
+
+</html>

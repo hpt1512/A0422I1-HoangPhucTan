@@ -1,0 +1,44 @@
+.app{
+    padding: 10px 50px;
+    background-color:beige;
+    width: 800px;
+    margin-left: 20%;
+    border-radius: 10px;
+}
+
+.add__new-product__content{
+    width: 600px;
+    height: 30px;
+    background-color: rgba(128, 128, 128, 0.259);
+    text-align: center;
+    display: flex;
+    justify-content: center;
+    padding: 10px 0;
+    margin-left: 12%;
+}
+input{
+    width: 150px;
+    margin: 0 5px;
+}
+button{
+    background-color: green;
+    color: white;
+    border: none;
+    margin-left: 10px;
+    border-radius: 5px;
+    width: 50px;
+    cursor: pointer;
+    padding: 5px;
+    text-align: center ;
+}
+tr{
+    height: 50px;
+}
+#result{
+    margin-left: 10%;
+}
+.table_product{
+    margin-left: 50px; 
+    border-collapse: collapse;
+    background-color: white;
+}

@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        let luongNhanVien = parseInt(prompt('Nhập lương nhân viên: '));
+        let luongRong;
+        let thue;
+
+
+        if(luongNhanVien >= 0) {
+            if(luongNhanVien >= 15000000) {
+                thue = luongNhanVien / 100 * 20;
+                luongRong = luongNhanVien - thue;
+            }
+            else if(luongNhanVien >= 7000000) {
+                thue = luongNhanVien / 100 * 10;
+                luongRong = luongNhanVien - thue;
+            }
+            else {
+                thue = luongNhanVien / 100 * 5;
+                luongRong = luongNhanVien - thue;
+            }
+
+            alert('Lương ròng của nhân viên là: '+luongRong);
+        }
+        else {
+            alert('Nhập sai');
+        }
+
+
+    </script>
+</body>
+</html>
