@@ -1,0 +1,35 @@
+.app{
+    width: 1200px;
+    margin: auto;
+    background-color: aquamarine;
+    border: 1px solid black;
+    padding-bottom: 30px;
+}
+.header{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 1px solid black;
+}
+.container{
+    display: flex;
+    
+}
+.menu_left{
+    width: 25%;
+    background-color: burlywood;
+    
+}
+.menu_right{
+    width: 75%;
+    
+    background-color: white;
+}
+select{
+    display: block;
+    padding: 10px 10px;
+    margin: 20px auto;
+    width: 150px;
+    text-align: center;
+    font-size: 1.2rem;
+}

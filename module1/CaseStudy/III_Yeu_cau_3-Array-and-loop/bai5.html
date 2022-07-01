@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        class Drinks {
+            constructor(id, name, price) {
+                this.id = id;
+                this.name = name;
+                this.price = price;
+            }
+            setId(id) {
+                this.id = id;
+            }
+            getId() {
+                return this.id;
+            }
+            setName(name) {
+                this.name = name;
+            }
+            getName() {
+                return this.name
+            }
+            setPrice(price) {
+                this.price = price;
+            }
+            getPrice() {
+                return this.price
+            }
+        }
+        // Main
+        let drinkList = [];
+        drinkList.push(new Drinks(1, 'Cà phê', 20000));
+        drinkList.push(new Drinks(2, 'Cam vắt', 15000));
+        drinkList.push(new Drinks(3, 'Nước ép cà rốt', 18000));
+        drinkList.push(new Drinks(4, 'Nước ép cà chua', 18000));
+        drinkList.push(new Drinks(5, 'Nước lọc', 6000));
+        drinkList.push(new Drinks(6, 'Nước dừa', 10000));
+
+
+        let inputOrder;
+        do {
+            inputOrder = parseInt(prompt(`
+                Mời gọi món:
+                1. Cà phê
+                2. Cam vắt
+                3. Nước ép cà rốt
+                4. Nước ép cà chua
+                5. Nước lọc
+                6. Nước dừa
+                7. Thoát
+            `));
+            if(inputOrder == 7) {
+                alert('Hẹn gặp lại');
+                break;
+            }
+        } while (inputOrder < 1 || inputOrder > 6)
+
+        console.log(drinkList);
+
+        drinkList.forEach(function (drink) {
+            if (inputOrder == drink.id) {
+                let soLuong = parseInt(prompt(
+                    `Món bạn chọn : ` + drink.name + ` - Nhập số lượng: `
+                ));
+                let sumPrice = drink.price * soLuong;
+                alert('Tổng tiền cẩn trả: ' + sumPrice);
+            }
+        });
+
+    </script>
+</body>
+
+</html>

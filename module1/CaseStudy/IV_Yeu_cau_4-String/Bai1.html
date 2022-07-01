@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        function chuanHoaChuoi(string) {
+            let convertToArray = string.toLowerCase().split(' ');
+            // console.log(convertToArray);
+            let result = convertToArray.map(function (val) {
+
+                return val.replace(val.charAt(0), val.charAt(0).toUpperCase());
+
+            });
+            return result.join(' ').trim();
+        }
+        let string = prompt('Nhap chuoi: ');
+        console.log(chuanHoaChuoi(string));
+
+    </script>
+</body>
+
+</html>

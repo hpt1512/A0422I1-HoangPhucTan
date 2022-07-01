@@ -1,32 +1,34 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
 </head>
+
 <body>
     <script>
-        let arrayA = [7,2,5,3,5,3];
-        let arrayB = [7,2,5,4,6,3,5,3];
-        let result = [1];
-        let count = 0;
+        let arrayA = [7, 2, 5, 4, 6, 3, 5, 3];
+        let arrayB = [7, 2, 5, 3, 5, 3];
+        let result = [];
 
-        for(let i = 0; i < arrayB.length; i++) {
-            for(let j = 0; j < arrayA.length; j++) {
-                if(arrayB[i] == arrayA[j]) {
+        for (let i = 0; i < arrayA.length; i++) {
+            let count = 0;
+            for (let j = 0; j < arrayB.length; j++) {
+                if (arrayA[i] == arrayB[j]) {
                     count++;
-                    console.log(count);
-                }
-                if(count == 0) {
-                    result.push(arrayB[i]);
+                    // console.log(count);  
                 }
             }
+            if (count == 0) {
+                result.push(arrayA[i]);
+            }
         }
-
         console.log(result);
 
-    </script> 
+    </script>
 </body>
+
 </html>
