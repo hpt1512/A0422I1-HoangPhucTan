@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .app {
+            display: flex;
+        }
+
+        .item {
+            width: 100px;
+            height: 100px;
+            border: 1px solid red;
+            border-radius: 60px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin-right: 10px;
+        }
+
+        span {
+            font-size: 2rem;
+            margin: 15px;
+            display: block;
+        }
+    </style>
+</head>
+
+<body>
+    <span>Số của bạn:</span>
+    <div class="app input">
+        <div class="item" id="soCuaBan_1"></div>
+        <div class="item" id="soCuaBan_2"></div>
+        <div class="item" id="soCuaBan_3"></div>
+        <div class="item" id="soCuaBan_4"></div>
+        <div class="item" id="soCuaBan_5"></div>
+        <div class="item" id="soCuaBan_6"></div>
+    </div>
+    <br>
+    <span>Số của hệ thống:</span>
+    <div class="app system">
+        <div class="item" id="soCuaHeThong_1"></div>
+        <div class="item" id="soCuaHeThong_2"></div>
+        <div class="item" id="soCuaHeThong_3"></div>
+        <div class="item" id="soCuaHeThong_4"></div>
+        <div class="item" id="soCuaHeThong_5"></div>
+        <div class="item" id="soCuaHeThong_6"></div>
+    </div>
+    <span style="margin-top: 25px;">Kết quả:</span>
+    <p id="result" style="font-size: 2rem; font-weight: bold; margin-left: 50px;">Chúc bạn may mắn lần sau</p>
+    <script>
+        class VeSo {
+            constructor(so) {
+                this.so = so;
+            }
+            getSo() {
+                return this.so;
+            }
+        }
+        class GiaiThuong {
+            constructor(id, tenGiai, soTien) {
+                this.id = id; //Điều kiện đạt giải
+                this.tenGiai = tenGiai;
+                this.soTien = soTien;
+            }
+            getTenGiai() {
+                return this.tenGiai;
+            }
+            getTienThuong() {
+                return this.soTien;
+            }
+            getId() {
+                return this.id;
+            }
+        }
+        function kiemTraGiaiThuong(inputListNumber, systemListNumber) {
+
+            let danhSachGiaiThuong = [];
+            danhSachGiaiThuong.push(new GiaiThuong(6, 'GIẢI NHẤT', 100));
+            danhSachGiaiThuong.push(new GiaiThuong(5, 'GIẢI NHÌ', 50));
+            danhSachGiaiThuong.push(new GiaiThuong(3, 'GIẢI BA', 20));
+
+            let result = document.getElementById('result');
+            let count = 0;
+            for (let i = inputListNumber.length - 1; i >= 0; i--) {
+                // console.log(inputListNumber[i]);
+                for (let j = systemListNumber.length - 1; j >= 0; j--) {
+                    // console.log(systemListNumber[j]);
+                    if (i == j) {
+                        if (inputListNumber[i].getSo() == systemListNumber[j].getSo()) {
+                            count++;
+                            // console.log(count);
+                        }
+                    }
+                }
+            }
+            danhSachGiaiThuong.forEach(function(giaiThuong) {
+                    // let d = 0;
+                    console.log('count= '+count);
+                    console.log('id= '+giaiThuong.id);
+                    if(count == giaiThuong.id) {
+                        result.innerHTML = `Bạn đạt ` + giaiThuong.tenGiai
+                                        + ` - Tiền thưởng : ` + giaiThuong.soTien + ` triệu`;
+                        // d++;
+                    }
+                    // if(d == 0) {
+                    //     result.innerHTML = 'Chúc bạn may mắn lần sau';
+                    // }
+            });
+
+        }
+        // Main
+        let danhSachSoCuaBan = [];
+
+        let danhSachSoCuaHeThong = [];
+        danhSachSoCuaHeThong.push(new VeSo(10));
+        danhSachSoCuaHeThong.push(new VeSo(20));
+        danhSachSoCuaHeThong.push(new VeSo(30));
+        danhSachSoCuaHeThong.push(new VeSo(40));
+        danhSachSoCuaHeThong.push(new VeSo(50));
+        danhSachSoCuaHeThong.push(new VeSo(60));
+
+        for (let i = 1; i <= 6; i++) {
+            let item = document.getElementById('soCuaHeThong_' + i);
+            item.innerHTML = danhSachSoCuaHeThong[i - 1].getSo();
+
+        }
+
+        let input;
+        do {
+            input = parseInt(prompt(`Bạn có 2 lựa chọn: 
+                        1. Bạn muốn tự chọn vé số
+                        2. Hệ thống tự Random
+                        `));
+
+        } while (input < 1 || input > 2)
+
+        switch (input) {
+            case 1:
+                for (let i = 1; i <= 6; i++) {
+                    let so = parseInt(prompt('Nhập số thứ ' + i + ' :'));
+                    danhSachSoCuaBan.push(new VeSo(so));
+                    let item = document.getElementById('soCuaBan_' + i);
+                    item.innerHTML = danhSachSoCuaBan[i - 1].getSo();
+                }
+                console.log(danhSachSoCuaBan);
+                console.log('case 1 nek');
+                kiemTraGiaiThuong(danhSachSoCuaBan, danhSachSoCuaHeThong);
+
+                break;
+            case 2:
+                danhSachSoCuaBan.push(new VeSo(Math.floor(Math.random() * 100)));
+                danhSachSoCuaBan.push(new VeSo(Math.floor(Math.random() * 100)));
+                danhSachSoCuaBan.push(new VeSo(Math.floor(Math.random() * 100)));
+                danhSachSoCuaBan.push(new VeSo(Math.floor(Math.random() * 100)));
+                danhSachSoCuaBan.push(new VeSo(Math.floor(Math.random() * 100)));
+                danhSachSoCuaBan.push(new VeSo(Math.floor(Math.random() * 100)));
+
+                console.log(danhSachSoCuaBan);
+
+                for (let i = 1; i <= 6; i++) {
+                    let item = document.getElementById('soCuaBan_' + i);
+                    item.innerHTML = danhSachSoCuaBan[i - 1].getSo();
+
+                }
+
+                kiemTraGiaiThuong(danhSachSoCuaBan, danhSachSoCuaHeThong);
+
+                break;
+        }
+
+
+
+
+
+    </script>
+</body>
+
+</html>
