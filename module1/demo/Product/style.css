@@ -38,7 +38,89 @@ tr{
     margin-left: 10%;
 }
 .table_product{
-    margin-left: 50px; 
+    margin-left: 5px; 
     border-collapse: collapse;
     background-color: white;
 }
+/* update_form */
+.update_form{
+    width: 300px;
+    height: 300px;
+    background-color: aquamarine;
+    border: 1px solid #333;
+    border-radius: 10px;
+    box-shadow: 2px 2px;
+    padding-top: 10px;
+    position: absolute;
+    top: 20%;
+    left: 40%;
+    display: none;
+    animation: userFadeIn ease .35s;
+}
+
+  /* Full-width inputs */
+  .update_form input[type=text], input[type=password] {
+    width: 100%;
+    padding: 12px 20px;
+    margin: 8px 0;
+    display: inline-block;
+    border: 1px solid #ccc;
+    box-sizing: border-box;
+  }
+  
+  /* Set a style for buttons */
+  .update_form .button_save {
+    background-color: #04AA6D;
+    color: white;
+    padding: 14px 20px;
+    margin: 5px 2px 0 0;
+    border: none;
+    cursor: pointer;
+    width: 100%;
+  }
+  
+  /* open form update */
+  .open_form_update{
+      display: block;
+  }
+  /* Add a hover effect for buttons */
+  .update_form button:hover {
+    opacity: 0.8;
+  }
+  
+  /* Extra style for the cancel button (red) */
+  .cancelbtn {
+    background-color: red;
+    color: white;
+    padding: 14px 20px;
+    margin: -12px 0;
+    border: none;
+    cursor: pointer;
+    width: 100%;
+  }
+  
+  /* Center the avatar image inside this container */
+  .imgcontainer {
+    text-align: center;
+    margin: 24px 0 12px 0;
+  }
+  
+  
+  /* Add padding to containers */
+  .container {
+    padding: 16px;
+  }
+  
+/* Animation */
+@keyframes userFadeIn {
+	from{
+		opacity: 0;
+		transform: translateY(-140px);
+	}
+	to{
+		opacity: 1;
+		transform: translateY(0);
+	}
+}
+  
+  

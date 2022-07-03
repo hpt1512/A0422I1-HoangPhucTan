@@ -9,7 +9,7 @@
 
 <body>
 
-    <div class="app">
+    <div class="app" id="app">
 
         <div class="add__new-product">
             <h2>Add New Product</h2>
@@ -23,12 +23,32 @@
         <div class="display__product">
 
             <h2>All Product</h2>
-            
+
             <h3 style="color: red;">Số lượng: <span id="countProduct"></span></h3>
         </div>
 
         <p id="result"></p>
     </div>
+
+    <div class="update_form" id="update_form">
+        <div class="container">
+            <label for="uname"><b>Name Product:</b></label>
+            <input type="text" id="newName" placeholder="Enter Name" name="uname" required>
+
+            <label for="psw"><b>Price:</b></label>
+            <input type="text" id="newPrice" placeholder="Enter Price" name="psw" required>
+
+            <input type="hidden" id="product_id" placeholder="Enter Price" name="product_id">
+
+            <button type="submit" id="btnSave" class="button_save" onclick="saveMyValue()">Save</button>
+
+        </div>
+
+        <div class="container">
+            <button type="button" class="cancelbtn" onclick="closeProductForm()">Cancel</button>
+        </div>
+    </div>
+
 
     <script>
         class Product {
@@ -58,12 +78,13 @@
         }
         // Show Product
         function display(products) {
-            let tableString = `<table class="table_product" border="1">` + 
+            let tableString = `<table class="table_product" border="1">` +
                 '    <tr>\n' +
                 '        <th>STT</th>\n' +
                 '        <th>id</th>\n' +
                 '        <th>Name</th>\n' +
                 '        <th>Price</th>\n' +
+                '        <th>Update</th>\n' +
                 '        <th>Delete</th>\n' +
                 '    </tr>';
 
@@ -73,6 +94,7 @@
                     '        <td style="width: 100px; text-align: center;">' + products[i].getId() + '</td>\n' +
                     '        <td style="width: 100px; text-align: center;">' + products[i].getName() + '</td>\n' +
                     '        <td style="width: 100px; text-align: center;">' + products[i].getPrice() + '</td>\n' +
+                    '        <td style="width: 100px; text-align: center;"><button type="button" id = "btnUpdate" onclick="openProductForm(' + i + ')">Update</button></td>\n' +
                     '        <td style="width: 100px; text-align: center;"><button type="button" onclick="deleteProduct(' + i + ')">Delete</button></td>\n' +
                     '    </tr>';
             }
@@ -98,13 +120,84 @@
             }
             display(productList);
         }
+        // Open form update
+        function openProductForm(index) {
+            let update_form = document.getElementById('update_form');
+            update_form.classList.add('open_form_update');
+            app.style.opacity = 0.5;
+
+            let newId = document.getElementById('product_id');
+            let newName = document.getElementById('newName');
+            let newPrice = document.getElementById('newPrice');
+
+            let name = productList[index].getName();
+            let price = productList[index].getPrice();
+
+
+            newName.value = name;
+            newPrice.value = price;
+            newId.value = index;
+        }
+        // Close form update
+        function closeProductForm() {
+            let update_form = document.getElementById('update_form');
+            let app = document.getElementById('app');
+            update_form.classList.remove('open_form_update');
+            app.style.opacity = 1;
+        }
+        // Update Product new
+        function updateProduct(index, name, price) {
+            productList[index].setName(name);
+            productList[index].setPrice(price); 
+
+            console.log(productList);
+
+            closeProductForm();
+
+            display(productList);
+        }
+        // Click btn save
+        function saveMyValue(){
+            let index = document.getElementById('product_id').value;
+            let newName = document.getElementById('newName').value;
+            let newPrice = document.getElementById('newPrice').value;
+            updateProduct(index, newName, newPrice);
+        }
         // Main
         let productList = [];
-        productList.push(new Product("001", "sam sung1", 10000));
-        productList.push(new Product("002", "sam sung2", 10000));
-        productList.push(new Product("003", "sam sung3", 10000));
+        productList.push(new Product("001", "Samsung", 10000));
+        productList.push(new Product("002", "Nokia", 20000));
+        productList.push(new Product("003", "Lenovo", 30000));
         display(productList);
+
+
+
+
+
+
+        // Update Product old
+        // function updateProduct(index) {
+        //     let newName = prompt('Nhập tên mới: ');
+        //     let newPrice = prompt('Nhập giá mới: ');
+        //     // let newName = document.getElementById('newName').value;
+        //     // let newPrice = document.getElementById('newPrice').value;
+
+        //     productList[index].setName(newName);
+        //     productList[index].setPrice(newPrice);
+
+        //     console.log(productList);
+
+        //     display(productList);
+        // }
+
+
     </script>
 </body>
 
 </html>
+
+
+
+
+
+
