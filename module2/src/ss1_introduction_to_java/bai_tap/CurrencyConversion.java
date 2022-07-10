@@ -10,6 +10,6 @@ public class CurrencyConversion {
         System.out.println("Nhập số tiền USD: ");
         usd = scanner.nextDouble();
         double result = usd * vnd;
-        System.out.println("Giá trị VND: "+ result);
+        System.out.println("Giá trị VND: " + result);
     }
 }
