@@ -20,4 +20,9 @@ public class Square extends Shape implements Colorable {
     public void howToColor() {
         System.out.println("Color all four sides..");
     }
+
+    @Override
+    public double getArea() {
+        return Math.pow(this.edge, 2);
+    }
 }

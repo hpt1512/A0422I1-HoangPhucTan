@@ -36,10 +36,6 @@ public class Rectangle extends Shape {
         this.length = length;
     }
 
-    public double getArea() {
-        return width * this.length;
-    }
-
     public double getPerimeter() {
         return 2 * (width + this.length);
     }
@@ -52,5 +48,10 @@ public class Rectangle extends Shape {
                 + getLength()
                 + ", which is a subclass of "
                 + super.toString();
+    }
+
+    @Override
+    public double getArea() {
+        return this.width * this.length;
     }
 }

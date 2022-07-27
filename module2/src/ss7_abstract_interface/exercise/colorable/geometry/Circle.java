@@ -25,10 +25,6 @@ public class Circle extends Shape {
         this.radius = radius;
     }
 
-    public double getArea() {
-        return radius * radius * Math.PI;
-    }
-
     public double getPerimeter() {
         return 2 * radius * Math.PI;
     }
@@ -39,5 +35,10 @@ public class Circle extends Shape {
                 + getRadius()
                 + ", which is a subclass of "
                 + super.toString();
+    }
+
+    @Override
+    public double getArea() {
+        return radius * radius * Math.PI;
     }
 }

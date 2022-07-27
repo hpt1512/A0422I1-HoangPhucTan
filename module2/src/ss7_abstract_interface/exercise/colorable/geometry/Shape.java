@@ -38,4 +38,7 @@ public class Shape {
                 + " and "
                 + (isFilled() ? "filled" : "not filled");
     }
+    public double getArea() {
+        return 0;
+    }
 }
