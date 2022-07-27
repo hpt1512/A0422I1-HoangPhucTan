@@ -1,8 +1,8 @@
-package ss7_abstract_interface.exercise.resizeable.geometry;
+package ss7_abstract_interface.exercise.colorable.geometry;
 
 import ss7_abstract_interface.exercise.resizeable.Resizeable;
 
-public class Circle extends Shape implements Resizeable {
+public class Circle extends Shape {
     private double radius = 1.0;
 
     public Circle() {
@@ -40,16 +40,4 @@ public class Circle extends Shape implements Resizeable {
                 + ", which is a subclass of "
                 + super.toString();
     }
-
-    @Override
-    public void resize(double percent) {
-        this.radius = this.radius * percent;
-    }
-
-    @Override
-    public double countArea() {
-        return Math.PI * Math.pow(this.radius, 2);
-    }
-
-
 }

@@ -1,8 +1,8 @@
-package ss7_abstract_interface.exercise.resizeable.geometry;
+package ss7_abstract_interface.exercise.colorable.geometry;
 
 import ss7_abstract_interface.exercise.resizeable.Resizeable;
 
-public class Rectangle extends Shape implements Resizeable {
+public class Rectangle extends Shape {
     private double width = 1.0;
     private double length = 1.0;
 
@@ -53,17 +53,4 @@ public class Rectangle extends Shape implements Resizeable {
                 + ", which is a subclass of "
                 + super.toString();
     }
-
-    @Override
-    public void resize(double percent) {
-        this.length = this.length * percent;
-        this.width = this.width * percent;
-    }
-
-    @Override
-    public double countArea() {
-        return this.length * this.width;
-    }
-
-
 }
