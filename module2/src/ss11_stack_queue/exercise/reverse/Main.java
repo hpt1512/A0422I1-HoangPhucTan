@@ -5,14 +5,9 @@ import java.util.Scanner;
 import java.util.Stack;
 
 public class Main {
-//    public static void reverse(Stack<Integer> stackIntegers) {
-//
-//    }
-
     public static void main(String[] args) {
         Stack<Integer> stackIntegers = new Stack<>();
         ArrayList<Integer> integerArrayList;
-//        int[] arrayIntegers;
         int count;
         Scanner scanner = new Scanner(System.in);
         System.out.print("Nhập số phần tử trong mảng: ");
