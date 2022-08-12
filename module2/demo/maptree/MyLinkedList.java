@@ -1,5 +1,9 @@
 package maptree;
 
+import com.sun.xml.internal.ws.util.StringUtils;
+
+import java.util.Objects;
+
 public class MyLinkedList<E> {
     private Node head;
     private int numNodes;
@@ -64,6 +68,51 @@ public class MyLinkedList<E> {
         numNodes--;
         return value;
     }
+
+    public boolean remove(E e) {
+        Node temp = head;
+        if (Objects.equals(temp.data, e)) {
+            head = temp.next;
+            numNodes--;
+            return true;
+        }
+        while (temp.next != null) {
+            if (Objects.equals(temp.data, e)) {
+                temp.next = temp.next.next;
+                numNodes--;
+                return true;
+            }
+            temp = temp.next;
+        }
+        return false;
+    }
+
+    public MyLinkedList clone() {
+        MyLinkedList newList = new MyLinkedList();
+        newList.numNodes = this.numNodes;
+        Node temp = head;
+        Node newNode = null;
+        for(int i = 0; i < numNodes; i++) {
+            if (i == 0) {
+                newNode = new Node(temp.data);
+                newList.head = newNode;
+            } else {
+                newNode.next = new Node(temp.data);
+                newNode = newNode.next;
+            }
+            temp = temp.next;
+        }
+        return newList;
+    }
+
+    public void print() {
+        Node temp = head;
+        for(int i = 0; i < numNodes; i++, temp = temp.next) {
+            System.out.println(temp.data + "|" + temp);
+        }
+
+    }
+
 
     class Node {
         private Object data;
