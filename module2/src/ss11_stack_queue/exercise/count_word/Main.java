@@ -22,22 +22,17 @@ public class Main {
                 value++;
                 stringMap.replace(item, value);
 
-            }
-            else {
+            } else {
                 stringMap.put(item, 1);
             }
 
         }
 
-
         Set<String> strings = stringMap.keySet();
-        for (String string: strings) {
+        for (String string : strings) {
             System.out.println("Key: " + string
                     + " | Value: " + stringMap.get(string));
         }
-
-
-
 
     }
 }
