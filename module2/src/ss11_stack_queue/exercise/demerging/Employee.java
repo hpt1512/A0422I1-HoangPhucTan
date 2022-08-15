@@ -1,9 +1,6 @@
 package ss11_stack_queue.exercise.demerging;
 
 import java.time.LocalDate;
-import java.time.LocalDateTime;
-import java.time.LocalTime;
-import java.util.Date;
 
 public class Employee {
     private String name;
@@ -43,4 +40,5 @@ public class Employee {
     public void setBirthday(LocalDate birthday) {
         this.birthday = birthday;
     }
+
 }
