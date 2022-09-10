@@ -3,7 +3,7 @@ package case_study.models;
 public abstract class Facility {
     public String idFacility;
     public String nameService;
-    public double areaUse;
+    public double areaUse; // dien tich
     public int rentalPrice; // gia cho thue
     public int rentalPeopleMax; // so luong nguoi thue
     public String rentalType; // loai cho thue
@@ -67,5 +67,17 @@ public abstract class Facility {
 
     public void setRentalType(String rentalType) {
         this.rentalType = rentalType;
+    }
+
+    @Override
+    public String toString() {
+        return "Facility{" +
+                " idFacility = '" + idFacility + '\'' +
+                ", nameService = '" + nameService + '\'' +
+                ", areaUse = " + areaUse +
+                ", rentalPrice = " + rentalPrice +
+                ", rentalPeopleMax = " + rentalPeopleMax +
+                ", rentalType = '" + rentalType + '\'' +
+                '}';
     }
 }

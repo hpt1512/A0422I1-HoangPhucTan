@@ -1,7 +1,6 @@
 package case_study.services;
 
 import case_study.models.Customer;
-import case_study.models.Employee;
 
 import java.util.LinkedList;
 import java.util.List;
@@ -12,6 +11,7 @@ public class CustomerServiceImpl implements CustomerService {
     public static final String ANSI_CYAN = "\u001B[36m";
     private static Scanner scanner = new Scanner(System.in);
     private static List<Customer> customerList = new LinkedList<>();
+    private int count_id = 1;
 
     @Override
     public void display() {
@@ -20,27 +20,34 @@ public class CustomerServiceImpl implements CustomerService {
         }
     }
 
+    public List<Customer> sendCustomer() {
+        return customerList;
+    }
+
     @Override
     public void addnew() {
-        System.out.print("Enter id: ");
-        int id = Integer.parseInt(scanner.nextLine());
-        System.out.print("Enter name: ");
-        String name = scanner.nextLine();
-        System.out.print("Enter age: ");
-        int age = Integer.parseInt(scanner.nextLine());
-        System.out.print("Enter gender: ");
-        String gender = scanner.nextLine();
-        System.out.print("Enter email: ");
-        String email = scanner.nextLine();
-        System.out.print("Enter typeCustomer: ");
-        String typeCustomer = scanner.nextLine();
-        System.out.print("Enter address: ");
-        String address = scanner.nextLine();
+        int id = count_id++;
+        try {
+            System.out.print("Enter name: ");
+            String name = scanner.nextLine();
+            System.out.print("Enter age: ");
+            int age = Integer.parseInt(scanner.nextLine());
+            System.out.print("Enter gender: ");
+            String gender = scanner.nextLine();
+            System.out.print("Enter email: ");
+            String email = scanner.nextLine();
+            System.out.print("Enter typeCustomer: ");
+            String typeCustomer = scanner.nextLine();
+            System.out.print("Enter address: ");
+            String address = scanner.nextLine();
 
-        Customer customer = new Customer(id, name, age, gender, email, typeCustomer, address);
-        customerList.add(customer);
+            Customer customer = new Customer(id, name, age, gender, email, typeCustomer, address);
+            customerList.add(customer);
 
-        System.out.println(ANSI_CYAN + "-- Add successfully --" + ANSI_RESET);
+            System.out.println(ANSI_CYAN + "-- Add successfully --" + ANSI_RESET);
+        } catch (Exception e) {
+            System.err.println("Input wrong format");
+        }
     }
 
     @Override
@@ -51,10 +58,8 @@ public class CustomerServiceImpl implements CustomerService {
         for (Customer customer : customerList) {
             if (id == customer.getId()) {
                 System.out.println(ANSI_CYAN + "Edit customer " + id + " :" + ANSI_RESET);
-                System.out.print("Enter id: ");
-                scanner.nextLine();
-                int new_id = Integer.parseInt(scanner.nextLine());
                 System.out.print("Enter name: ");
+                scanner.nextLine();
                 String new_name = scanner.nextLine();
                 System.out.print("Enter age: ");
                 int new_age = Integer.parseInt(scanner.nextLine());
@@ -68,7 +73,6 @@ public class CustomerServiceImpl implements CustomerService {
                 String new_address = scanner.nextLine();
 
                 // Sửa thông tin
-                customer.setId(new_id);
                 customer.setName(new_name);
                 customer.setAge(new_age);
                 customer.setGender(new_gender);

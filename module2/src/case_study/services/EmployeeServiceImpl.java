@@ -1,7 +1,9 @@
 package case_study.services;
 
 import case_study.models.Employee;
+import case_study.utils.ReadAndWrite;
 
+import java.io.EOFException;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
@@ -11,37 +13,44 @@ public class EmployeeServiceImpl implements EmployeeService {
     public static final String ANSI_CYAN = "\u001B[36m";
     private static Scanner scanner = new Scanner(System.in);
     private static List<Employee> employeeList = new ArrayList<>();
+    private int count_id = 1;
+
     @Override
     public void display() {
-//        employeeList.add(new Employee(1, "Phuc Tan", 22, "Nam", "Quang Binh", "phuctan@gmail.com", "Intern", "Developer", 5000000));
+        employeeList = (List<Employee>) ReadAndWrite.read("D:\\Codegym\\A0422I1-HoangPhucTan\\module2\\src\\case_study\\data\\employee.csv");
         for (Employee employee : employeeList) {
             System.out.println(employee.toString());
         }
     }
-
     @Override
     public void addnew() {
-        System.out.print("Enter id: ");
-        int id = Integer.parseInt(scanner.nextLine());
-        System.out.print("Enter name: ");
-        String name = scanner.nextLine();
-        System.out.print("Enter age: ");
-        int age = Integer.parseInt(scanner.nextLine());
-        System.out.print("Enter gender: ");
-        String gender = scanner.nextLine();
-        System.out.print("Enter email: ");
-        String email = scanner.nextLine();
-        System.out.print("Enter level: ");
-        String level = scanner.nextLine();
-        System.out.print("Enter position: ");
-        String position = scanner.nextLine();
-        System.out.print("Enter salary: ");
-        int salary = Integer.parseInt(scanner.nextLine());
+        int id = count_id++;
+        try {
+            System.out.print("Enter name: ");
+            String name = scanner.nextLine();
+            System.out.print("Enter age: ");
+            int age = Integer.parseInt(scanner.nextLine());
+            System.out.print("Enter gender: ");
+            String gender = scanner.nextLine();
+            System.out.print("Enter email: ");
+            String email = scanner.nextLine();
+            System.out.print("Enter level: ");
+            String level = scanner.nextLine();
+            System.out.print("Enter position: ");
+            String position = scanner.nextLine();
+            System.out.print("Enter salary: ");
+            int salary = Integer.parseInt(scanner.nextLine());
 
-        Employee employee = new Employee(id, name, age, gender, email, level, position, salary);
-        employeeList.add(employee);
+            Employee employee = new Employee(id, name, age, gender, email, level, position, salary);
+            employeeList.add(employee);
 
-        System.out.println(ANSI_CYAN + "-- Add successfully --" + ANSI_RESET);
+
+            System.out.println(ANSI_CYAN + "-- Add successfully --" + ANSI_RESET);
+        } catch (Exception e) {
+            System.err.println("Input wrong format");
+        }
+        // Ghi file csv
+        ReadAndWrite.write(employeeList, "D:\\Codegym\\A0422I1-HoangPhucTan\\module2\\src\\case_study\\data\\employee.csv");
     }
 
     @Override
@@ -52,10 +61,8 @@ public class EmployeeServiceImpl implements EmployeeService {
         for (Employee employee : employeeList) {
             if (id == employee.getId()) {
                 System.out.println(ANSI_CYAN + "Edit employee " + id + " :" + ANSI_RESET);
-                System.out.print("Enter id: ");
-                scanner.nextLine();
-                int new_id = Integer.parseInt(scanner.nextLine());
                 System.out.print("Enter name: ");
+                scanner.nextLine();
                 String new_name = scanner.nextLine();
                 System.out.print("Enter age: ");
                 int new_age = Integer.parseInt(scanner.nextLine());
@@ -71,7 +78,6 @@ public class EmployeeServiceImpl implements EmployeeService {
                 int new_salary = Integer.parseInt(scanner.nextLine());
 
                 // Sửa thông tin
-                employee.setId(new_id);
                 employee.setName(new_name);
                 employee.setAge(new_age);
                 employee.setGender(new_gender);
@@ -104,5 +110,9 @@ public class EmployeeServiceImpl implements EmployeeService {
         if (count == 0) {
             System.err.println("NOT FOUND EMPLOYEE " + id);
         }
+
+        // Ghi file csv
+        ReadAndWrite.write(employeeList, "D:\\Codegym\\A0422I1-HoangPhucTan\\module2\\src\\case_study\\data\\employee.csv");
+
     }
 }

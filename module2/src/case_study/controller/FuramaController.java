@@ -1,7 +1,6 @@
 package case_study.controller;
 
-import case_study.services.CustomerServiceImpl;
-import case_study.services.EmployeeServiceImpl;
+import case_study.services.*;
 
 import java.util.Scanner;
 
@@ -17,6 +16,7 @@ public class FuramaController {
 
     public static void displayMainMenu() {
         boolean check = true;
+        int choose = 0;
         while (check) {
             System.out.println("--------------------------");
             System.out.println(ANSI_GREEN + "** MAIN MENU **" + ANSI_RESET);
@@ -29,10 +29,14 @@ public class FuramaController {
             System.out.print("Enter your choose: ");
 
             Scanner scanner = new Scanner(System.in);
-            int choose = scanner.nextInt();
+            try {
+                choose = Integer.parseInt(scanner.nextLine());
+            } catch (NumberFormatException e) {
+                System.err.println("You entered wrong format");
+            }
 
             if (choose < 1 || choose > 6) {
-                System.err.println("INPUT ERROR - PLEASE ENTER A VALUE IN [1-6]");
+                System.err.println("INPUT ERROR - PLEASE ENTER A NUMBER VALUE IN [1-6]");
             }
 
             switch (choose) {
@@ -63,6 +67,7 @@ public class FuramaController {
     public static void displayEmployeeMenu() {
         EmployeeServiceImpl employeeService = new EmployeeServiceImpl();
         boolean check = true;
+        int choose = 0;
         while (check) {
             System.out.println("--------------------------");
             System.out.println(ANSI_BLUE + "*** I. Employee Management" + ANSI_RESET);
@@ -74,10 +79,14 @@ public class FuramaController {
             System.out.print("Enter your choose: ");
 
             Scanner scanner = new Scanner(System.in);
-            int choose = scanner.nextInt();
+            try {
+                choose = Integer.parseInt(scanner.nextLine());
+            } catch (NumberFormatException e) {
+                System.err.println("You entered wrong format");
+            }
 
             if (choose < 1 || choose > 5) {
-                System.err.println("INPUT ERROR - PLEASE ENTER A VALUE IN [1-5]");
+                System.err.println("INPUT ERROR - PLEASE ENTER A NUMBER VALUE IN [1-5]");
             }
 
             switch (choose) {
@@ -109,6 +118,7 @@ public class FuramaController {
     public static void displayCustomerMenu() {
         CustomerServiceImpl customerService = new CustomerServiceImpl();
         boolean check = true;
+        int choose = 0;
         while (check) {
             System.out.println("--------------------------");
             System.out.println(ANSI_BLUE + "*** II. Customer Management" + ANSI_RESET);
@@ -120,10 +130,14 @@ public class FuramaController {
             System.out.print("Enter your choose: ");
 
             Scanner scanner = new Scanner(System.in);
-            int choose = scanner.nextInt();
+            try {
+                choose = Integer.parseInt(scanner.nextLine());
+            } catch (NumberFormatException e) {
+                System.err.println("You entered wrong format");
+            }
 
             if (choose < 1 || choose > 5) {
-                System.err.println("INPUT ERROR - PLEASE ENTER A VALUE IN [1-5]");
+                System.err.println("INPUT ERROR - PLEASE ENTER A NUMBER VALUE IN [1-5]");
             }
 
             switch (choose) {
@@ -153,7 +167,9 @@ public class FuramaController {
 
     //    3. MENU FACILITY
     public static void displayFacilityMenu() {
+        FacilityServiceImpl facilityService = new FacilityServiceImpl();
         boolean check = true;
+        int choose = 0;
         while (check) {
             System.out.println("--------------------------");
             System.out.println(ANSI_BLUE + "*** III. Facility Management" + ANSI_RESET);
@@ -164,14 +180,20 @@ public class FuramaController {
             System.out.print("Enter your choose: ");
 
             Scanner scanner = new Scanner(System.in);
-            int choose = scanner.nextInt();
+            try {
+                choose = Integer.parseInt(scanner.nextLine());
+            } catch (NumberFormatException e) {
+                System.err.println("You entered wrong format");
+            }
 
             if (choose < 1 || choose > 4) {
-                System.err.println("INPUT ERROR - PLEASE ENTER A VALUE IN [1-4]");
+                System.err.println("INPUT ERROR - PLEASE ENTER A NUMBER VALUE IN [1-4]");
             }
 
             switch (choose) {
                 case 1:
+                    System.out.println(ANSI_CYAN + "FACILITY LIST :" + ANSI_RESET);
+                    facilityService.display();
                     break;
                 case 2: {
                     boolean check_add = true;
@@ -186,15 +208,21 @@ public class FuramaController {
                         int choose_add = scanner.nextInt();
 
                         if (choose_add < 1 || choose_add > 4) {
-                            System.err.println("INPUT ERROR - PLEASE ENTER A VALUE IN [1-4]");
+                            System.err.println("INPUT ERROR - PLEASE ENTER A NUMBER VALUE IN [1-4]");
                         }
 
                         switch (choose_add) {
                             case 1:
+                                System.out.println(ANSI_CYAN + "ADD NEW VILLA :" + ANSI_RESET);
+                                facilityService.addNewVilla();
                                 break;
                             case 2:
+                                System.out.println(ANSI_CYAN + "ADD NEW HOUSE :" + ANSI_RESET);
+                                facilityService.addNewHouse();
                                 break;
                             case 3:
+                                System.out.println(ANSI_CYAN + "ADD NEW ROOM :" + ANSI_RESET);
+                                facilityService.addNewRoom();
                                 break;
                             case 4:
                                 System.out.println(ANSI_CYAN + "RETURN MAIN MENU" + ANSI_RESET);
@@ -216,7 +244,10 @@ public class FuramaController {
 
     //    4. MENU BOOKING
     public static void displayBookingMenu() {
+        BookingServiceImpl bookingService = new BookingServiceImpl();
+        ContractServiceImpl contractService = new ContractServiceImpl();
         boolean check = true;
+        int choose = 0;
         while (check) {
             System.out.println("--------------------------");
             System.out.println(ANSI_BLUE + "*** IV. Booking Management" + ANSI_RESET);
@@ -229,20 +260,32 @@ public class FuramaController {
             System.out.print("Enter your choose: ");
 
             Scanner scanner = new Scanner(System.in);
-            int choose = scanner.nextInt();
+            try {
+                choose = Integer.parseInt(scanner.nextLine());
+            } catch (NumberFormatException e) {
+                System.err.println("You entered wrong format");
+            }
 
             if (choose < 1 || choose > 6) {
-                System.err.println("INPUT ERROR - PLEASE ENTER A VALUE IN [1-6]");
+                System.err.println("INPUT ERROR - PLEASE ENTER A NUMBER VALUE IN [1-6]");
             }
 
             switch (choose) {
                 case 1:
+                    System.out.println(ANSI_CYAN + "ADD NEW BOOKING :" + ANSI_RESET);
+                    bookingService.addBooking();
                     break;
                 case 2:
+                    System.out.println(ANSI_CYAN + "BOOKING LIST :" + ANSI_RESET);
+                    bookingService.displayListBooking();
                     break;
                 case 3:
+                    System.out.println(ANSI_CYAN + "CREATE NEW CONTRACT :" + ANSI_RESET);
+                    contractService.createNewContract();
                     break;
                 case 4:
+                    System.out.println(ANSI_CYAN + "CONTRACT LIST :" + ANSI_RESET);
+                    contractService.displaylistContract();
                     break;
                 case 5:
                     break;
@@ -257,6 +300,7 @@ public class FuramaController {
     //    5. MENU PROMOTION
     public static void displayPromotionMenu() {
         boolean check = true;
+        int choose = 0;
         while (check) {
             System.out.println("--------------------------");
             System.out.println(ANSI_BLUE + "*** V. Promotion Management" + ANSI_RESET);
@@ -266,10 +310,14 @@ public class FuramaController {
             System.out.print("Enter your choose: ");
 
             Scanner scanner = new Scanner(System.in);
-            int choose = scanner.nextInt();
+            try {
+                choose = Integer.parseInt(scanner.nextLine());
+            } catch (NumberFormatException e) {
+                System.err.println("You entered wrong format");
+            }
 
             if (choose < 1 || choose > 3) {
-                System.err.println("INPUT ERROR - PLEASE ENTER A VALUE IN [1-3]");
+                System.err.println("INPUT ERROR - PLEASE ENTER A NUMBER VALUE IN [1-3]");
             }
 
             switch (choose) {
