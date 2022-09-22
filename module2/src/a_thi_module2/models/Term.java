@@ -1,6 +1,9 @@
 package a_thi_module2.models;
 
+import a_thi_module2.services.CustomerServiceImpl;
+
 import java.io.Serializable;
+import java.util.List;
 
 public abstract class Term implements Serializable {
     private int idTerm;
@@ -77,5 +80,14 @@ public abstract class Term implements Serializable {
                 ", money=" + money +
                 ", laiSuat=" + laiSuat +
                 '}';
+    }
+    private static List<Customer> customerList = new CustomerServiceImpl().sendCustomer();
+    public String displayCustomer() {
+        for (Customer customer : customerList) {
+            if (id_customer == customer.getId()) {
+                return customer.getName();
+            }
+        }
+        return null;
     }
 }

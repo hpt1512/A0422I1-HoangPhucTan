@@ -1,9 +1,6 @@
 package a_thi_module2.services;
 
-import a_thi_module2.models.LongTerm;
-import a_thi_module2.models.ShortTermHasTime;
-import a_thi_module2.models.ShortTermNoTime;
-import a_thi_module2.models.Term;
+import a_thi_module2.models.*;
 import case_study.utils.ReadAndWrite;
 
 import java.util.ArrayList;
@@ -15,6 +12,7 @@ public class TermServiceImpl implements TermService {
     public static final String ANSI_CYAN = "\u001B[36m";
     private static List<Term> termLongArrayList = new ArrayList<>();
     private static List<Term> termShortArrayList = new ArrayList<>();
+    private static List<Customer> customerList = new CustomerServiceImpl().sendCustomer();
     private static Scanner scanner = new Scanner(System.in);
 
     @Override
@@ -34,8 +32,8 @@ public class TermServiceImpl implements TermService {
         try {
             System.out.print("Nhập mã sổ: ");
             int idTerm = Integer.parseInt(scanner.nextLine());
-            System.out.print("Nhập khách hàng: ");
-            int idCustomer = Integer.parseInt(scanner.nextLine());
+            System.out.print("Nhập id khách hàng: ");
+            int idCustomer = chooseCustomer().getId();
             System.out.print("Nhập ngày mở sổ: ");
             String dayOpenTerm = scanner.nextLine();
             System.out.print("Nhập thời gian bắt đầu gửi: ");
@@ -63,7 +61,7 @@ public class TermServiceImpl implements TermService {
             System.out.print("Nhập mã sổ: ");
             int idTerm = Integer.parseInt(scanner.nextLine());
             System.out.print("Nhập khách hàng: ");
-            int idCustomer = Integer.parseInt(scanner.nextLine());
+            int idCustomer = chooseCustomer().getId();
             System.out.print("Nhập ngày mở sổ: ");
             String dayOpenTerm = scanner.nextLine();
             System.out.print("Nhập thời gian bắt đầu gửi: ");
@@ -93,7 +91,7 @@ public class TermServiceImpl implements TermService {
             System.out.print("Nhập mã sổ: ");
             int idTerm = Integer.parseInt(scanner.nextLine());
             System.out.print("Nhập khách hàng: ");
-            int idCustomer = Integer.parseInt(scanner.nextLine());
+            int idCustomer = chooseCustomer().getId();
             System.out.print("Nhập ngày mở sổ: ");
             String dayOpenTerm = scanner.nextLine();
             System.out.print("Nhập thời gian bắt đầu gửi: ");
@@ -154,4 +152,28 @@ public class TermServiceImpl implements TermService {
         ReadAndWrite.write(termLongArrayList, "D:\\Codegym\\A0422I1-HoangPhucTan\\module2\\src\\a_thi_module2\\data\\LongTerm.csv");
 
     }
+
+    public static Customer chooseCustomer() {
+        System.out.println(ANSI_CYAN + "CUSTOMER LIST :" + ANSI_RESET);
+        for (Customer customer : customerList) {
+            System.out.println(customer.toString());
+        }
+
+        System.out.print("Enter customer id: ");
+        boolean check = true;
+        while (check) {
+            int id = Integer.parseInt(scanner.nextLine());
+            for (Customer customer : customerList) {
+                if (id == customer.getId()) {
+                    check = false;
+                    return customer;
+                }
+            }
+            if (check) {
+                System.out.print("Input error - Please enter again customer id: ");
+            }
+        }
+        return null;
+    }
+
 }

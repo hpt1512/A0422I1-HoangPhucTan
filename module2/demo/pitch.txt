@@ -1,0 +1,5 @@
+Đặt lịch sân bóng
+Model: 
+Customer : id, name, age, addres
+Pitch : id, name, area, peopleMax, price
+BookingPith : id, customer, pitch, timeStart, timeEnd
