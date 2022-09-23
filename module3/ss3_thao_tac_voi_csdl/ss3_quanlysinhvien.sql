@@ -51,8 +51,6 @@ INSERT INTO Student (StudentName, Address, Status, ClassId)
 VALUES ('Hoa', 'Hai phong', 1, 1);
 INSERT INTO Student (StudentName, Address, Phone, Status, ClassId)
 VALUES ('Manh', 'HCM', '0123123123', 0, 2);
-INSERT INTO Student (StudentName, Address, Phone, Status, ClassId)
-VALUES ('Mai', 'HCM', '0123123123', 0, 2);
 
 INSERT INTO Subject
 VALUES (1, 'CF', 5, 1),
@@ -70,38 +68,49 @@ select * from student;
 select * from subject;
 select * from mark;
 
--- Đếm số lượng học viên theo address
-SELECT Address, COUNT(StudentId) AS 'Số lượng học viên'
+-- Truy van
+SELECT *
 FROM Student
-GROUP BY Address;
--- Tính điểm trung bình các môn học của mỗi học viên bằng cách sử dụng hàm AVG
-SELECT S.StudentId,S.StudentName, AVG(Mark)
-FROM Student S join Mark M on S.StudentId = M.StudentId
-GROUP BY S.StudentId, S.StudentName;
--- Hiển thị thông tin các học viên có điểm trung bình lớn nhất
-SELECT S.StudentId, S.StudentName, AVG(Mark)
-FROM Student S join Mark M on S.StudentId = M.StudentId
-GROUP BY S.StudentId, S.StudentName
-HAVING AVG(Mark) >= ALL (SELECT AVG(Mark) FROM Mark GROUP BY Mark.StudentId);
+WHERE Status = true;
 
--- SS4 - BÀI TẬP
--- 1. Hiển thị tất cả các thông tin môn học (bảng subject) có credit lớn nhất.
+SELECT *
+FROM Subject
+WHERE Credit < 10;
+
+SELECT S.StudentId, S.StudentName, C.ClassName
+FROM Student S join Class C on S.ClassId = C.ClassID;
+
+SELECT S.StudentId, S.StudentName, C.ClassName
+FROM Student S join Class C on S.ClassId = C.ClassID
+WHERE C.ClassName = 'A1';
+
+SELECT S.StudentId, S.StudentName, Sub.SubName, M.Mark
+FROM Student S join Mark M on S.StudentId = M.StudentId join Subject Sub on M.SubId = Sub.SubId
+WHERE Sub.SubName = 'CF';
+
+-- 1. Hiển thị tất cả các sinh viên có tên bắt đầu bảng ký tự ‘h’
 select * 
-from subject 
-where credit = (select max(credit) from subject);
--- 2. Hiển thị các thông tin môn học có điểm thi lớn nhất.
-select s.subid, subname, credit, status, m.mark
-from subject as s join mark as m 
-on s.subid = m.subid 
-where mark = (select max(mark) from Mark);
--- 3.Hiển thị các thông tin sinh viên và điểm trung bình của mỗi sinh viên, 
--- xếp hạng theo thứ tự điểm giảm dần.
-select *, avg(m.mark) as DTB
-from student as s join mark as m
-on s.studentId = m.studentId
-group by studentName
-order by DTB desc;
+from student
+where StudentName like "h%";
+-- 2. Hiển thị các thông tin lớp học có thời gian bắt đầu vào tháng 12
+select * 
+from class
+where month(StartDate) = 12;
+-- 3. Hiển thị tất cả các thông tin môn học có credit trong khoảng từ 3-5
+select * 
+from subject
+where Credit > 3 and Credit < 5;
+-- 4. Thay đổi mã lớp(ClassID) của sinh viên có tên ‘Hung’ là 2
+update student
+set ClassId = 2
+where StudentName = "Hung";
 
-
-
-
+select * from student;
+-- 5. Hiển thị các thông tin: StudentName, SubName, Mark. 
+-- Dữ liệu sắp xếp theo điểm thi (mark) giảm dần. 
+-- nếu trùng sắp theo tên tăng dần
+select StudentName, SubName, Mark
+from student, subject, mark
+group by StudentName, SubName, Mark
+order by mark;
+ 
