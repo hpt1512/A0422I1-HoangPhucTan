@@ -16,5 +16,6 @@ p {
     font-weight: bold;
 }
 .text--blue {
-    color: blue;
+    color: rgb(29, 29, 193);
+    font-weight: bold;
 }
