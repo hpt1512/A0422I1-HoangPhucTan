@@ -1,0 +1,130 @@
+/* Responsive */
+.row {
+    display: flex; /* nổi lên trên cùng một hàng*/
+    flex-wrap: wrap;
+}
+/*màn hình điện thoai*/
+@media only screen and (max-width:740px ){
+    .col-s-1 {width: 8.33333%;}
+    .col-s-2 {width: 16.66667%;}
+    .col-s-3 {width: 25%;}
+    .col-s-4 {width: 33.33333%;}
+    .col-s-5 {width: 41.66667%;}
+    .col-s-6 {width: 50%;}
+    .col-s-7 {width: 58.33333%;}
+    .col-s-8 {width: 66.66667%;}
+    .col-s-9 {width: 75%;}
+    .col-s-10 {width: 83.33333%;}
+    .col-s-11 {width: 91.66667%;}
+    .col-s-12 {width: 100%;}
+    /*tăng kích thước font cho dễ đọc*/
+    li{
+        font-size: 40px;
+        text-align: center;
+        color: white;
+    }
+    p{
+        font-size: 30px;
+        /* color: white; */
+        
+    }
+    .link__size {
+        font-size: 25px;
+    }
+}
+/*Màn hinh laptop và máy tính bảng*/
+@media only screen and (min-width:741px)and (max-width:1240px){
+    .col-m-1 {width: 8.33333%;}
+    .col-m-2 {width: 16.66667%;}
+    .col-m-3 {width: 25%;}
+    .col-m-4 {width: 33.33333%;}
+    .col-m-5 {width: 41.66667%;}
+    .col-m-6 {width: 50%;}
+    .col-m-7 {width: 58.33333%;}
+    .col-m-8 {width: 66.66667%;}
+    .col-m-9 {width: 75%;}
+    .col-m-10 {width: 83.33333%;}
+    .col-m-11 {width: 91.66667%;}
+    .col-m-12 {width: 100%;}
+}
+/*Màn hình máy tính pc và tivi smart*/
+@media only screen and (min-width:1241px){
+    .col-l-1 {width: 8.33333%;}
+    .col-l-2 {width: 16.66667%;}
+    .col-l-3 {width: 25%;}
+    .col-l-4 {width: 33.33333%;}
+    .col-l-5 {width: 41.66667%;}
+    .col-l-6 {width: 50%;}
+    .col-l-7 {width: 58.33333%;}
+    .col-l-8 {width: 66.66667%;}
+    .col-l-9 {width: 75%;}
+    .col-l-10 {width: 83.33333%;}
+    .col-l-11 {width: 91.66667%;}
+    .col-l-12 {width: 100%;}
+}
+* {
+    box-sizing: border-box;
+    margin: 0;
+}
+/* Header */
+.header__div {
+    display: flex;
+    justify-content: space-between;
+    background-color: black;
+}
+.header__nav {
+    display: flex;
+    list-style: none;
+    padding: 10px 10px;
+}
+.nav__item {
+    padding: 10px 10px;
+    color: white;
+}
+.header__login span{
+    color: white;
+    display: flex;
+    height: 100%;
+    align-items: center;
+    padding-right: 10px;
+    margin-right: 10px;
+}
+/* Content */
+.content__div {
+    
+}
+.content__left{
+    background-color: rgba(179, 179, 179, 0.313);
+    text-align: center;
+}
+.content__left a {
+    display: block;
+    text-decoration: none;
+    margin: 20px 0;
+}
+.content__center{
+    padding: 10px;
+}
+.content__right{
+    background-color: rgba(179, 179, 179, 0.313);
+    
+}
+.content__right button{
+    display: block;
+    width: 150px;
+    height: 50px;
+    margin: 10px auto;
+    cursor: pointer;
+}
+/* Footer */
+.footer__div {
+    color: white;
+    background-color: black;
+    height: 50px;
+}
+.footer__text {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100%;
+}

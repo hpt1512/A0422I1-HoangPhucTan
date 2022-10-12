@@ -1,0 +1,150 @@
+/* Responsive */
+.row {
+    display: flex; /* nổi lên trên cùng một hàng*/
+    flex-wrap: wrap;
+}
+/*màn hình điện thoai*/
+@media only screen and (max-width:740px ){
+    .col-s-1 {width: 8.33333%;}
+    .col-s-2 {width: 16.66667%;}
+    .col-s-3 {width: 25%;}
+    .col-s-4 {width: 33.33333%;}
+    .col-s-5 {width: 41.66667%;}
+    .col-s-6 {width: 50%;}
+    .col-s-7 {width: 58.33333%;}
+    .col-s-8 {width: 66.66667%;}
+    .col-s-9 {width: 75%;}
+    .col-s-10 {width: 83.33333%;}
+    .col-s-11 {width: 91.66667%;}
+    .col-s-12 {width: 100%;}
+    /*tăng kích thước font cho dễ đọc*/
+    li{
+        font-size: 40px;
+        text-align: center;
+        color: white;
+    }
+    p{
+        font-size: 30px;
+        /* color: white; */
+        
+    }
+    .link__size {
+        font-size: 25px;
+    }
+}
+/*Màn hinh laptop và máy tính bảng*/
+@media only screen and (min-width:741px)and (max-width:1240px){
+    .col-m-1 {width: 8.33333%;}
+    .col-m-2 {width: 16.66667%;}
+    .col-m-3 {width: 25%;}
+    .col-m-4 {width: 33.33333%;}
+    .col-m-5 {width: 41.66667%;}
+    .col-m-6 {width: 50%;}
+    .col-m-7 {width: 58.33333%;}
+    .col-m-8 {width: 66.66667%;}
+    .col-m-9 {width: 75%;}
+    .col-m-10 {width: 83.33333%;}
+    .col-m-11 {width: 91.66667%;}
+    .col-m-12 {width: 100%;}
+}
+/*Màn hình máy tính pc và tivi smart*/
+@media only screen and (min-width:1241px){
+    .col-l-1 {width: 8.33333%;}
+    .col-l-2 {width: 16.66667%;}
+    .col-l-3 {width: 25%;}
+    .col-l-4 {width: 33.33333%;}
+    .col-l-5 {width: 41.66667%;}
+    .col-l-6 {width: 50%;}
+    .col-l-7 {width: 58.33333%;}
+    .col-l-8 {width: 66.66667%;}
+    .col-l-9 {width: 75%;}
+    .col-l-10 {width: 83.33333%;}
+    .col-l-11 {width: 91.66667%;}
+    .col-l-12 {width: 100%;}
+}
+* {
+    box-sizing: border-box;
+    margin: 0;
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+}
+
+header {
+    width: 100%;
+    background-color: #f0f0f091;
+}
+header img {
+    width: 200px;
+    padding: 10px 10px;
+}
+nav {
+    background-color: #f0f0f091;
+    margin: 10px 0;
+    padding: 10px 0;
+}
+.header__nav {
+    list-style: none;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.header__nav__item {
+    padding: 0 20px;
+    font-weight: bold;
+    border-right: 2px solid black;
+    cursor: pointer;
+}
+.border__right--none {
+    border-right: none;
+}
+
+/* COntent */
+.list__cartoon {
+    
+}
+.list__cartoon__nav {
+    list-style: none;
+    margin-left: 10%;
+}
+.list__cartoon__nav__item {
+    padding: 10px 0;
+    margin: 10px 0;
+    cursor: pointer;
+}
+.list__cartoon__nav__item img {
+    width: 90%;
+}
+.list__cartoon__nav__item span {
+    font-size: 18px;
+    font-weight: bold;
+    display: block;
+}
+
+.content__cartoon {
+    padding: 20px 10px;
+}
+.content__cartoon__video {
+    
+}
+.content__cartoon__title {
+    font-size: 18px;
+    font-weight: bold;
+    display: block;
+    margin: 20px 0;
+}
+
+/* .cartoon__div__1 {
+    display: none;
+}
+.cartoon__div__2 {
+    display: none;
+}
+.cartoon__div__3 {
+    display: none;
+}
+.cartoon__div__4 {
+    display: none;
+} */
+
+.display--block {
+    display: block;
+}
