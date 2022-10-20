@@ -71,6 +71,9 @@
 header {
     width: 100%;
     background-color: #f0f0f091;
+    position: fixed;
+    top: 0;
+    z-index: 1;
 }
 header img {
     width: 200px;
@@ -78,7 +81,8 @@ header img {
 }
 nav {
     background-color: #f0f0f091;
-    margin: 10px 0;
+    margin-top: 80px;
+    margin-bottom: 10px;
     padding: 10px 0;
 }
 .header__nav {
@@ -132,7 +136,7 @@ nav {
     margin: 20px 0;
 }
 
-/* .cartoon__div__1 {
+.cartoon__div__1 {
     display: none;
 }
 .cartoon__div__2 {
@@ -143,8 +147,4 @@ nav {
 }
 .cartoon__div__4 {
     display: none;
-} */
-
-.display--block {
-    display: block;
 }
