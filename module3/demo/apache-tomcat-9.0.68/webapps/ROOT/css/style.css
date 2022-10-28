@@ -1,0 +1,145 @@
+/* Header */
+#header {
+    /* position: fixed;
+    top: 0; */
+    width: 100%;
+    background-color: green;
+}
+.header__img a img {
+    width: 90px;
+    padding: 10px 10px;
+}
+nav {
+    background-color: #f0f0f091;
+    padding: 10px 0;
+}
+.header__nav {
+    list-style: none;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 0px;
+}
+.header__nav__item {
+    border-right: 2px solid black;
+}
+.header__nav__item a{
+    padding: 0 20px;
+    font-weight: bold;
+    cursor: pointer;
+    color: black;
+    text-decoration: none;
+}
+.border__right--none {
+    border-right: none;
+}
+/* Slider */
+.slider__image {
+    height: 450px;
+}
+/* Index-Content */
+#content {
+    margin: 30px 100px;
+}
+div.gallery {
+    border: 1px solid #ccc;
+}
+
+div.gallery:hover {
+    border: 1px solid #777;
+}
+
+div.gallery img {
+    width: 100%;
+    height: auto;
+}
+
+div.desc {
+    padding: 15px;
+    text-align: center;
+}
+
+* {
+    box-sizing: border-box;
+}
+
+.responsive {
+    padding: 0 6px;
+    float: left;
+    width: 24.99999%;
+}
+
+@media only screen and (max-width: 700px){
+    .responsive {
+        width: 49.99999%;
+        margin: 6px 0;
+    }
+}
+
+@media only screen and (max-width: 500px){
+    .responsive {
+        width: 100%;
+    }
+}
+
+.clearfix:after {
+    content: "";
+    display: table;
+    clear: both;
+}
+
+/* Pitch_List - Content */
+.pitch__list__menu {
+    border: 1px solid green;
+    width: 31.33333333%;
+    margin-right: 2%;
+    height: 50%;
+}
+.pitch__list__menu__nav {
+    list-style: none;
+}
+.pitch__list__menu__title {
+    font-size: 1.2rem;
+    color: green;
+    font-weight: bold;
+    margin: 5px 0;
+}
+.pitch__list__menu__nav__item {
+    padding: 10px 10px;
+    font-size: 1rem;
+    border-bottom: 0.5px solid rgba(128, 128, 128, 0.394);
+}
+.pitch__list__menu__nav__item:hover {
+    cursor: pointer;
+    color: red;
+    font-size: 1.02rem;
+}
+.pitch__list__content {
+    /* border: 1px solid green; */
+}
+.pitch__list__content__nav {
+    list-style: none;
+    padding: 0;
+}
+.pitch__list__content__nav__item {
+    display: flex;
+    margin-top: 2%;
+    background-color: rgba(128, 128, 128, 0.136);
+    padding: 10px;
+    border-radius: 5px;
+    position: relative;
+}
+.pitch__list__content__nav__item__info span {
+    display: block;
+    padding: 2px 0;
+}
+.pitch__list__content__nav__item__info .name__pitch {
+    font-size: 1.2rem;
+    font-weight: bold;
+    padding: 10px 0;
+}
+.pitch__list__content__nav__item img {
+    width: 35%;
+    margin-right: 3%;
+}
+
