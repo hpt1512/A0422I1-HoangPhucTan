@@ -45,13 +45,14 @@ public class ProductRepositoryIpml implements ProductRepository {
     }
 
     @Override
-    public Product findByName(String name) {
+    public List<Product> findByName(String name) {
+        List<Product> productList = new ArrayList<>();
         for (Map.Entry<Integer, Product> product : products.entrySet()) {
             if (product.getValue().getName().toLowerCase().contains(name.toLowerCase())) {
-                return product.getValue();
+                productList.add(product.getValue());
             }
         }
-        return null;
+        return productList;
     }
 
 }

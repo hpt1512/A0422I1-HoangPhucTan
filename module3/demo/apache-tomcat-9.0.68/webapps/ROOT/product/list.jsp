@@ -114,7 +114,7 @@
             </c:forEach>
 
         </ul>
-<%--        Result Find--%>
+        
         <ul class="pitch__list__content__nav">
             <c:forEach items='${requestScope["resustFindList"]}' var="product">
                 <li class="pitch__list__content__nav__item">

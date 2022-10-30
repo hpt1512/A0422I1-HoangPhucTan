@@ -23,7 +23,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Trang Danh Sách Sản Phẩm</title>
+    <title>Trang Xoá Sản Phẩm</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet"
           integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.9.1/font/bootstrap-icons.css">
@@ -88,52 +88,33 @@
         </ul>
     </div>
     <div class="col-8 pitch__list__content">
-
-        <form class="input-group flex-nowrap" method="post" action="/products?action=find">
-            <input type="text" class="form-control" placeholder="Nhập tên sản phẩm để tìm kiếm" name="input_find">
-            <button type="submit" class="btn btn-success">Tìm</button>
+        <form method="post">
+            <h3>Are you sure?</h3>
+            <fieldset>
+                <legend>Product information</legend>
+                <table>
+                    <tr>
+                        <td>Name:</td>
+                        <td>${requestScope["product"].getName()}</td>
+                    </tr>
+                    <tr>
+                        <td>Price:</td>
+                        <td>${requestScope["product"].getPrice()}</td>
+                    </tr>
+                    <tr>
+                        <td>Description:</td>
+                        <td>${requestScope["product"].getDescription()}</td>
+                    </tr>
+                    <tr>
+                        <td>Producer:</td>
+                        <td>${requestScope["product"].getProducer()}</td>
+                    </tr>
+                    <tr>
+                        <td><input type="submit" value="Delete Product"></td>
+                    </tr>
+                </table>
+            </fieldset>
         </form>
-
-        <a href="/products?action=create">Thêm mới sản phẩm</a>
-
-        <ul class="pitch__list__content__nav">
-            <c:forEach items='${requestScope["products"]}' var="product">
-                <li class="pitch__list__content__nav__item">
-                    <div class="pitch__list__content__nav__item__info">
-                        <span class="name__pitch">${product.getName()}</span>
-                        <span style="color: red" class="">${product.getPrice()}</span>
-                        <span class="">${product.getDescription()}</span>
-                        <span class="">${product.getProducer()}</span>
-                    </div>
-                    <div class="btn__div" style="position: absolute; right: 10px">
-                        <a href="/products?action=view&id=${product.getId()}"><button type="button" class="btn btn-success ">View</button></a>
-                        <a href="/products?action=edit&id=${product.getId()}"><button type="button" class="btn btn-success ">Edit</button></a>
-                        <a href="/products?action=delete&id=${product.getId()}"><button type="button" class="btn btn-success ">Delete</button></a>
-                    </div>
-                </li>
-            </c:forEach>
-
-        </ul>
-<%--        Result Find--%>
-        <ul class="pitch__list__content__nav">
-            <c:forEach items='${requestScope["resustFindList"]}' var="product">
-                <li class="pitch__list__content__nav__item">
-                    <div class="pitch__list__content__nav__item__info">
-                        <span class="name__pitch">${product.getName()}</span>
-                        <span style="color: red" class="">${product.getPrice()}</span>
-                        <span class="">${product.getDescription()}</span>
-                        <span class="">${product.getProducer()}</span>
-                    </div>
-                    <div class="btn__div" style="position: absolute; right: 10px">
-                        <a href="/products?action=view&id=${product.getId()}"><button type="button" class="btn btn-success ">View</button></a>
-                        <a href="/products?action=edit&id=${product.getId()}"><button type="button" class="btn btn-success ">Edit</button></a>
-                        <a href="/products?action=delete&id=${product.getId()}"><button type="button" class="btn btn-success ">Delete</button></a>
-                    </div>
-                </li>
-            </c:forEach>
-
-        </ul>
-
     </div>
 </div>
 
