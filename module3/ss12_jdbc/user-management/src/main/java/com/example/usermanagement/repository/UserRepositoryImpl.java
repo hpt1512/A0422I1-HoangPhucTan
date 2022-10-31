@@ -18,6 +18,7 @@ public class UserRepositoryImpl implements IUserRepository {
     private static final String DELETE_USERS_SQL = "delete from users where id = ?;";
     private static final String UPDATE_USERS_SQL = "update users set name = ?,email= ?, country =? where id = ?;";
 
+
     public UserRepositoryImpl() {
     }
 
@@ -127,6 +128,18 @@ public class UserRepositoryImpl implements IUserRepository {
             rowUpdated = statement.executeUpdate() > 0;
         }
         return rowUpdated;
+    }
+
+    @Override
+    public List<User> findByName(String name) {
+        List<User> userList = this.selectAllUsers();
+        List<User> resultFind = new ArrayList<>();
+        for (User user : userList) {
+            if (user.getName().toLowerCase().contains(name.toLowerCase())) {
+                resultFind.add(user);
+            }
+        }
+        return resultFind;
     }
 
     private void printSQLException(SQLException ex) {

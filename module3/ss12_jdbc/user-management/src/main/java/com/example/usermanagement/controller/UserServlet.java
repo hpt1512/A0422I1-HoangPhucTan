@@ -18,6 +18,7 @@ public class UserServlet extends HttpServlet {
     public void init() {
         userService = new UserServiceImpl();
     }
+
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         String action = request.getParameter("action");
@@ -57,6 +58,7 @@ public class UserServlet extends HttpServlet {
             throw new RuntimeException(e);
         }
     }
+
     private void deleteUser(HttpServletRequest request, HttpServletResponse response) throws SQLException {
         int id = Integer.parseInt(request.getParameter("id"));
         userService.deleteUser(id);
@@ -112,9 +114,26 @@ public class UserServlet extends HttpServlet {
                 case "edit":
                     updateUser(request, response);
                     break;
+                case "find":
+                    findUser(request, response);
+                    break;
             }
         } catch (SQLException ex) {
             throw new ServletException(ex);
+        }
+    }
+
+    private void findUser(HttpServletRequest request, HttpServletResponse response) {
+        String input_find = request.getParameter("input_find");
+        List<User> resustFindList = this.userService.findByName(input_find);
+
+        request.setAttribute("resustFindList", resustFindList);
+        try {
+            request.getRequestDispatcher("user/list.jsp").forward(request, response);
+        } catch (ServletException e) {
+            throw new RuntimeException(e);
+        } catch (IOException e) {
+            throw new RuntimeException(e);
         }
     }
 

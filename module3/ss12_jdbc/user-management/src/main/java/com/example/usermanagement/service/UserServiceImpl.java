@@ -33,4 +33,9 @@ public class UserServiceImpl implements IUserService {
     public boolean updateUser(User user) throws SQLException {
         return userRepository.updateUser(user);
     }
+
+    @Override
+    public List<User> findByName(String name) {
+        return userRepository.findByName(name);
+    }
 }
