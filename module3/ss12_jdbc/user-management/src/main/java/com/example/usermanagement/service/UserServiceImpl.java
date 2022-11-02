@@ -38,4 +38,29 @@ public class UserServiceImpl implements IUserService {
     public List<User> findByName(String name) {
         return userRepository.findByName(name);
     }
+
+    @Override
+    public User getUserById(int id) {
+        return userRepository.getUserById(id);
+    }
+
+    @Override
+    public void insertUserStore(User user) throws SQLException {
+        userRepository.insertUserStore(user);
+    }
+
+    @Override
+    public List<User> selectAllUsersStore() {
+        return userRepository.selectAllUsersStore();
+    }
+
+    @Override
+    public boolean deleteUserStore(int id) throws SQLException {
+        return userRepository.deleteUserStore(id);
+    }
+
+    @Override
+    public boolean updateUserStore(User user) throws SQLException {
+        return userRepository.updateUserStore(user);
+    }
 }

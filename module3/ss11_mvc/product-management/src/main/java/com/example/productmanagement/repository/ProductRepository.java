@@ -2,6 +2,7 @@ package com.example.productmanagement.repository;
 
 import com.example.productmanagement.model.Product;
 
+import java.sql.SQLException;
 import java.util.List;
 
 public interface ProductRepository {
@@ -13,6 +14,7 @@ public interface ProductRepository {
 
     void update(int id, Product product);
 
-    void remove(int id);
+    boolean remove(int id) throws SQLException;
     List<Product> findByName(String name);
+
 }

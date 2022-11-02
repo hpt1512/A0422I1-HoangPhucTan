@@ -4,6 +4,7 @@ import com.example.productmanagement.model.Product;
 import com.example.productmanagement.repository.ProductRepository;
 import com.example.productmanagement.repository.ProductRepositoryIpml;
 
+import java.sql.SQLException;
 import java.util.List;
 
 public class ProductServiceIpml implements ProductService {
@@ -29,8 +30,8 @@ public class ProductServiceIpml implements ProductService {
     }
 
     @Override
-    public void remove(int id) {
-        productRepository.remove(id);
+    public boolean remove(int id) throws SQLException {
+        return productRepository.remove(id);
     }
 
     @Override

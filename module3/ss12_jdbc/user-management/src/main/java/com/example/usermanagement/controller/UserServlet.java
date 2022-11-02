@@ -47,7 +47,8 @@ public class UserServlet extends HttpServlet {
     }
 
     private void listUser(HttpServletRequest request, HttpServletResponse response) {
-        List<User> listUser = userService.selectAllUsers();
+//        List<User> listUser = userService.selectAllUsers();
+        List<User> listUser = userService.selectAllUsersStore();
         request.setAttribute("listUser", listUser);
         RequestDispatcher dispatcher = request.getRequestDispatcher("user/list.jsp");
         try {
@@ -61,7 +62,8 @@ public class UserServlet extends HttpServlet {
 
     private void deleteUser(HttpServletRequest request, HttpServletResponse response) throws SQLException {
         int id = Integer.parseInt(request.getParameter("id"));
-        userService.deleteUser(id);
+//        userService.deleteUser(id);
+        userService.deleteUserStore(id);
 
         List<User> listUser = userService.selectAllUsers();
         request.setAttribute("listUser", listUser);
@@ -77,7 +79,8 @@ public class UserServlet extends HttpServlet {
 
     private void showEditForm(HttpServletRequest request, HttpServletResponse response) {
         int id = Integer.parseInt(request.getParameter("id"));
-        User existingUser = userService.selectUser(id);
+//        User existingUser = userService.selectUser(id);
+        User existingUser = userService.getUserById(id);
         RequestDispatcher dispatcher = request.getRequestDispatcher("user/edit.jsp");
         request.setAttribute("user", existingUser);
         try {
@@ -144,7 +147,8 @@ public class UserServlet extends HttpServlet {
         String country = request.getParameter("country");
 
         User book = new User(id, name, email, country);
-        userService.updateUser(book);
+//        userService.updateUser(book);
+        userService.updateUserStore(book);
         RequestDispatcher dispatcher = request.getRequestDispatcher("user/edit.jsp");
         try {
             dispatcher.forward(request, response);
@@ -160,7 +164,8 @@ public class UserServlet extends HttpServlet {
         String email = request.getParameter("email");
         String country = request.getParameter("country");
         User newUser = new User(name, email, country);
-        userService.insertUser(newUser);
+//        userService.insertUser(newUser);
+        userService.insertUserStore(newUser);
         RequestDispatcher dispatcher = request.getRequestDispatcher("user/create.jsp");
         try {
             dispatcher.forward(request, response);

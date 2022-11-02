@@ -1,21 +1,6 @@
-<%--&lt;%&ndash;--%>
-<%--  Created by IntelliJ IDEA.--%>
-<%--  User: Administrator--%>
-<%--  Date: 24/10/2022--%>
-<%--  Time: 8:16 CH--%>
-<%--  To change this template use File | Settings | File Templates.--%>
-<%--&ndash;%&gt;--%>
+
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
-<%--<html>--%>
-<%--<head>--%>
-<%--    <title>Title</title>--%>
-<%--</head>--%>
-<%--<body>--%>
-
-<%--</body>--%>
-<%--</html>--%>
-
 
 <html lang="en">
 
@@ -31,20 +16,9 @@
 </head>
 
 <body>
-<!-- Header -->
-<header id="header">
-    <div class="header__img" style="height: 60px">
+<%--Header--%>
+<%@include file="includes/header.jsp" %>
 
-    </div>
-    <nav>
-        <ul class="header__nav">
-            <li class="header__nav__item"><a href="/products">Trang chủ</a></li>
-            <li class="header__nav__item"><a href="">Công ty</a></li>
-            <li class="header__nav__item"><a href="">Sự kiện, ưu đãi</a></li>
-            <li class="header__nav__item border__right--none"><a href="">Góp ý</a></li>
-        </ul>
-    </nav>
-</header>
 <!-- Content -->
 <div id="content" class="row">
     <div class="col-4 pitch__list__menu">
@@ -110,7 +84,8 @@
     </div>
 </div>
 
-
+<%--Footer--%>
+<%@include file="includes/footer.jsp" %>
 
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p"

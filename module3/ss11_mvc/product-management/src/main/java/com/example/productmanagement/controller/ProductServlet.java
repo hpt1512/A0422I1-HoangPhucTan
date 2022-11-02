@@ -8,6 +8,7 @@ import javax.servlet.*;
 import javax.servlet.http.*;
 import javax.servlet.annotation.*;
 import java.io.IOException;
+import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -29,7 +30,11 @@ public class ProductServlet extends HttpServlet {
                 showEditForm(request, response);
                 break;
             case "delete":
-                showDeleteForm(request, response);
+                try {
+                    deleteProduct(request, response);
+                } catch (SQLException e) {
+                    throw new RuntimeException(e);
+                }
                 break;
             case "view":
                 viewProduct(request, response);
@@ -130,9 +135,6 @@ public class ProductServlet extends HttpServlet {
             case "edit":
                 updateProduct(request, response);
                 break;
-            case "delete":
-                deleteProduct(request, response);
-                break;
             case "find":
                 findProduct(request, response);
                 break;
@@ -207,19 +209,19 @@ public class ProductServlet extends HttpServlet {
         }
     }
 
-    private void deleteProduct(HttpServletRequest request, HttpServletResponse response) {
+    private void deleteProduct(HttpServletRequest request, HttpServletResponse response) throws SQLException {
         int id = Integer.parseInt(request.getParameter("id"));
-        Product product = this.productService.findById(id);
-        RequestDispatcher dispatcher;
-        if (product == null) {
-            dispatcher = request.getRequestDispatcher("error-404.jsp");
-        } else {
-            this.productService.remove(id);
-            try {
-                response.sendRedirect("/products");
-            } catch (IOException e) {
-                e.printStackTrace();
-            }
+        productService.remove(id);
+
+        List<Product> productList = productService.findAll();
+        request.setAttribute("products", productList);
+        RequestDispatcher dispatcher = request.getRequestDispatcher("product/list.jsp");
+        try {
+            dispatcher.forward(request, response);
+        } catch (ServletException e) {
+            throw new RuntimeException(e);
+        } catch (IOException e) {
+            throw new RuntimeException(e);
         }
     }
 }
