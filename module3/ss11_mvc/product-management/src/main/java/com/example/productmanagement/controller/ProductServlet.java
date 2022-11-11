@@ -145,9 +145,9 @@ public class ProductServlet extends HttpServlet {
 
     private void findProduct(HttpServletRequest request, HttpServletResponse response) {
         String input_find = request.getParameter("input_find");
-        List<Product> resustFindList = this.productService.findByName(input_find);
+        List<Product> products = this.productService.findByName(input_find);
 
-        request.setAttribute("resustFindList", resustFindList);
+        request.setAttribute("products", products);
         try {
             request.getRequestDispatcher("product/list.jsp").forward(request, response);
         } catch (ServletException e) {

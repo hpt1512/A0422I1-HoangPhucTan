@@ -1,4 +1,3 @@
-
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 
@@ -80,28 +79,17 @@
                         <span class="">${product.getProducer()}</span>
                     </div>
                     <div class="btn__div" style="position: absolute; right: 10px">
-                        <a href="/products?action=view&id=${product.getId()}"><button type="button" class="btn btn-success ">View</button></a>
-                        <a href="/products?action=edit&id=${product.getId()}"><button type="button" class="btn btn-success ">Edit</button></a>
-                        <a href="/products?action=delete&id=${product.getId()}"><button type="button" class="btn btn-success ">Delete</button></a>
-                    </div>
-                </li>
-            </c:forEach>
-
-        </ul>
-<%--        Result Find--%>
-        <ul class="pitch__list__content__nav">
-            <c:forEach items='${requestScope["resustFindList"]}' var="product">
-                <li class="pitch__list__content__nav__item">
-                    <div class="pitch__list__content__nav__item__info">
-                        <span class="name__pitch">${product.getName()}</span>
-                        <span style="color: red" class="">${product.getPrice()}</span>
-                        <span class="">${product.getDescription()}</span>
-                        <span class="">${product.getProducer()}</span>
-                    </div>
-                    <div class="btn__div" style="position: absolute; right: 10px">
-                        <a href="/products?action=view&id=${product.getId()}"><button type="button" class="btn btn-success ">View</button></a>
-                        <a href="/products?action=edit&id=${product.getId()}"><button type="button" class="btn btn-success ">Edit</button></a>
-                        <a href="/products?action=delete&id=${product.getId()}"><button type="button" class="btn btn-success ">Delete</button></a>
+                        <a href="/products?action=view&id=${product.getId()}">
+                            <button type="button" class="btn btn-success ">View</button>
+                        </a>
+                        <a href="/products?action=edit&id=${product.getId()}">
+                            <button type="button" class="btn btn-success ">Edit</button>
+                        </a>
+                        <button type="button" onclick="infoDelete('${product.getId()}','${product.getName()}')"
+                                class="btn btn-primary" data-bs-toggle="modal"
+                                data-bs-target="#exampleModal">
+                            Delete
+                        </button>
                     </div>
                 </li>
             </c:forEach>
@@ -114,9 +102,41 @@
 <%--Footer--%>
 <%@include file="includes/footer.jsp" %>
 
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
-        integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p"
+<!-- Modal -->
+<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <form action="/products" method="get">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">XOÁ SẢN PHẨM</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <input name="action" value="delete" hidden>
+                    <input name="id" id="deleteId" hidden>
+                    <span class="text-danger">Bạn có muốn xoá sản phẩm  </span><span id="deleteName"></span>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                    <button type="submit" class="btn btn-primary">OK</button>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.10.2/dist/umd/popper.min.js"
+        integrity="sha384-7+zCNj/IqJ95wo16oMtfsKbZ9ccEh31eOz1HGyDuCQ6wgnyJNSYdrPa03rtR1zdB"
         crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.min.js"
+        integrity="sha384-QJHtvGhmr9XOIpI6YVutG+2QOK9T+ZnN4kzFN1RtK3zEFEIsxhlmWl5/YESvpZ13"
+        crossorigin="anonymous"></script>
+<script>
+    function infoDelete(id, name) {
+        document.getElementById("deleteName").innerText = name;
+        document.getElementById("deleteId").value = id;
+    }
+</script>
 </body>
 
 </html>

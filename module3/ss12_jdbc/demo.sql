@@ -68,3 +68,9 @@ call update_user_by_id (5, 'Kante3', 'kante3@gmail.com', 'France');
 
 select * from users;
 
+create table datee (
+	ngaysinh date
+);
+insert into datee  value ('2000-12-15');
+
+

@@ -21,3 +21,14 @@ insert into products (`name`, price, `description`, producer)
             
 select * from products;
 select id, `name`, price, `description`, producer from products where id = 1;
+
+
+DELIMITER $$
+CREATE PROCEDURE find_product_by_name(IN product_name varchar(50))
+BEGIN
+    select * from products
+    where name like concat('%', product_name, '%');
+END$$
+DELIMITER ;
+
+call find_product_by_name('no');

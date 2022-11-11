@@ -2,10 +2,7 @@ package com.example.productmanagement.repository;
 
 import com.example.productmanagement.model.Product;
 
-import java.sql.Connection;
-import java.sql.PreparedStatement;
-import java.sql.ResultSet;
-import java.sql.SQLException;
+import java.sql.*;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -103,17 +100,47 @@ public class ProductRepositoryIpml implements ProductRepository {
     }
 
 
+//    @Override
+//    public List<Product> findByName(String name) {
+//        List<Product> productList = this.findAll();
+//        List<Product> resultFind = new ArrayList<>();
+//        for (Product product : productList) {
+//            if (product.getName().toLowerCase().contains(name.toLowerCase())) {
+//                resultFind.add(product);
+//            }
+//        }
+//        return resultFind;
+//    }
+
     @Override
     public List<Product> findByName(String name) {
-        List<Product> productList = this.findAll();
-        List<Product> resultFind = new ArrayList<>();
-        for (Product product : productList) {
-            if (product.getName().toLowerCase().contains(name.toLowerCase())) {
-                resultFind.add(product);
+        List<Product> products = new ArrayList<>();
+        String query = "{call find_product_by_name(?)};";
+        // try-with-resource statement will auto close the connection.
+
+        try (Connection connection = BaseRepository.getConnectDB();
+
+             CallableStatement callableStatement = connection.prepareCall(query);) {
+            System.out.println(callableStatement);
+            callableStatement.setString(1, name);
+
+            ResultSet rs = callableStatement.executeQuery();
+
+            while (rs.next()) {
+                int id = rs.getInt("id");
+                String name2 = rs.getString("name");
+                int price = rs.getInt("price");
+                String description = rs.getString("description");
+                String producer = rs.getString("producer");
+                products.add(new Product(id, name2, price, description, producer));
             }
+
+        } catch (SQLException e) {
+            printSQLException(e);
         }
-        return resultFind;
+        return products;
     }
+
     private void printSQLException(SQLException ex) {
         for (Throwable e : ex) {
             if (e instanceof SQLException) {

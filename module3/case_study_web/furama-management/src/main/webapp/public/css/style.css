@@ -1,0 +1,12 @@
+/* Header */
+#header {
+    width: 100%;
+    background-color: rgba(199, 199, 199, 0.455);
+}
+.header__img a img {
+    width: 90px;
+    padding: 10px 10px;
+}
+.account__name span {
+    font-size: 15px;
+}
