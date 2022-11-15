@@ -16,6 +16,7 @@ import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.List;
+import java.util.Map;
 
 @WebServlet(name = "CustomerServlet", value = "/customer")
 public class CustomerServlet extends HttpServlet {
@@ -211,8 +212,15 @@ public class CustomerServlet extends HttpServlet {
         String address = request.getParameter("address");
 
         Customer newCustomer = new Customer(customerType, name, birthday, gender, cmnd, phoneNumber, email, address);
-        customerService.insertCustomer(newCustomer);
-        request.setAttribute("message", "Create new customer successfully");
+        Map<String, String> errorMap =  customerService.insertCustomer(newCustomer);
+        String message = "Create new customer successfully";
+        if (!errorMap.isEmpty()) {
+            request.setAttribute("email",email);
+            request.setAttribute("errorMap", errorMap);
+            message = "Create new customer failed";
+        }
+
+        request.setAttribute("message", message);
         RequestDispatcher dispatcher = request.getRequestDispatcher("views/customer/create.jsp");
         try {
             dispatcher.forward(request, response);

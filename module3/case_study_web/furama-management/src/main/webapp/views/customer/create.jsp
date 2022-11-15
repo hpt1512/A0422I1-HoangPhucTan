@@ -70,6 +70,11 @@
                     <label class="form-label">Email</label>
                     <input type="text" class="form-control" name="email">
                 </div>
+                <p class="text-danger">
+                    <c:if test="${!errorMap.isEmpty()}">
+                        ${errorMap.get('email')}
+                    </c:if>
+                </p>
                 <div class="mb-3">
                     <label class="form-label">Address</label>
                     <input type="text" class="form-control" name="address">

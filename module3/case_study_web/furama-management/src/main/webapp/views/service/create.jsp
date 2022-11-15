@@ -40,6 +40,11 @@
                     <label class="form-label">Area</label>
                     <input type="number" class="form-control" name="area">
                 </div>
+                <p class="text-danger">
+                    <c:if test="${!errorMap.isEmpty()}">
+                        ${errorMap.get('area')}
+                    </c:if>
+                </p>
                 <div class="mb-3">
                     <label class="form-label">Rent Cost</label>
                     <input type="number" class="form-control" name="rent_cost">
@@ -48,6 +53,11 @@
                     <label class="form-label">People Max</label>
                     <input type="number" class="form-control" name="people_max">
                 </div>
+                <p class="text-danger">
+                    <c:if test="${!errorMap.isEmpty()}">
+                        ${errorMap.get('peopleMax')}
+                    </c:if>
+                </p>
                 <div class="mb-3">
                     <label class="form-label">Rent Type</label>
                     <select class="form-select" aria-label="Default select example" name="rent_type">

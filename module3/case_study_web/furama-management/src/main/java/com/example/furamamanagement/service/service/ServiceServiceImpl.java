@@ -5,7 +5,9 @@ import com.example.furamamanagement.repository.service.IServiceRepository;
 import com.example.furamamanagement.repository.service.ServiceRepositoryImpl;
 
 import java.sql.SQLException;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 public class ServiceServiceImpl implements IServiceService {
     IServiceRepository serviceRepository = new ServiceRepositoryImpl();
@@ -15,8 +17,16 @@ public class ServiceServiceImpl implements IServiceService {
     }
 
     @Override
-    public void insertService(Service service) throws SQLException {
+    public Map<String, String> insertService(Service service) throws SQLException {
+        Map<String, String> errorMap = new HashMap<>();
+        if (service.getArea() < 0) {
+            errorMap.put("area", "Diện tích phải lớn hơn hoặc bằng 0");
+        }
+        if (service.getPeopleMax() < 0) {
+            errorMap.put("peopleMax", "Số lượng người tối đa phải lớn hơn hoặc bằng 0");
+        }
         serviceRepository.insertService(service);
+        return errorMap;
     }
 
     @Override

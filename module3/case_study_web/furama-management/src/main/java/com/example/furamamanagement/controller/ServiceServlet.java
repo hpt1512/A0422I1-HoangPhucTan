@@ -17,6 +17,7 @@ import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.List;
+import java.util.Map;
 
 @WebServlet(name = "ServiceServlet", value = "/service")
 public class ServiceServlet extends HttpServlet {
@@ -241,8 +242,15 @@ public class ServiceServlet extends HttpServlet {
         int floor = Integer.parseInt(request.getParameter("floor"));
 
         Service newService = new Service(name, area, rentCost, peopleMax, rentType, serviceType, standardRoom, descriptionOtherConvenience, poolArea, floor);
-        serviceService.insertService(newService);
-        request.setAttribute("message", "Create new service successfully");
+        Map<String, String> errorMap =  serviceService.insertService(newService);
+        String message = "Create new service successfully";
+        if (!errorMap.isEmpty()) {
+            request.setAttribute("area", area);
+            request.setAttribute("errorMap", errorMap);
+            message = "Create new service failed";
+        }
+
+        request.setAttribute("message", message);
         RequestDispatcher dispatcher = request.getRequestDispatcher("views/service/create.jsp");
         try {
             dispatcher.forward(request, response);

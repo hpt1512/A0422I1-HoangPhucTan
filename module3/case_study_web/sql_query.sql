@@ -30,3 +30,4 @@ insert into dich_vu (ten_dich_vu, dien_tich, chi_phi_thue, so_nguoi_toi_da, ma_k
 select * from dich_vu where ten_dich_vu like concat('%', ?, '%') and ma_kieu_thue like concat('%', ?, '%') 
 and ma_loai_dich_vu like concat('%', ?, '%');
 
+ 
