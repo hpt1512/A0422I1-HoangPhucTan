@@ -24,12 +24,15 @@
         </div>
         <div class="col-10">
             <h4 class="text-danger">DANH SÁCH PHIẾU MƯỢN</h4>
-            <div class="btn-group my-3 d-flex justify-content-between" role="group" aria-label="Basic mixed styles example">
+            <div class="btn-group my-3 d-flex justify-content-between" role="group"
+                 aria-label="Basic mixed styles example">
                 <a href="/book?action=create">
-                    <button type="button" class="btn btn-success"><i class="bi bi-plus-circle me-2"></i>Thêm mới</button>
+                    <button type="button" class="btn btn-success"><i class="bi bi-plus-circle me-2"></i>Thêm mới
+                    </button>
                 </a>
                 <form class="d-flex" method="post" action="/book?action=find">
-                    <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search" name="input_find">
+                    <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search"
+                           name="input_find">
                     <button class="btn btn-success w-50" type="submit">Tìm kiếm</button>
                 </form>
             </div>
@@ -54,18 +57,38 @@
                         <th scope="row">${status.count}</th>
                         <td>${borrowCard.getId()}</td>
                         <td>${borrowCard.getIdRorrow()}</td>
-                        <td>${borrowCard.getIdBook()}</td>
-                        <td>${borrowCard.getIdStudent()}</td>
-                        <c:if test="${!borrowCard.isStatus()}">
-                            <td>Đang mượn</td>
-                        </c:if>
 
+                        <c:forEach var="book" items="${bookList}">
+                            <c:if test="${borrowCard.getIdBook() == book.getId()}">
+                                <td>${book.getName()}</td>
+                            </c:if>
+                        </c:forEach>
+
+                        <c:forEach var="student" items="${studentList}">
+                            <c:if test="${borrowCard.getIdStudent() == student.getId()}">
+                                <td>${student.getName()}</td>
+                            </c:if>
+                        </c:forEach>
+
+                        <c:if test="${!borrowCard.isStatus()}">
+                            <td class="text-danger fw-bold">Đang mượn</td>
+                        </c:if>
+                        <c:if test="${borrowCard.isStatus()}">
+                            <td class="text-success fw-bold">Đã trả</td>
+                        </c:if>
 
                         <td>${borrowCard.getDate_start()}</td>
                         <td>${borrowCard.getDate_end()}</td>
                         <td class="px-4">
                             <div class="btn-group" role="group" aria-label="Basic mixed styles example">
-                                <a href="/book?action=borrow&id=${borrowCard.getId()}"><button type="button" class="btn btn-sm btn-warning mx-1">Mượn</button></a>
+<%--                                <a href="/borrow-card?action=pay&id=${borrowCard.getId()}">--%>
+<%--                                    <button type="button" class="btn btn-sm btn-primary px-3">Trả</button>--%>
+<%--                                </a>--%>
+                                <button type="button" onclick="infoDelete('${borrowCard.getId()}','${borrowCard.getIdRorrow()}')"
+                                    class="btn btn-sm btn-primary px-3 mx-1" data-bs-toggle="modal"
+                                    data-bs-target="#exampleModal">
+                                    Trả
+                                </button>
                             </div>
                         </td>
                             <%--                        <td class="px-4">--%>
@@ -98,16 +121,16 @@
 <!-- Modal -->
 <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
     <div class="modal-dialog">
-        <form action="/admin-company" method="get">
+        <form action="/borrow-card" method="get">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h5 class="modal-title" id="exampleModalLabel">XOÁ NGƯỜI DÙNG</h5>
+                    <h5 class="modal-title" id="exampleModalLabel">TRẢ SÁCH</h5>
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
                 <div class="modal-body">
-                    <input name="action" value="delete" hidden>
+                    <input name="action" value="pay" hidden>
                     <input name="id" id="deleteId" hidden>
-                    <span class="text-danger">Xoá người dùng  </span><span id="deleteName"></span>
+                    <span class="text-danger">Trả sách có phiếu mượn  </span><span id="deleteName"></span>
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>

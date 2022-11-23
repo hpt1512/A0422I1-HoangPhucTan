@@ -19,30 +19,30 @@ public class CustomerRepositoryImpl implements ICustomerRepository {
             "where ho_ten like concat('%', ?, '%');";
     @Override
     public List<Customer> selectAllCustomers() {
-        List<Customer> customers = new ArrayList<>();
-        try (Connection connection = BaseRepository.getConnectDB();
-             PreparedStatement preparedStatement = connection.prepareStatement(SELECT_ALL_CUSTOMERS);) {
-            System.out.println(preparedStatement);
-            // Execute the query or update query
-            ResultSet rs = preparedStatement.executeQuery();
+            List<Customer> customers = new ArrayList<>();
+            try (Connection connection = BaseRepository.getConnectDB();
+                 PreparedStatement preparedStatement = connection.prepareStatement(SELECT_ALL_CUSTOMERS);) {
+                System.out.println(preparedStatement);
+                // Execute the query or update query
+                ResultSet rs = preparedStatement.executeQuery();
 
-            // Process the ResultSet object.
-            while (rs.next()) {
-                int id = rs.getInt("ma_khach_hang");
-                int idTypeCustomer = rs.getInt("ma_loai_khach");
-                String name = rs.getString("ho_ten");
-                Date birthday = rs.getDate("ngay_sinh");
-                boolean gender = rs.getBoolean("gioi_tinh");
-                String cmnd = rs.getString("so_cmnd");
-                String phoneNumber = rs.getString("so_dien_thoai");
-                String email = rs.getString("email");
-                String address = rs.getString("dia_chi");
-                customers.add(new Customer(id, idTypeCustomer, name, birthday, gender, cmnd, phoneNumber, email, address));
+                // Process the ResultSet object.
+                while (rs.next()) {
+                    int id = rs.getInt("ma_khach_hang");
+                    int idTypeCustomer = rs.getInt("ma_loai_khach");
+                    String name = rs.getString("ho_ten");
+                    Date birthday = rs.getDate("ngay_sinh");
+                    boolean gender = rs.getBoolean("gioi_tinh");
+                    String cmnd = rs.getString("so_cmnd");
+                    String phoneNumber = rs.getString("so_dien_thoai");
+                    String email = rs.getString("email");
+                    String address = rs.getString("dia_chi");
+                    customers.add(new Customer(id, idTypeCustomer, name, birthday, gender, cmnd, phoneNumber, email, address));
+                }
+            } catch (SQLException e) {
+                printSQLException(e);
             }
-        } catch (SQLException e) {
-            printSQLException(e);
-        }
-        return customers;
+            return customers;
     }
 
     @Override

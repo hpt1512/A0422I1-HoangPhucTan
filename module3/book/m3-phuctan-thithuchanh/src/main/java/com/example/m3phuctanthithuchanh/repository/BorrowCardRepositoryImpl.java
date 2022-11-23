@@ -1,5 +1,6 @@
 package com.example.m3phuctanthithuchanh.repository;
 
+import com.example.m3phuctanthithuchanh.model.Book;
 import com.example.m3phuctanthithuchanh.model.BorrowCard;
 import com.example.m3phuctanthithuchanh.model.Student;
 
@@ -10,6 +11,7 @@ import java.util.List;
 public class BorrowCardRepositoryImpl implements IBaseRepository<BorrowCard> {
     private static final String SELECT_ALL_BORROW_CARD = "SELECT * FROM borrow_card;";
     private static final String SELECT_BORROW_CARD_BY_ID = "select * from borrow_card where id = ?;";
+    private static final String UPDATE_STATUS_BORROW_CARD = "update borrow_card set status = 1 where id = ?;";
     private static final String INSERT_BORROW_CARD_SQL = "insert into borrow_card (id_borrow, id_book, id_student, date_start, date_end)\n" +
             "\tvalues (?, ?, ?, ?, ?);";
     @Override
@@ -71,9 +73,41 @@ public class BorrowCardRepositoryImpl implements IBaseRepository<BorrowCard> {
         return false;
     }
 
+    public boolean updateStaus(BorrowCard borrowCard) throws SQLException {
+        boolean rowUpdated;
+        try (Connection connection = BaseRepository.getConnectDB(); PreparedStatement statement = connection.prepareStatement(UPDATE_STATUS_BORROW_CARD);) {
+            statement.setInt(1, borrowCard.getId());
+
+            rowUpdated = statement.executeUpdate() > 0;
+        }
+        return rowUpdated;
+    }
+
     @Override
     public BorrowCard getById(int id) {
-        return null;
+        BorrowCard borrowCard = null;
+        try (Connection connection = BaseRepository.getConnectDB();
+             PreparedStatement preparedStatement = connection.prepareStatement(SELECT_BORROW_CARD_BY_ID);) {
+            preparedStatement.setInt(1, id);
+            System.out.println(preparedStatement);
+            // Execute the query or update query
+            ResultSet rs = preparedStatement.executeQuery();
+
+            // Process the ResultSet object.
+            while (rs.next()) {
+                String idBorrow = rs.getString("id_borrow");
+                int idBook = rs.getInt("id_book");
+                int idStudent = rs.getInt("id_student");
+                boolean status = rs.getBoolean("status");
+                Date date_start = rs.getDate("date_start");
+                Date date_end = rs.getDate("date_end");
+
+                borrowCard = new BorrowCard(id, idBorrow, idBook, idStudent, status, date_start, date_end);
+            }
+        } catch (SQLException e) {
+            printSQLException(e);
+        }
+        return borrowCard;
     }
 
     @Override

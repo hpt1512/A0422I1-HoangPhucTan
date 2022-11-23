@@ -2,13 +2,12 @@ package com.example.m3phuctanthithuchanh.service;
 
 import com.example.m3phuctanthithuchanh.model.BorrowCard;
 import com.example.m3phuctanthithuchanh.repository.BorrowCardRepositoryImpl;
-import com.example.m3phuctanthithuchanh.repository.IBaseRepository;
 
 import java.sql.SQLException;
 import java.util.List;
 
 public class BorrowCardServiceImpl implements IBaseService<BorrowCard> {
-    IBaseRepository<BorrowCard> borrowCardRepository = new BorrowCardRepositoryImpl();
+    BorrowCardRepositoryImpl borrowCardRepository = new BorrowCardRepositoryImpl();
     @Override
     public List<BorrowCard> findAll() {
         return borrowCardRepository.findAll();
@@ -29,9 +28,13 @@ public class BorrowCardServiceImpl implements IBaseService<BorrowCard> {
         return false;
     }
 
+    public boolean updateStatus(BorrowCard borrowCard) throws SQLException {
+        return borrowCardRepository.updateStaus(borrowCard);
+    }
+
     @Override
     public BorrowCard getById(int id) {
-        return null;
+        return borrowCardRepository.getById(id);
     }
 
     @Override

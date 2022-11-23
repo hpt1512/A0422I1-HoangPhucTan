@@ -24,7 +24,7 @@ import java.util.Map;
 
 @WebServlet(name = "BorrowCardServlet", value = "/borrow-card")
 public class BorrowCardServlet extends HttpServlet {
-    IBaseService<BorrowCard> borrowCardService = new BorrowCardServiceImpl();
+    BorrowCardServiceImpl borrowCardService = new BorrowCardServiceImpl();
     IBaseService<Book> bookService = new BookServiceImpl();
     IBaseService<Student> studentService = new StudentServiceImpl();
     @Override
@@ -45,6 +45,9 @@ public class BorrowCardServlet extends HttpServlet {
                 case "delete":
                     deleteBorrowCard(request, response);
                     break;
+                case "pay":
+                    payBook(request, response);
+                    break;
                 default:
                     listBorrowCard(request, response);
                     break;
@@ -59,8 +62,12 @@ public class BorrowCardServlet extends HttpServlet {
 
     private void listBorrowCard(HttpServletRequest request, HttpServletResponse response) {
         List<BorrowCard> borrowCardList = borrowCardService.findAll();
+        List<Book> bookList = bookService.findAll();
+        List<Student> studentList = studentService.findAll();
 
         request.setAttribute("borrowCardList", borrowCardList);
+        request.setAttribute("bookList", bookList);
+        request.setAttribute("studentList", studentList);
         RequestDispatcher dispatcher = request.getRequestDispatcher("views/borrow_card/list.jsp");
         try {
             dispatcher.forward(request, response);
@@ -82,15 +89,34 @@ public class BorrowCardServlet extends HttpServlet {
                 case "create":
                     insertBorrowCard(request, response);
                     break;
-//                case "edit":
-//                    updateCustomer(request, response);
-//                    break;
 //                case "find":
 //                    findCustomer(request, response);
 //                    break;
             }
         } catch (SQLException | ParseException ex) {
             throw new ServletException(ex);
+        }
+    }
+
+    private void payBook(HttpServletRequest request, HttpServletResponse response) throws SQLException{
+        int id = Integer.parseInt(request.getParameter("id"));
+        BorrowCard borrowCard = borrowCardService.getById(id);
+        borrowCardService.updateStatus(borrowCard);
+
+        List<BorrowCard> borrowCardList = borrowCardService.findAll();
+        List<Book> bookList = bookService.findAll();
+        List<Student> studentList = studentService.findAll();
+
+        request.setAttribute("borrowCardList", borrowCardList);
+        request.setAttribute("bookList", bookList);
+        request.setAttribute("studentList", studentList);
+        RequestDispatcher dispatcher = request.getRequestDispatcher("views/borrow_card/list.jsp");
+        try {
+            dispatcher.forward(request, response);
+        } catch (ServletException e) {
+            throw new RuntimeException(e);
+        } catch (IOException e) {
+            throw new RuntimeException(e);
         }
     }
 
