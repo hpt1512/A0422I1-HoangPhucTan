@@ -1,6 +1,7 @@
 package com.example.blogapp.controller;
 
 import com.example.blogapp.model.Blog;
+import com.example.blogapp.model.Category;
 import com.example.blogapp.service.IBlogService;
 import com.example.blogapp.service.ICategoryService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -72,6 +73,24 @@ public class BlogController {
             return "redirect:/list";
         }
         model.addAttribute("blogList", blogService.findBlogByName(nameFind));
+        model.addAttribute("categoryList", categoryService.getAll());
+        return "list";
+    }
+//    @GetMapping("/findBlogByName")
+//    public String findBlogByName(Model model, @RequestParam("nameFind") String nameFind) {
+//        if ("".equals(nameFind)) {
+//            return "redirect:/list";
+//        }
+//        Category category = categoryService.getCategoryById(Integer.parseInt(nameFind));
+//
+//        model.addAttribute("blogList", blogService.findBlogByCategory(category));
+//        model.addAttribute("categoryList", categoryService.getAll());
+//        return "list";
+//    }
+    @GetMapping("/findBlogByCategory")
+    public String findBlogByCategory(@RequestParam("category_id") int category_id, Model model) {
+        Category category = categoryService.getCategoryById(category_id);
+        model.addAttribute("blogList", blogService.findBlogByCategory(category));
         model.addAttribute("categoryList", categoryService.getAll());
         return "list";
     }

@@ -1,6 +1,7 @@
 package com.example.blogapp.service;
 
 import com.example.blogapp.model.Blog;
+import com.example.blogapp.model.Category;
 import com.example.blogapp.repository.IBlogRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -42,7 +43,7 @@ public class BlogServiceImpl implements IBlogService {
     }
 
     @Override
-    public List<Blog> findBlogByCategory(String categoryName) {
-        return iBlogRepository.findBlogByCategory(categoryName);
+    public List<Blog> findBlogByCategory(Category category) {
+        return iBlogRepository.findBlogByCategory(category);
     }
 }
