@@ -10,6 +10,7 @@ public class Category {
     @Column(name = "id")
     private Integer id;
     @Column(name = "`name`")
+
     private String name;
 //    @OneToMany(mappedBy = "category")
 //    private Set<Blog> blogs;

@@ -11,7 +11,7 @@ import org.springframework.web.bind.annotation.*;
 @RequestMapping("category")
 public class CategoryController {
     @Autowired
-    ICategoryService categoryService;
+    private ICategoryService categoryService;
     @GetMapping("/list")
     public  String list(Model model) {
         model.addAttribute("categoryList", categoryService.getAll());

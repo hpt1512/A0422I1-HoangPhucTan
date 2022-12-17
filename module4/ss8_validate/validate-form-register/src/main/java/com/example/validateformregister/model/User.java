@@ -1,8 +1,7 @@
 package com.example.validateformregister.model;
 
 import javax.persistence.*;
-import javax.validation.constraints.NotBlank;
-import javax.validation.constraints.Size;
+import javax.validation.constraints.*;
 
 @Entity(name = "`user`")
 public class User {
@@ -15,12 +14,15 @@ public class User {
     @Size(min = 5, max = 45, message = "{name.size}")
     private String name;
     @Column(name = "age")
+    @Min(value = 18, message = "{age.validate}")
+    @NotNull(message = "{notempty}")
     private Integer age;
     @Column(name = "phone_number", columnDefinition = "varchar(12)")
     private String phoneNumber;
     @Column(name = "email", columnDefinition = "varchar(100)")
     private String email;
     @Column(name = "password", columnDefinition = "varchar(45)")
+    @NotBlank(message = "{notempty}")
     private String password;
 
     public User() {

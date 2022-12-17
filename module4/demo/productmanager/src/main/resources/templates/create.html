@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<body>
+<a th:href="@{/list4}" style="text-decoration: none">Quay lai trang list</a>
+<br>
+<form action="/create" method="post" th:object="${product}">
+    Ten: <input th:field="*{name}"><br>
+    <span style="color: red" th:if="${#fields.hasErrors('name')}" th:errors="*{name}"></span><br>
+    Gia: <input type="text" th:field="*{price}"><br>
+    <span style="color: red" th:if="${#fields.hasErrors('price')}" th:errors="*{price}"></span><br>
+    Ngay ban: <input type="date" th:field="*{datePublish}"><br>
+    <span style="color: red" th:if="${#fields.hasErrors('datePublish')}" th:errors="*{datePublish}"></span><br>
+    Mo ta: <input th:field="*{description}"><br>
+    Kieu san pham: <select th:field="*{productType}">
+    <option th:each="question : ${listProductType}" th:value="${question.id}" th:text="${question.name}">
+    </option>
+</select>
+    <br>
+    <button type="submit">Create</button>
+</form>
+<!--    <td>-->
+<!--        <select th:field="*{customerType}">-->
+<!--            <option value="">Select</option>-->
+<!--            <option-->
+<!--                    th:each="type : ${customerTypeList}"-->
+<!--                    th:value="${type.id}"-->
+<!--                    th:text="${type.name}"-->
+<!--            ></option>-->
+<!--        </select>-->
+<!--    </td>-->
+<!--    <button type="submit">Create</button>-->
+<!--</form>-->
+</body>
+</html>

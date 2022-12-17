@@ -20,7 +20,11 @@
                 </h6>
             </a>
             <li style="background-color: aqua" class="list-group-item" th:each="category : ${categoryList}">
-                <span class="fw-bold" th:text="${category.name}"></span>
+
+                <form method="get" th:action="@{/findBlogByCategory}">
+                    <input hidden type="text" th:value="${category.id}" name="category_id">
+                    <button class="w-100" type="submit" th:text="${category.name}"></button>
+                </form>
             </li>
         </ul>
     </div>

@@ -76,17 +76,6 @@ public class BlogController {
         model.addAttribute("categoryList", categoryService.getAll());
         return "list";
     }
-//    @GetMapping("/findBlogByName")
-//    public String findBlogByName(Model model, @RequestParam("nameFind") String nameFind) {
-//        if ("".equals(nameFind)) {
-//            return "redirect:/list";
-//        }
-//        Category category = categoryService.getCategoryById(Integer.parseInt(nameFind));
-//
-//        model.addAttribute("blogList", blogService.findBlogByCategory(category));
-//        model.addAttribute("categoryList", categoryService.getAll());
-//        return "list";
-//    }
     @GetMapping("/findBlogByCategory")
     public String findBlogByCategory(@RequestParam("category_id") int category_id, Model model) {
         Category category = categoryService.getCategoryById(category_id);
