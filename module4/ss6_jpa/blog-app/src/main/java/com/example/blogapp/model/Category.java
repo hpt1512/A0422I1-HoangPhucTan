@@ -12,8 +12,9 @@ public class Category {
     @Column(name = "`name`")
 
     private String name;
-//    @OneToMany(mappedBy = "category")
-//    private Set<Blog> blogs;
+
+    @OneToMany(mappedBy = "category")
+    private Set<Blog> blogs;
 
     public Category() {
     }
