@@ -1,12 +1,14 @@
 package com.example.borrowbookapp.model;
 
+import org.springframework.format.annotation.DateTimeFormat;
+
 import javax.persistence.*;
 import java.util.Date;
+import java.util.Random;
 
 @Entity(name = "borrow_card")
 public class BorrowCard {
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
     @ManyToOne
     @JoinColumn(name = "id_user")
@@ -14,14 +16,19 @@ public class BorrowCard {
     @ManyToOne
     @JoinColumn(name = "id_book")
     private Book book;
+    @DateTimeFormat(pattern = "yyyy-MM-dd")
     private Date dateBorrow;
+    @DateTimeFormat(pattern = "yyyy-MM-dd")
     private Date datePay;
 
     public BorrowCard() {
+        Random random = new Random();
+        this.id = random.nextInt(90000) + 10000;
     }
 
     public BorrowCard(Integer id, User user, Book book, Date dateBorrow, Date datePay) {
-        this.id = id;
+        Random random = new Random();
+        this.id = random.nextInt(90000) + 10000;
         this.user = user;
         this.book = book;
         this.dateBorrow = dateBorrow;

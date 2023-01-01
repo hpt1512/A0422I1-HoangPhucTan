@@ -14,29 +14,8 @@
     <a class="nav-link text-white fw-bold" href="/borrow_card">LIST BORROW CARD</a>
 </nav>
 <div class="row p-3 justify-content-center">
-    <div class="col-9 d-flex">
-        <table class="table table-striped">
-            <tr>
-                <th>No</th>
-                <th>ID</th>
-                <th>Book</th>
-                <th>User</th>
-                <th>Date Borrow</th>
-                <th>Date Pay</th>
-            </tr>
-            <tr th:each="borrow,iter : ${listBorrow}">
-                <td th:text="${iter.count}"></td>
-                <td th:text="${borrow.id}"></td>
-                <td th:text="${borrow.book.name}"></td>
-                <td th:text="${borrow.user.name}"></td>
-                <td th:text="${borrow.dateBorrow}"></td>
-                <td th:text="${borrow.datePay}"></td>
-
-<!--                <td><a th:href="@{/payBook/{id}(id=${borrow.id})}">Pay Book</a></td>-->
-            </tr>
-        </table>
-
-
+    <div class="col-6 mx-2 my-2 d-flex">
+        <h3 class="text-danger">Uut of stock</h3>
     </div>
 </div>
 
