@@ -6,6 +6,7 @@ import com.example.blogapp.model.Category;
 import com.example.blogapp.service.IBlogService;
 import com.example.blogapp.service.ICategoryService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.repository.query.Param;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -40,15 +41,8 @@ public class BlogRestController {
         return new ResponseEntity<>(blogService.findBlogByCategory(category), HttpStatus.OK);
     }
 
-//    @PostMapping("/create")
-//    public String createBlog(@RequestBody BlogForm blogForm) {
-//        Integer id = Integer.parseInt(blogForm.getId());
-//        String name = blogForm.getName();
-//        String content = blogForm.getContent();
-//        Category category = categoryService.getCategoryById(Integer.parseInt(blogForm.getCategoryId()));
-//
-//        Blog blog = new Blog(id, name, content, category);
-//        blogService.save(blog);
-//        return "success";
-//    }
+    @GetMapping("/findBlogByName")
+    public ResponseEntity<List<Blog>> findBlogByName(@RequestParam("name") String nameFind) {
+        return new ResponseEntity<>(blogService.findBlogByName(nameFind), HttpStatus.OK);
+    }
 }

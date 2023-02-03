@@ -1,6 +1,7 @@
 package com.example.blogapp.model;
 
 import javax.persistence.*;
+import java.time.LocalDateTime;
 
 @Entity(name = "blog")
 public class Blog {
@@ -13,6 +14,8 @@ public class Blog {
     private String name;
     @Column(name = "content", columnDefinition = "varchar(50)")
     private String content;
+    @Column(name = "datetime_created")
+    private String dateTimeCreated;
     @ManyToOne
     @JoinColumn(name = "id_category")
     private Category category;
@@ -24,6 +27,14 @@ public class Blog {
         this.id = id;
         this.name = name;
         this.content = content;
+        this.category = category;
+    }
+
+    public Blog(Integer id, String name, String content, String dateTimeCreated, Category category) {
+        this.id = id;
+        this.name = name;
+        this.content = content;
+        this.dateTimeCreated = dateTimeCreated;
         this.category = category;
     }
 
@@ -57,5 +68,13 @@ public class Blog {
 
     public void setCategory(Category category) {
         this.category = category;
+    }
+
+    public String getDateTimeCreated() {
+        return dateTimeCreated;
+    }
+
+    public void setDateTimeCreated(String dateTimeCreated) {
+        this.dateTimeCreated = dateTimeCreated;
     }
 }

@@ -11,6 +11,11 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
+import java.util.ArrayList;
+import java.util.Arrays;
+
 
 @Controller
 public class BlogController {
@@ -27,7 +32,15 @@ public class BlogController {
     }
     @GetMapping("/create")
     public String showCreatePage(Model model) {
-        model.addAttribute("blog", new Blog());
+        Blog blog = new Blog();
+
+        LocalDateTime now = LocalDateTime.now();
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss");
+        String formatDateTime = now.format(formatter);
+
+        blog.setDateTimeCreated(formatDateTime);
+
+        model.addAttribute("blog", blog);
         model.addAttribute("categoryList", categoryService.getAll());
         return "/create";
     }
