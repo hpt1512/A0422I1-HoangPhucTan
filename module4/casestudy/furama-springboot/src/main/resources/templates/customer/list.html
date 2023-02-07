@@ -24,10 +24,10 @@
 
             <li style="background-color: aqua" class="list-group-item">
 
-<!--                <form method="get" th:action="@{/findBlogByCategory}">-->
-<!--                    <input hidden type="text" th:value="${category.id}" name="category_id">-->
-<!--                    <button class="w-100" type="submit" th:text="${category.name}"></button>-->
-<!--                </form>-->
+                <!--                <form method="get" th:action="@{/findBlogByCategory}">-->
+                <!--                    <input hidden type="text" th:value="${category.id}" name="category_id">-->
+                <!--                    <button class="w-100" type="submit" th:text="${category.name}"></button>-->
+                <!--                </form>-->
                 Employee
             </li>
             <li style="background-color: aqua" class="list-group-item">Customer</li>
@@ -37,8 +37,9 @@
         </ul>
     </div>
     <div class="col-9">
+        <h3>CUSTOMER LIST</h3>
         <div class="d-flex justify-content-between">
-            <a href="/create">
+            <a href="/customer/create">
                 <button type="button" class="btn btn-primary mb-3">Create</button>
             </a>
 
@@ -49,41 +50,45 @@
             </form>
         </div>
 
-        <span class="text-primary" th:text="${msg}"></span><br>
+        <span class="text-primary" th:text="${mess}"></span><br>
 
         <table class="table table-striped">
             <tr>
                 <th>No</th>
                 <th>ID</th>
+                <th>Customer Type</th>
                 <th>Name</th>
-                <th>Content</th>
-                <th>DateTime Created</th>
-                <th>Category</th>
-                <th></th>
+                <th>Birthday</th>
+                <th>Gender</th>
+                <th>ID Card</th>
+                <th>Phone Number</th>
+                <th>Email</th>
+                <th>Address</th>
                 <th></th>
                 <th></th>
             </tr>
             <tbody id="result">
-            <tr th:each="blog,iter : ${blogList}">
+            <tr th:each="customer,iter : ${customerList}" th:object="${customer}">
                 <td th:text="${iter.count}"></td>
-                <td th:text="${blog.id}"></td>
-                <td th:text="${blog.name}"></td>
-                <td th:text="${blog.content}"></td>
-                <td th:text="${blog.dateTimeCreated}"></td>
-                <td th:text="${blog.category.name}"></td>
+                <td th:text="*{id}"></td>
+                <td th:text="*{customerType.name}"></td>
+                <td th:text="*{name}"></td>
+                <td th:text="*{birthday}"></td>
 
-                <td><a th:href="@{/detail/{id}(id=${blog.id})}">Detail</a></td>
-                <td><a th:href="@{/edit/{id}(id=${blog.id})}">Update</a></td>
-                <td><a th:href="@{/delete/{id}(id=${blog.id})}">Delete</a></td>
+                <td th:if="*{gender == true}">Male</td>
+                <td th:if="*{gender == false}">Female</td>
+
+                <td th:text="*{idCard}"></td>
+                <td th:text="*{phoneNumber}"></td>
+                <td th:text="*{email}"></td>
+                <td th:text="*{address}"></td>
+
+                <td><a th:href="@{/customer/edit/{id}(id=${customer.id})}">Update</a></td>
+                <td><a th:href="@{/customer/delete/{id}(id=${customer.id})}">Delete</a></td>
             </tr>
             </tbody>
         </table>
-        <th:block th:value="${blogList}" id="blogList"></th:block>
     </div>
-</div>
-
-<div style="width: 50%;">
-    <canvas id="myChart"></canvas>
 </div>
 
 </body>

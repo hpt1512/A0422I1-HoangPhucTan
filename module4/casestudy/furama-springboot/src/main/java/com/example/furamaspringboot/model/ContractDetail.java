@@ -5,7 +5,7 @@ import javax.persistence.*;
 @Entity
 public class ContractDetail {
     @Id
-    @GeneratedValue
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
     @ManyToOne
     @JoinColumn(name = "contract_id")

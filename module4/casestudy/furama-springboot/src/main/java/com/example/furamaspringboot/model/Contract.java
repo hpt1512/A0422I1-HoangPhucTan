@@ -6,7 +6,7 @@ import java.util.Date;
 @Entity
 public class Contract {
     @Id
-    @GeneratedValue
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
     private Date startDate;
     private Date endDate;

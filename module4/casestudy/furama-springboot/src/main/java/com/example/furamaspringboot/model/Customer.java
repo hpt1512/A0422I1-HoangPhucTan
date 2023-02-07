@@ -1,17 +1,20 @@
 package com.example.furamaspringboot.model;
 
+import org.springframework.format.annotation.DateTimeFormat;
+
 import javax.persistence.*;
 import java.util.Date;
 
 @Entity
 public class Customer {
     @Id
-    @GeneratedValue
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
     @ManyToOne
     @JoinColumn(name = "customer_type_id")
     private CustomerType customerType;
     private String name;
+    @DateTimeFormat(pattern = "yyyy-MM-dd")
     private Date birthday;
     private boolean gender;
     private String idCard;

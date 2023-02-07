@@ -1,14 +1,17 @@
 package com.example.furamaspringboot.model;
 
+import org.springframework.format.annotation.DateTimeFormat;
+
 import javax.persistence.*;
 import java.util.Date;
 
 @Entity
 public class Employee {
     @Id
-    @GeneratedValue
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
     private String name;
+    @DateTimeFormat(pattern = "yyyy-MM-dd")
     private Date birthday;
     private String idCard;
     private double salary;
