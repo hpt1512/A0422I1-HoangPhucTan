@@ -3,13 +3,14 @@ package com.example.furamaspringboot.model;
 import org.springframework.format.annotation.DateTimeFormat;
 
 import javax.persistence.*;
+import javax.validation.constraints.Pattern;
 import java.util.Date;
 
 @Entity
 public class Customer {
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Integer id;
+    @Pattern(regexp = "^KH-[0-9]{4}$", message = "Customer ID format exception")
+    private String id;
     @ManyToOne
     @JoinColumn(name = "customer_type_id")
     private CustomerType customerType;
@@ -25,7 +26,7 @@ public class Customer {
     public Customer() {
     }
 
-    public Customer(Integer id, CustomerType customerType, String name, Date birthday, boolean gender, String idCard, String phoneNumber, String email, String address) {
+    public Customer(String id, CustomerType customerType, String name, Date birthday, boolean gender, String idCard, String phoneNumber, String email, String address) {
         this.id = id;
         this.customerType = customerType;
         this.name = name;
@@ -37,11 +38,11 @@ public class Customer {
         this.address = address;
     }
 
-    public Integer getId() {
+    public String getId() {
         return id;
     }
 
-    public void setId(Integer id) {
+    public void setId(String id) {
         this.id = id;
     }
 

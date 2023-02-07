@@ -1,5 +1,7 @@
 package com.example.furamaspringboot.model;
 
+import org.hibernate.annotations.Cascade;
+
 import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.Id;

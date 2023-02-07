@@ -41,6 +41,11 @@
 
         <form class="text-primary fw-bold" method="post" th:action="@{/customer/doCreate}" th:object="${customer}">
             <div class="mb-3">
+                <label class="form-label">ID</label>
+                <input type="text" class="form-control" th:field="*{id}">
+                <span class="text-danger" th:if="${#fields.hasErrors('id')}" th:errors="*{id}"></span>
+            </div>
+            <div class="mb-3">
                 <label class="form-label">Customer Type</label>
                 <select class="form-select" th:field="*{customerType}">
                     <option th:each="customerType : ${customerTypes}" th:value="${customerType.id}" th:text="${customerType.name}"></option>

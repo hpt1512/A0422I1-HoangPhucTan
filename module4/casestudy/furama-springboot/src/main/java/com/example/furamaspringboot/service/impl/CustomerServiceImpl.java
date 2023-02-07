@@ -34,6 +34,6 @@ public class CustomerServiceImpl implements IBaseService<Customer> {
 
     @Override
     public Customer findById(Integer id) {
-        return customerRepository.findById(id).orElse(null);
+        return null;
     }
 }

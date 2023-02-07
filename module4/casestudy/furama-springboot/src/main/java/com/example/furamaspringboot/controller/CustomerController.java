@@ -6,8 +6,12 @@ import com.example.furamaspringboot.service.IBaseService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.ui.ModelMap;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
+
+import javax.validation.Valid;
 
 @Controller
 @RequestMapping("/customer")
@@ -28,7 +32,12 @@ public class CustomerController {
         return "customer/create";
     }
     @PostMapping("/doCreate")
-    public String doCreate(@ModelAttribute Customer customer, RedirectAttributes redirectAttributes) {
+    public String doCreate(@Valid @ModelAttribute Customer customer, BindingResult bindingResult,
+                           RedirectAttributes redirectAttributes, Model model) {
+        if (bindingResult.hasErrors()) {
+            model.addAttribute("customerTypes", customerTypeService.findAll());
+            return "customer/create";
+        }
         customerService.insert(customer);
         redirectAttributes.addFlashAttribute("mess", "Create customer successfully");
         return "redirect:/customer";

@@ -92,6 +92,24 @@
             </tr>
             </tbody>
         </table>
+
+        <!--Phân trang-->
+<!--        <div class="block-outer block-outer&#45;&#45;after">-->
+<!--            <a th:href="@{/customer(size=${employeeList.size}, page=${employeeList.number})}"-->
+<!--               th:if="${employeeList.hasPrevious()}"-->
+<!--               class="btn border border-primary" style="float: left">Previous</a>-->
+<!--            <div th:if="${customers.totalPages>0}"-->
+<!--                 th:each="pageNumber : ${pageNumbers}">-->
+<!--                <a th:href="@{/customer(size=${customers.size}, page=${pageNumber})}"-->
+<!--                   th:text="${pageNumber}"-->
+<!--                   th:class="${pageNumber==customers.number +1} ? 'btn btn-primary' : 'btn border border-primary'"-->
+<!--                   style="float: left"></a>-->
+<!--            </div>-->
+<!--            <a th:href="@{/customer(size=${customers.size}, page=${customers.number+2})}"-->
+<!--               th:if="${customers.hasNext()}"-->
+<!--               class="btn border border-primary" style="float: left">Next</a>-->
+<!--        </div>-->
+
     </div>
 </div>
 
