@@ -69,6 +69,7 @@
             <div class="mb-3">
                 <label class="form-label">ID Card</label>
                 <input type="text" class="form-control" th:field="*{idCard}">
+                <span class="text-danger" th:if="${#fields.hasErrors('idCard')}" th:errors="*{idCard}"></span>
             </div>
             <div class="mb-3">
                 <label class="form-label">PhoneNumber</label>

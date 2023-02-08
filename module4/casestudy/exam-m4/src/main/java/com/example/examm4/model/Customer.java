@@ -1,34 +1,34 @@
 package com.example.examm4.model;
 
-import javax.persistence.*;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
 
 @Entity
-public class Student {
+public class Customer {
     @Id
-    private String id;
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Integer id;
     private String name;
     private String phoneNumber;
     private String email;
-    @ManyToOne
-    @JoinColumn(name = "class_id")
-    private Class classRoom;
 
-    public Student() {
+    public Customer() {
     }
 
-    public Student(String id, String name, String phoneNumber, String email, Class classRoom) {
+    public Customer(Integer id, String name, String phoneNumber, String email) {
         this.id = id;
         this.name = name;
         this.phoneNumber = phoneNumber;
         this.email = email;
-        this.classRoom = classRoom;
     }
 
-    public String getId() {
+    public Integer getId() {
         return id;
     }
 
-    public void setId(String id) {
+    public void setId(Integer id) {
         this.id = id;
     }
 
@@ -54,13 +54,5 @@ public class Student {
 
     public void setEmail(String email) {
         this.email = email;
-    }
-
-    public Class getClassRoom() {
-        return classRoom;
-    }
-
-    public void setClassRoom(Class classRoom) {
-        this.classRoom = classRoom;
     }
 }

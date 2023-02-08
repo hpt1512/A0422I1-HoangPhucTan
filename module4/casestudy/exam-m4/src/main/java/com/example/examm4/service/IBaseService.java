@@ -7,4 +7,5 @@ public interface IBaseService<E> {
     E findById(Integer id);
     void insert(E e);
     void update(E e);
+    void delete(E e);
 }

@@ -18,6 +18,7 @@ public class Customer {
     @DateTimeFormat(pattern = "yyyy-MM-dd")
     private Date birthday;
     private boolean gender;
+    @Pattern(regexp = "^[0-9]{9}$", message = "ID Card format exception")
     private String idCard;
     private String phoneNumber;
     private String email;
