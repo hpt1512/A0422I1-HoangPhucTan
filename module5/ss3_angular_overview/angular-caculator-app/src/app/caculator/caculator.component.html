@@ -1,0 +1,93 @@
+<style>
+    form {
+  background: #ccc;
+  margin: 0 auto;
+  width: 300px;
+  padding: 20px;
+  border-radius: 5px;
+}
+
+form * {
+  box-sizing: border-box;
+}
+
+form table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+form table tr, form table td {
+  border: 1px solid #eee;
+}
+
+form table tr:first-child input {
+  height: 50px;
+  padding: 0 10px;
+  font-weight: 700;
+}
+
+form table tr:not(:first-child) td {
+  height: 70px;
+}
+
+form table tr:not(:first-child) td input {
+  height: 100%;
+}
+
+form table input {
+  width: 100%;
+  display: block;
+  border: 0;
+  font-size: 16px;
+}
+
+form table input:focus {
+  outline: none;
+}
+
+form table input:hover {
+  background: #eee;
+  transition: all .2s ease-in-out;
+}
+
+form table input.operator {
+  font-weight: 700;
+  color: #fff;
+  background: #ffcc00;
+}
+
+</style>
+<form name="calculator">
+    <table>
+      <tr>
+        <td colspan="4">
+          <input type="text" name="display" disabled [value] = "inputNumber">
+        </td>
+      </tr>
+      <tr>
+        <td><input type="button" #one value="1" (click) = "showInput(one.value)"></td>
+        <td><input type="button" #two value="2" (click) = "showInput(two.value)"></td>
+        <td><input type="button" #three value="3" (click) = "showInput(three.value)"></td>
+        <td><input type="button" class="operator" #plus value="+" (click) = "showInput(plus.value)"></td>
+      </tr>
+      <tr>
+        <td><input type="button" #four value="4" (click) = "showInput(four.value)"></td>
+        <td><input type="button" #five value="5" (click) = "showInput(five.value)"></td>
+        <td><input type="button" #six value="6" (click) = "showInput(six.value)"></td>
+        <td><input type="button" class="operator" #minus value="-" (click) = "showInput(minus.value)"></td>
+      </tr>
+      <tr>
+        <td><input type="button" #seven value="7" (click) = "showInput(seven.value)"></td>
+        <td><input type="button" #eight value="8" (click) = "showInput(eight.value)"></td>
+        <td><input type="button" #nine value="9" (click) = "showInput(nine.value)"></td>
+        <td><input type="button" class="operator" #times value="x" (click) = "showInput(times.value)"></td>
+      </tr>
+      <tr>
+        <td><input type="button" class="operator" id="clear" #clear value="C" (click) = "clearInput()"></td>
+        <td><input type="button" class="operator" #zero value="0" (click) = "showInput(zero.value)"></td>
+        <td><input type="button" class="operator" #doit value="=" (click) = "countResult(inputNumber)"></td>
+        <td><input type="button" class="operator" #div value="/" (click) = "showInput(div.value)"></td>
+      </tr>
+    </table>
+  </form>
+  

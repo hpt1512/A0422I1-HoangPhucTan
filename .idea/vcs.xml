@@ -3,5 +3,8 @@
   <component name="VcsDirectoryMappings">
     <mapping directory="" vcs="Git" />
     <mapping directory="$PROJECT_DIR$/module2/src/ss8_clean_code_refactoring/exercise/refactoring/apj-tennis-game" vcs="Git" />
+    <mapping directory="$PROJECT_DIR$/module4/ss10_session_cookie/CGDN-SpringBoot-SessionAttribute" vcs="Git" />
+    <mapping directory="$PROJECT_DIR$/module4/ss1_spring_mvc/customer-management" vcs="Git" />
+    <mapping directory="$PROJECT_DIR$/module4/ss5_orm/customer-management" vcs="Git" />
   </component>
 </project>
