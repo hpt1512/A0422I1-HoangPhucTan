@@ -9,7 +9,13 @@ export class ColorComponent implements OnInit {
 
   constructor() { }
 
+  colorCode : string
+
   ngOnInit(): void {
+  }
+
+  changeColor() {
+      
   }
 
 }
