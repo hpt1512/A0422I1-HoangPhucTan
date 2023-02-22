@@ -6,7 +6,10 @@ import { AppComponent } from './app.component';
 import { HeaderComponent } from './header/header.component';
 import { FooterComponent } from './footer/footer.component';
 import { NavbarComponent } from './navbar/navbar.component';
-import { ServiceComponent } from './service/service.component';
+import { ServiceComponent } from './service/service-list/service.component';
+import { EditServiceComponent } from './service-edit/edit-service.component';
+import { ServiceCreateComponent } from './service/service-create/service-create.component';
+import { ServiceEditComponent } from './service/service-edit/service-edit.component';
 
 @NgModule({
   declarations: [
@@ -14,7 +17,10 @@ import { ServiceComponent } from './service/service.component';
     HeaderComponent,
     FooterComponent,
     NavbarComponent,
-    ServiceComponent
+    ServiceComponent,
+    EditServiceComponent,
+    ServiceCreateComponent,
+    ServiceEditComponent
   ],
   imports: [
     BrowserModule,
