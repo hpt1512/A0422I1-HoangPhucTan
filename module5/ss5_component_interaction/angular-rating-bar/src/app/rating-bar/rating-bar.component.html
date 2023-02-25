@@ -1,0 +1,28 @@
+<div>
+  <h1>Rating Bar</h1>
+</div>
+<div>
+  <h3 [innerText]="resultRating">1</h3>
+</div>
+<div style="display: flex">
+
+
+  <div style="margin-right: 3px; color: white; font-weight: bold"
+       *ngFor="let item of ratingUnits"
+       #ratingItem
+       (click)="doRating(item)">
+    <div style="display: flex; justify-content: center; align-items: center; width: 50px; height: 50px;"
+         *ngIf="!item.active"
+         [ngStyle]="{'background-color': colorRating}">
+      {{item.value}}
+    </div>
+    <div style="display: flex; justify-content: center; align-items: center; width: 50px; height: 50px;"
+         *ngIf="item.active"
+         [ngStyle]="{'background-color': colorRatingPicked}">
+      {{item.value}}
+    </div>
+
+  </div>
+
+
+</div>
