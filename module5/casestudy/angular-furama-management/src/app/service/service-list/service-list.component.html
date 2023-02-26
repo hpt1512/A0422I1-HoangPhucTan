@@ -1,77 +1,13 @@
 <div class="row shadow shadow-lg p-3 rounded-3" style="margin: 50px 200px;">
   <h3 class="my-3 text-secondary">DANH SÁCH DỊCH VỤ</h3>
   <div class="row">
-    <div class="col-4 p-3">
+    <div class="col-4 p-3" *ngFor="let facility of facilities">
       <div class="card mb-3">
-        <img src="../assets/img/service/service1.png" class="card-img-top" alt="...">
+        <img src="{{facility.image}}" class="card-img-top" alt="...">
         <div class="card-body">
-          <h5 class="card-title">PHÒNG STUDIO SUITE HƯỚNG BIỂN</h5>
-          <p class="card-text"><small class="text-muted">Diện tích phòng: 40.1</small></p>
-        </div>
-        <div class="card-body">
-          <button class="btn btn-warning me-2">Sửa</button>
-          <button class="btn btn-danger">Xoá</button>
-        </div>
-      </div>
-    </div>
-    <div class="col-4 p-3">
-      <div class="card mb-3">
-        <img src="../assets/img/service/service1.png" class="card-img-top" alt="...">
-        <div class="card-body">
-          <h5 class="card-title">PHÒNG STUDIO SUITE HƯỚNG BIỂN</h5>
-          <p class="card-text"><small class="text-muted">Diện tích phòng: 40.1</small></p>
-        </div>
-        <div class="card-body">
-          <button class="btn btn-warning me-2">Sửa</button>
-          <button class="btn btn-danger">Xoá</button>
-        </div>
-      </div>
-    </div>
-    <div class="col-4 p-3">
-      <div class="card mb-3">
-        <img src="../assets/img/service/service1.png" class="card-img-top" alt="...">
-        <div class="card-body">
-          <h5 class="card-title">PHÒNG STUDIO SUITE HƯỚNG BIỂN</h5>
-          <p class="card-text"><small class="text-muted">Diện tích phòng: 40.1</small></p>
-        </div>
-        <div class="card-body">
-          <button class="btn btn-warning me-2">Sửa</button>
-          <button class="btn btn-danger">Xoá</button>
-        </div>
-      </div>
-    </div>
-    <div class="col-4 p-3">
-      <div class="card mb-3">
-        <img src="../assets/img/service/service1.png" class="card-img-top" alt="...">
-        <div class="card-body">
-          <h5 class="card-title">PHÒNG STUDIO SUITE HƯỚNG BIỂN</h5>
-          <p class="card-text"><small class="text-muted">Diện tích phòng: 40.1</small></p>
-        </div>
-        <div class="card-body">
-          <button class="btn btn-warning me-2">Sửa</button>
-          <button class="btn btn-danger">Xoá</button>
-        </div>
-      </div>
-    </div>
-    <div class="col-4 p-3">
-      <div class="card mb-3">
-        <img src="../assets/img/service/service1.png" class="card-img-top" alt="...">
-        <div class="card-body">
-          <h5 class="card-title">PHÒNG STUDIO SUITE HƯỚNG BIỂN</h5>
-          <p class="card-text"><small class="text-muted">Diện tích phòng: 40.1</small></p>
-        </div>
-        <div class="card-body">
-          <button class="btn btn-warning me-2">Sửa</button>
-          <button class="btn btn-danger">Xoá</button>
-        </div>
-      </div>
-    </div>
-    <div class="col-4 p-3">
-      <div class="card mb-3">
-        <img src="../assets/img/service/service1.png" class="card-img-top" alt="...">
-        <div class="card-body">
-          <h5 class="card-title">PHÒNG STUDIO SUITE HƯỚNG BIỂN</h5>
-          <p class="card-text"><small class="text-muted">Diện tích phòng: 40.1</small></p>
+          <h5 class="card-title mb-3">{{facility.name}}</h5>
+          <p class="card-text mb-1"><small class="text-muted">Diện tích phòng: {{facility.area}}</small></p>
+          <p class="card-text"><small class="text-muted">Loại dịch vụ: {{facility.serviceType.name}}</small></p>
         </div>
         <div class="card-body">
           <button class="btn btn-warning me-2">Sửa</button>
