@@ -20,7 +20,7 @@ export class CustomerListComponent implements OnInit {
       address: '60/1 Lê Thị Tính'
     },
     {
-      id: 1,
+      id: 2,
       customerType: {id: 2, name: 'Gold'},
       name: 'Hoàng Anh Trường',
       birthday: '2000-09-22',
@@ -31,7 +31,7 @@ export class CustomerListComponent implements OnInit {
       address: '100 Cù Chính Lan'
     },
     {
-      id: 1,
+      id: 3,
       customerType: {id: 3, name: 'Silva'},
       name: 'Nguyễn Phương Linh',
       birthday: '2003-12-15',
