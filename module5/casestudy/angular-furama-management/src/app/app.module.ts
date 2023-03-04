@@ -3,17 +3,18 @@ import { NgModule } from '@angular/core';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { HeaderComponent } from './header/header.component';
-import { FooterComponent } from './footer/footer.component';
-import { NavbarComponent } from './navbar/navbar.component';
-import { ServiceCreateComponent } from './service/service-create/service-create.component';
-import { ServiceEditComponent } from './service/service-edit/service-edit.component';
-import { ServiceListComponent } from './service/service-list/service-list.component';
-import { CustomerListComponent } from './customer/customer-list/customer-list.component';
-import { CustomerEditComponent } from './customer/customer-edit/customer-edit.component';
-import { CustomerCreateComponent } from './customer/customer-create/customer-create.component';
-import { ContractListComponent } from './contract/contract-list/contract-list.component';
-import { ContractCreateComponent } from './contract/contract-create/contract-create.component';
+import {ServiceCreateComponent} from './component/service/service-create/service-create.component';
+import {ServiceEditComponent} from './component/service/service-edit/service-edit.component';
+import {CustomerListComponent} from './component/customer/customer-list/customer-list.component';
+import {ContractListComponent} from './component/contract/contract-list/contract-list.component';
+import {ServiceListComponent} from './component/service/service-list/service-list.component';
+import {CustomerEditComponent} from './component/customer/customer-edit/customer-edit.component';
+import {CustomerCreateComponent} from './component/customer/customer-create/customer-create.component';
+import {ContractCreateComponent} from './component/contract/contract-create/contract-create.component';
+import {HeaderComponent} from './component/header/header.component';
+import {FooterComponent} from './component/footer/footer.component';
+import {NavbarComponent} from './component/navbar/navbar.component';
+import {ReactiveFormsModule} from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -30,10 +31,11 @@ import { ContractCreateComponent } from './contract/contract-create/contract-cre
     ContractListComponent,
     ContractCreateComponent,
   ],
-  imports: [
-    BrowserModule,
-    AppRoutingModule
-  ],
+    imports: [
+        BrowserModule,
+        AppRoutingModule,
+        ReactiveFormsModule
+    ],
   providers: [],
   bootstrap: [AppComponent]
 })

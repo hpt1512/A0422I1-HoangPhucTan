@@ -1,0 +1,89 @@
+<div class="row">
+  <div class="col-1"></div>
+  <div class="col-10 p-3 shadow shadow-lg rounded-3 my-5 bg-white">
+    <h3 class="mt-2 mb-3 py-2 text-secondary">DANH SÁCH KHÁCH HÀNG</h3>
+    <table class="table table-hover">
+      <thead>
+        <tr>
+          <th>STT</th>
+          <th>ID</th>
+          <th>Loại khách</th>
+          <th>Họ tên</th>
+          <th>Ngày sinh</th>
+          <th>Giới tính</th>
+          <th>CMND</th>
+          <th>Số điện thoại</th>
+          <th>Email</th>
+          <th>Địa chỉ</th>
+          <th></th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let customer of customers, index as i">
+          <td>{{i+1}}</td>
+          <td>{{customer.id}}</td>
+          <td>{{customer.customerType.name}}</td>
+          <td>{{customer.name}}</td>
+          <td>{{customer.birthday | date}}</td>
+          <td *ngIf="customer.gender">Nam</td>
+          <td *ngIf="!customer.gender">Nữ</td>
+          <td>{{customer.idCard}}</td>
+          <td>{{customer.phoneNumber}}</td>
+          <td>{{customer.email}}</td>
+          <td>{{customer.address}}</td>
+          <td style="width: 120px">
+            <button class="btn btn-sm btn-warning me-2">Sửa</button>
+<!--            <button class="btn btn-sm btn-danger">Xoá</button>-->
+            <button type="button"
+                    class="btn btn-sm btn-danger mx-1" data-bs-toggle="modal"
+                    data-bs-target="#exampleModal">
+              Xoá
+            </button>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+    <div class="row">
+      <nav aria-label="Page navigation example">
+        <ul class="pagination d-flex justify-content-center">
+          <li class="page-item">
+            <a class="page-link" href="#" aria-label="Previous">
+              <span aria-hidden="true">&laquo;</span>
+            </a>
+          </li>
+          <li class="page-item"><a class="page-link" href="#">1</a></li>
+          <li class="page-item"><a class="page-link" href="#">2</a></li>
+          <li class="page-item"><a class="page-link" href="#">3</a></li>
+          <li class="page-item">
+            <a class="page-link" href="#" aria-label="Next">
+              <span aria-hidden="true">&raquo;</span>
+            </a>
+          </li>
+        </ul>
+      </nav>
+    </div>
+  </div>
+  <div class="col-1"></div>
+</div>
+
+<!-- Modal -->
+<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <form [formGroup]="" method="get">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLabel">XOÁ KHÁCH HÀNG</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+          <input name="id" id="deleteId" hidden>
+          <span class="text-danger">Xoá khách hàng </span><span id="deleteName"></span>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+          <button type="submit" class="btn btn-primary">OK</button>
+        </div>
+      </div>
+    </form>
+  </div>
+</div>
