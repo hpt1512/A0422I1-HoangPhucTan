@@ -15,6 +15,8 @@ import {HeaderComponent} from './component/header/header.component';
 import {FooterComponent} from './component/footer/footer.component';
 import {NavbarComponent} from './component/navbar/navbar.component';
 import {ReactiveFormsModule} from '@angular/forms';
+import {BrowserAnimationsModule} from "@angular/platform-browser/animations";
+import {ToastrModule} from "ngx-toastr";
 
 @NgModule({
   declarations: [
@@ -34,7 +36,9 @@ import {ReactiveFormsModule} from '@angular/forms';
     imports: [
         BrowserModule,
         AppRoutingModule,
-        ReactiveFormsModule
+        ReactiveFormsModule,
+        ToastrModule.forRoot(),
+        BrowserAnimationsModule
     ],
   providers: [],
   bootstrap: [AppComponent]

@@ -1,81 +1,177 @@
+<!--<div class="row">-->
+<!--  <div class="col-2"></div>-->
+<!--  <div class="col-8 p-3 shadow shadow-lg rounded-3 my-5 bg-white">-->
+<!--    <h3 class="mt-2 mb-3 py-2 text-secondary">THÊM MỚI DỊCH VỤ</h3>-->
+<!--    <form class="px-5" [formGroup]="serviceForm" (ngSubmit)="createNewFacility()">-->
+<!--      <div class="mb-3">-->
+<!--        <label class="form-label">Mã dịch vụ</label>-->
+<!--        <input type="text" class="form-control" formControlName="id">-->
+<!--        <p class="text-danger" *ngIf="serviceForm.controls.id.hasError('required') && serviceForm.controls.id.touched">Không được để trống</p>-->
+<!--      </div>-->
+<!--      <div class="mb-3">-->
+<!--        <label class="form-label">Tên dịch vụ</label>-->
+<!--        <input type="text" class="form-control" formControlName="name">-->
+<!--        <p class="text-danger" *ngIf="serviceForm.controls.name.hasError('required') && serviceForm.controls.name.touched">Không được để trống</p>-->
+<!--        <p class="text-danger" *ngIf="serviceForm.controls.name.hasError('pattern') && serviceForm.controls.name.touched">Tên dịch vụ không được chứa số</p>-->
+<!--      </div>-->
+<!--      <div class="mb-3">-->
+<!--        <label class="form-label">Hình ảnh</label>-->
+<!--        <input type="file" class="form-control" formControlName="image">-->
+<!--        <p class="text-danger" *ngIf="serviceForm.controls.image.hasError('required') && serviceForm.controls.image.touched">Không được để trống</p>-->
+<!--      </div>-->
+<!--      <div class="mb-3">-->
+<!--        <label class="form-label">Diện tích sử dụng</label>-->
+<!--        <input type="number" class="form-control" formControlName="area">-->
+<!--        <p class="text-danger" *ngIf="serviceForm.controls.area.hasError('required') && serviceForm.controls.area.touched">Không được để trống</p>-->
+<!--        <p class="text-danger" *ngIf="serviceForm.controls.area.hasError('min') && serviceForm.controls.area.touched">Diện tích không được nhỏ hơn 0</p>-->
+<!--      </div>-->
+<!--      <div class="mb-3">-->
+<!--        <label class="form-label">Chi phí thuê</label>-->
+<!--        <input type="number" class="form-control" formControlName="cost">-->
+<!--        <p class="text-danger" *ngIf="serviceForm.controls.cost.hasError('required') && serviceForm.controls.cost.touched">Không được để trống</p>-->
+<!--        <p class="text-danger" *ngIf="serviceForm.controls.cost.hasError('min') && serviceForm.controls.cost.touched">Chi phí thuê không được nhỏ hơn 0</p>-->
+<!--      </div>-->
+<!--      <div class="mb-3">-->
+<!--        <label class="form-label">Số lượng người tối đa</label>-->
+<!--        <input type="number" class="form-control" formControlName="peopleMax">-->
+<!--        <p class="text-danger" *ngIf="serviceForm.controls.peopleMax.hasError('required') && serviceForm.controls.peopleMax.touched">Không được để trống</p>-->
+<!--        <p class="text-danger" *ngIf="serviceForm.controls.peopleMax.hasError('min') && serviceForm.controls.peopleMax.touched">Số lượng người tối đa không được nhỏ hơn 0</p>-->
+<!--      </div>-->
+<!--      <div class="mb-3">-->
+<!--        <label class="form-label">Kiểu thuê</label>-->
+<!--        <select class="form-select" aria-label="Default select example" formControlName="rentType">-->
+<!--          <option *ngFor="let rentType of rentTypes" [ngValue]="rentType">{{rentType.name}}</option>-->
+<!--        </select>-->
+<!--        <p class="text-danger" *ngIf="serviceForm.controls.rentType.hasError('required') && serviceForm.controls.rentType.touched">Không được để trống</p>-->
+<!--      </div>-->
+<!--      <div class="mb-3">-->
+<!--        <label class="form-label">Loại dịch vụ</label>-->
+<!--        <select class="form-select" aria-label="Default select example" formControlName="serviceType">-->
+<!--          <option *ngFor="let serviceType of serviceTypes" [ngValue]="serviceType">{{serviceType.name}}</option>-->
+<!--        </select>-->
+<!--        <p class="text-danger" *ngIf="serviceForm.controls.serviceType.hasError('required') && serviceForm.controls.serviceType.touched">Không được để trống</p>-->
+<!--      </div>-->
+<!--      <div class="mb-3">-->
+<!--        <label class="form-label">Tiêu chuẩn phòng</label>-->
+<!--        <input type="text" class="form-control" formControlName="standardRoom">-->
+<!--        <p class="text-danger" *ngIf="serviceForm.controls.standardRoom.hasError('required') && serviceForm.controls.standardRoom.touched">Không được để trống</p>-->
+<!--      </div>-->
+<!--      <div class="mb-3">-->
+<!--        <label class="form-label">Tiện nghi khác</label>-->
+<!--        <input type="text" class="form-control" formControlName="descriptionOtherConvenience">-->
+<!--        <p class="text-danger" *ngIf="serviceForm.controls.descriptionOtherConvenience.hasError('required') && serviceForm.controls.descriptionOtherConvenience.touched">Không được để trống</p>-->
+<!--      </div>-->
+<!--      <div class="mb-3">-->
+<!--        <label class="form-label">Diện tích hồ bơi</label>-->
+<!--        <input type="number" class="form-control" formControlName="poolArea">-->
+<!--        <p class="text-danger" *ngIf="serviceForm.controls.poolArea.hasError('required') && serviceForm.controls.poolArea.touched">Không được để trống</p>-->
+<!--        <p class="text-danger" *ngIf="serviceForm.controls.poolArea.hasError('min') && serviceForm.controls.poolArea.touched">Diện tích hồ bơi không được nhỏ hơn 0</p>-->
+<!--        <p class="text-danger" *ngIf="serviceForm.controls.poolArea.hasError('pattern') && serviceForm.controls.poolArea.touched">Diện tích hồ bơi phải là số nguyên</p>-->
+<!--      </div>-->
+<!--      <div class="mb-3">-->
+<!--        <label class="form-label">Số tầng</label>-->
+<!--        <input type="number" class="form-control" formControlName="floor">-->
+<!--        <p class="text-danger" *ngIf="serviceForm.controls.floor.hasError('required') && serviceForm.controls.floor.touched">Không được để trống</p>-->
+<!--        <p class="text-danger" *ngIf="serviceForm.controls.floor.hasError('min') && serviceForm.controls.floor.touched">Số tầng không được được nhỏ hơn 0</p>-->
+<!--        <p class="text-danger" *ngIf="serviceForm.controls.floor.hasError('pattern') && serviceForm.controls.floor.touched">Số tầng phải là số nguyên</p>-->
+<!--      </div>-->
+<!--      <button type="submit" class="btn btn-primary">Thêm mới</button>-->
+<!--    </form>-->
+<!--  </div>-->
+<!--  <div class="col-2"></div>-->
+<!--</div>-->
+
+
+
 <div class="row">
   <div class="col-2"></div>
-  <div class="col-8 p-3 shadow shadow-lg rounded-3 my-5 bg-white">
+  <div class="col-8 p-3 pb-5 shadow shadow-lg rounded-3 my-5 bg-white">
     <h3 class="mt-2 mb-3 py-2 text-secondary">THÊM MỚI DỊCH VỤ</h3>
     <form class="px-5" [formGroup]="serviceForm" (ngSubmit)="createNewFacility()">
-      <div class="mb-3">
-        <label class="form-label">Mã dịch vụ</label>
-        <input type="text" class="form-control" formControlName="id">
-        <p class="text-danger" *ngIf="serviceForm.controls.id.hasError('required') && serviceForm.controls.id.touched">Không được để trống</p>
-      </div>
-      <div class="mb-3">
-        <label class="form-label">Tên dịch vụ</label>
-        <input type="text" class="form-control" formControlName="name">
-        <p class="text-danger" *ngIf="serviceForm.controls.name.hasError('required') && serviceForm.controls.name.touched">Không được để trống</p>
-        <p class="text-danger" *ngIf="serviceForm.controls.name.hasError('pattern') && serviceForm.controls.name.touched">Tên dịch vụ không được chứa số</p>
+      <div class="row">
+        <div class="mb-3 col-4">
+          <label class="form-label">Mã dịch vụ</label>
+          <input type="text" class="form-control" formControlName="id">
+          <p class="text-danger" *ngIf="serviceForm.controls.id.hasError('required') && serviceForm.controls.id.touched">Không được để trống</p>
+        </div>
+        <div class="mb-3 col-8">
+          <label class="form-label">Tên dịch vụ</label>
+          <input type="text" class="form-control" formControlName="name">
+          <p class="text-danger" *ngIf="serviceForm.controls.name.hasError('required') && serviceForm.controls.name.touched">Không được để trống</p>
+          <p class="text-danger" *ngIf="serviceForm.controls.name.hasError('pattern') && serviceForm.controls.name.touched">Tên dịch vụ không được chứa số</p>
+        </div>
       </div>
       <div class="mb-3">
         <label class="form-label">Hình ảnh</label>
         <input type="file" class="form-control" formControlName="image">
         <p class="text-danger" *ngIf="serviceForm.controls.image.hasError('required') && serviceForm.controls.image.touched">Không được để trống</p>
       </div>
-      <div class="mb-3">
-        <label class="form-label">Diện tích sử dụng</label>
-        <input type="number" class="form-control" formControlName="area">
-        <p class="text-danger" *ngIf="serviceForm.controls.area.hasError('required') && serviceForm.controls.area.touched">Không được để trống</p>
-        <p class="text-danger" *ngIf="serviceForm.controls.area.hasError('min') && serviceForm.controls.area.touched">Diện tích không được nhỏ hơn 0</p>
+      <div class="row">
+        <div class="mb-3 col-4">
+          <label class="form-label">Diện tích sử dụng</label>
+          <input type="number" class="form-control" formControlName="area">
+          <p class="text-danger" *ngIf="serviceForm.controls.area.hasError('required') && serviceForm.controls.area.touched">Không được để trống</p>
+          <p class="text-danger" *ngIf="serviceForm.controls.area.hasError('min') && serviceForm.controls.area.touched">Diện tích không được nhỏ hơn 0</p>
+        </div>
+        <div class="mb-3 col-4">
+          <label class="form-label">Chi phí thuê</label>
+          <input type="number" class="form-control" formControlName="cost">
+          <p class="text-danger" *ngIf="serviceForm.controls.cost.hasError('required') && serviceForm.controls.cost.touched">Không được để trống</p>
+          <p class="text-danger" *ngIf="serviceForm.controls.cost.hasError('min') && serviceForm.controls.cost.touched">Chi phí thuê không được nhỏ hơn 0</p>
+        </div>
+        <div class="mb-3 col-4">
+          <label class="form-label">Số lượng người tối đa</label>
+          <input type="number" class="form-control" formControlName="peopleMax">
+          <p class="text-danger" *ngIf="serviceForm.controls.peopleMax.hasError('required') && serviceForm.controls.peopleMax.touched">Không được để trống</p>
+          <p class="text-danger" *ngIf="serviceForm.controls.peopleMax.hasError('min') && serviceForm.controls.peopleMax.touched">Số lượng người tối đa không được nhỏ hơn 0</p>
+        </div>
       </div>
-      <div class="mb-3">
-        <label class="form-label">Chi phí thuê</label>
-        <input type="number" class="form-control" formControlName="cost">
-        <p class="text-danger" *ngIf="serviceForm.controls.cost.hasError('required') && serviceForm.controls.cost.touched">Không được để trống</p>
-        <p class="text-danger" *ngIf="serviceForm.controls.cost.hasError('min') && serviceForm.controls.cost.touched">Chi phí thuê không được nhỏ hơn 0</p>
+      <div class="row">
+        <div class="mb-3 col-6">
+          <label class="form-label">Kiểu thuê</label>
+          <select class="form-select" aria-label="Default select example" formControlName="rentType">
+            <option *ngFor="let rentType of rentTypes" [ngValue]="rentType">{{rentType.name}}</option>
+          </select>
+          <p class="text-danger" *ngIf="serviceForm.controls.rentType.hasError('required') && serviceForm.controls.rentType.touched">Không được để trống</p>
+        </div>
+        <div class="mb-3 col-6">
+          <label class="form-label">Loại dịch vụ</label>
+          <select class="form-select" aria-label="Default select example" formControlName="serviceType">
+            <option *ngFor="let serviceType of serviceTypes" [ngValue]="serviceType">{{serviceType.name}}</option>
+          </select>
+          <p class="text-danger" *ngIf="serviceForm.controls.serviceType.hasError('required') && serviceForm.controls.serviceType.touched">Không được để trống</p>
+        </div>
       </div>
-      <div class="mb-3">
-        <label class="form-label">Số lượng người tối đa</label>
-        <input type="number" class="form-control" formControlName="peopleMax">
-        <p class="text-danger" *ngIf="serviceForm.controls.peopleMax.hasError('required') && serviceForm.controls.peopleMax.touched">Không được để trống</p>
-        <p class="text-danger" *ngIf="serviceForm.controls.peopleMax.hasError('min') && serviceForm.controls.peopleMax.touched">Số lượng người tối đa không được nhỏ hơn 0</p>
+      <div class="row">
+        <div class="mb-3 col-6">
+          <label class="form-label">Tiêu chuẩn phòng</label>
+          <input type="text" class="form-control" formControlName="standardRoom">
+          <p class="text-danger" *ngIf="serviceForm.controls.standardRoom.hasError('required') && serviceForm.controls.standardRoom.touched">Không được để trống</p>
+        </div>
+        <div class="mb-3 col-6">
+          <label class="form-label">Tiện nghi khác</label>
+          <input type="text" class="form-control" formControlName="descriptionOtherConvenience">
+          <p class="text-danger" *ngIf="serviceForm.controls.descriptionOtherConvenience.hasError('required') && serviceForm.controls.descriptionOtherConvenience.touched">Không được để trống</p>
+        </div>
       </div>
-      <div class="mb-3">
-        <label class="form-label">Kiểu thuê</label>
-        <select class="form-select" aria-label="Default select example" formControlName="rentType">
-          <option *ngFor="let rentType of rentTypes" [ngValue]="rentType">{{rentType.name}}</option>
-        </select>
-        <p class="text-danger" *ngIf="serviceForm.controls.rentType.hasError('required') && serviceForm.controls.rentType.touched">Không được để trống</p>
+      <div class="row">
+        <div class="mb-3 col-6">
+          <label class="form-label">Diện tích hồ bơi</label>
+          <input type="number" class="form-control" formControlName="poolArea">
+          <p class="text-danger" *ngIf="serviceForm.controls.poolArea.hasError('required') && serviceForm.controls.poolArea.touched">Không được để trống</p>
+          <p class="text-danger" *ngIf="serviceForm.controls.poolArea.hasError('min') && serviceForm.controls.poolArea.touched">Diện tích hồ bơi không được nhỏ hơn 0</p>
+          <p class="text-danger" *ngIf="serviceForm.controls.poolArea.hasError('pattern') && serviceForm.controls.poolArea.touched">Diện tích hồ bơi phải là số nguyên</p>
+        </div>
+        <div class="mb-3 col-6">
+          <label class="form-label">Số tầng</label>
+          <input type="number" class="form-control" formControlName="floor">
+          <p class="text-danger" *ngIf="serviceForm.controls.floor.hasError('required') && serviceForm.controls.floor.touched">Không được để trống</p>
+          <p class="text-danger" *ngIf="serviceForm.controls.floor.hasError('min') && serviceForm.controls.floor.touched">Số tầng không được được nhỏ hơn 0</p>
+          <p class="text-danger" *ngIf="serviceForm.controls.floor.hasError('pattern') && serviceForm.controls.floor.touched">Số tầng phải là số nguyên</p>
+        </div>
       </div>
-      <div class="mb-3">
-        <label class="form-label">Loại dịch vụ</label>
-        <select class="form-select" aria-label="Default select example" formControlName="serviceType">
-          <option *ngFor="let serviceType of serviceTypes" [ngValue]="serviceType">{{serviceType.name}}</option>
-        </select>
-        <p class="text-danger" *ngIf="serviceForm.controls.serviceType.hasError('required') && serviceForm.controls.serviceType.touched">Không được để trống</p>
-      </div>
-      <div class="mb-3">
-        <label class="form-label">Tiêu chuẩn phòng</label>
-        <input type="text" class="form-control" formControlName="standardRoom">
-        <p class="text-danger" *ngIf="serviceForm.controls.standardRoom.hasError('required') && serviceForm.controls.standardRoom.touched">Không được để trống</p>
-      </div>
-      <div class="mb-3">
-        <label class="form-label">Tiện nghi khác</label>
-        <input type="text" class="form-control" formControlName="descriptionOtherConvenience">
-        <p class="text-danger" *ngIf="serviceForm.controls.descriptionOtherConvenience.hasError('required') && serviceForm.controls.descriptionOtherConvenience.touched">Không được để trống</p>
-      </div>
-      <div class="mb-3">
-        <label class="form-label">Diện tích hồ bơi</label>
-        <input type="number" class="form-control" formControlName="poolArea">
-        <p class="text-danger" *ngIf="serviceForm.controls.poolArea.hasError('required') && serviceForm.controls.poolArea.touched">Không được để trống</p>
-        <p class="text-danger" *ngIf="serviceForm.controls.poolArea.hasError('min') && serviceForm.controls.poolArea.touched">Diện tích hồ bơi không được nhỏ hơn 0</p>
-        <p class="text-danger" *ngIf="serviceForm.controls.poolArea.hasError('pattern') && serviceForm.controls.poolArea.touched">Diện tích hồ bơi phải là số nguyên</p>
-      </div>
-      <div class="mb-3">
-        <label class="form-label">Số tầng</label>
-        <input type="number" class="form-control" formControlName="floor">
-        <p class="text-danger" *ngIf="serviceForm.controls.floor.hasError('required') && serviceForm.controls.floor.touched">Không được để trống</p>
-        <p class="text-danger" *ngIf="serviceForm.controls.floor.hasError('min') && serviceForm.controls.floor.touched">Số tầng không được được nhỏ hơn 0</p>
-        <p class="text-danger" *ngIf="serviceForm.controls.floor.hasError('pattern') && serviceForm.controls.floor.touched">Số tầng phải là số nguyên</p>
-      </div>
-      <button type="submit" class="btn btn-primary">Thêm mới</button>
+      <button (click)="offFormCreate()" type="button" class="btn btn-danger mt-2 me-2">Huỷ</button>
+      <button type="submit" class="btn btn-primary mt-2">Thêm mới</button>
     </form>
   </div>
   <div class="col-2"></div>

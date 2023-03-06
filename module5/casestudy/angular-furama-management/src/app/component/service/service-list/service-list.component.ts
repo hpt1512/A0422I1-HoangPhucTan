@@ -37,4 +37,14 @@ export class ServiceListComponent implements OnInit {
     console.log(this.facilityService.getAll());
     this.getAll();
   }
+
+  showFormCreate() {
+    document.getElementById('modal-form-create-service').classList.remove('d-none')
+    document.getElementById('app').style.opacity = '50%';
+  }
+
+  static offFormCreate() {
+    document.getElementById('modal-form-create-service').classList.add('d-none')
+    document.getElementById('app').style.opacity = '100%';
+  }
 }

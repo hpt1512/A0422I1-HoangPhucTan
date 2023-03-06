@@ -44,14 +44,15 @@ export class ServiceEditComponent implements OnInit {
       serviceType: new FormControl(this.facility.serviceType, [Validators.required]),
       standardRoom: new FormControl(this.facility.standardRoom, [Validators.required]),
       descriptionOtherConvenience: new FormControl(this.facility.descriptionOtherConvenience, [Validators.required]),
-      poolArea: new FormControl(this.facility.poolArea, [Validators.required, Validators.min(0), Validators.pattern('[0-9]')]),
-      floor: new FormControl(this.facility.floor, [Validators.required, Validators.min(0), Validators.pattern('[0-9]')]),
+      poolArea: new FormControl(this.facility.poolArea, [Validators.required, Validators.min(0)]),
+      floor: new FormControl(this.facility.floor, [Validators.required, Validators.min(0)]),
     });
     this.rentTypes = this.rentTypeService.getAll();
     this.serviceTypes = this.serviceTypeService.getAll();
   }
 
   ngOnInit(): void {
+    console.log(document.getElementById('imgDiv'))
   }
 
   updateFacility() {
@@ -62,4 +63,5 @@ export class ServiceEditComponent implements OnInit {
     }
     console.log(this.facilityService.getAll());
   }
+
 }

@@ -10,7 +10,7 @@ export class FacilityService {
   facilities: Facility[] = [
     {
       id: 1,
-      name: 'Villa A1 hướng biển',
+      name: 'Villa hướng biển',
       image: 'service1.png',
       area: 100,
       cost: 100,
@@ -58,7 +58,7 @@ export class FacilityService {
       cost: 100,
       peopleMax: 5,
       rentType: this.rentTypeService.getById(1),
-      serviceType: {id: 1, name: 'Villa'},
+      serviceType: this.serviceTypeService.getById(1),
       standardRoom: 'vip',
       descriptionOtherConvenience: 'Bếp nướng',
       poolArea: 20,

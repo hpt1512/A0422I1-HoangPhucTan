@@ -4,6 +4,8 @@ import {RentTypeService} from '../../../service/rent-type/rent-type.service';
 import {ServiceTypeService} from '../../../service/service-type/service-type.service';
 import {FacilityService} from '../../../service/facility/facility.service';
 import {Router} from '@angular/router';
+import {ServiceListComponent} from "../service-list/service-list.component";
+import {ToastrService} from "ngx-toastr";
 
 @Component({
   selector: 'app-service-create',
@@ -18,7 +20,11 @@ export class ServiceCreateComponent implements OnInit {
   constructor(private rentTypeService: RentTypeService,
               private serviceTypeService: ServiceTypeService,
               private facilityService: FacilityService,
-              private router: Router) {
+              private router: Router,
+              private toast: ToastrService) {
+  }
+
+  ngOnInit(): void {
     this.serviceForm = new FormGroup({
         id: new FormControl('', [Validators.required]),
         name: new FormControl('', [Validators.required, Validators.pattern('^[^0-9()]+$')]),
@@ -30,13 +36,10 @@ export class ServiceCreateComponent implements OnInit {
         serviceType: new FormControl('', [Validators.required]),
         standardRoom: new FormControl('', [Validators.required]),
         descriptionOtherConvenience: new FormControl('', [Validators.required]),
-        poolArea: new FormControl('', [Validators.required, Validators.min(0), Validators.pattern('[0-9]')]),
-        floor: new FormControl('', [Validators.required, Validators.min(0), Validators.pattern('[0-9]')]),
+        poolArea: new FormControl('', [Validators.required, Validators.min(0)]),
+        floor: new FormControl('', [Validators.required, Validators.min(0)]),
       }
     );
-  }
-
-  ngOnInit(): void {
   }
 
   createNewFacility() {
@@ -44,8 +47,16 @@ export class ServiceCreateComponent implements OnInit {
     console.log(this.serviceForm.value);
     if (this.serviceForm.valid) {
       this.facilityService.createNewFacility(this.serviceForm.value);
-      this.router.navigateByUrl('');
+      this.offFormCreate();
+      this.toast.success("Thêm mới dịch vụ thành công");
+    } else {
+      this.toast.error("Dữ liệu không hợp lệ, vui lòng kiểm tra lại")
     }
     console.log(this.facilityService.getAll());
+  }
+
+  offFormCreate() {
+    this.ngOnInit()
+    ServiceListComponent.offFormCreate();
   }
 }

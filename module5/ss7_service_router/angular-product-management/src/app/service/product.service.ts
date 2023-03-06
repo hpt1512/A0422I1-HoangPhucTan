@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
 import {Product} from '../model/product';
+import {element} from "protractor";
 
 @Injectable({
   providedIn: 'root'
@@ -37,7 +38,23 @@ export class ProductService {
     return this.products;
   }
 
+  getById(id: number) {
+    return this.products.filter(element => element.id === id)[0];
+  }
+
   saveProduct(product) {
     this.products.push(product);
+  }
+
+  updateProduct(id: number, product: Product) {
+    for (let i = 0; i < this.products.length; i++) {
+      if (this.products[i].id === id) {
+        this.products[i] = product;
+      }
+    }
+  }
+
+  deleteProduct(id: number) {
+    this.products = this.products.filter(element => element.id != id);
   }
 }
