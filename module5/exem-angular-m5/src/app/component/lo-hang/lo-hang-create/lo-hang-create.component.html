@@ -1,0 +1,50 @@
+
+<div class="row">
+  <div class="col-2"></div>
+  <div class="col-8 p-3 pb-5 shadow shadow-lg rounded-3 my-5 bg-white">
+    <h3 class="mt-2 mb-3 py-2 text-secondary">THÊM MỚI LÔ HÀNG</h3>
+    <form class="px-5" [formGroup]="loHangForm" (ngSubmit)="createNewLoHang()">
+
+      <div>
+        <label class="form-label">Mã Lô Hàng</label>
+        <input type="text" class="form-control" formControlName="id">
+        <p class="text-danger" *ngIf="loHangForm.controls.id.hasError('required') && loHangForm.controls.id.touched">Không được để trống</p>
+        <p class="text-danger" *ngIf="loHangForm.controls.id.hasError('pattern') && loHangForm.controls.id.touched">Không đúng định dạng LH-XXXX</p>
+      </div>
+      <div>
+        <label class="form-label">Sản Phẩm</label>
+        <select class="form-select" aria-label="Default select example" formControlName="sanPham" [compareWith]="compareFn" [(ngModel)]="defaultItem">
+          <option *ngFor="let sanPham of danhSachSanPham" [ngValue]="sanPham">{{sanPham.tenSanPham}}</option>
+        </select>
+        <p class="text-danger" *ngIf="loHangForm.controls.sanPham.hasError('required') && loHangForm.controls.sanPham.touched">Không được để trống</p>
+      </div>
+      <div>
+        <label class="form-label">Số Lượng</label>
+        <input type="number" class="form-control" formControlName="soLuong">
+        <p class="text-danger" *ngIf="loHangForm.controls.soLuong.hasError('required') && loHangForm.controls.soLuong.touched">Không được để trống</p>
+<!--        <p class="text-danger" *ngIf="loHangForm.controls.soLuong.hasError('min') && loHangForm.controls.soLuong.touched">Số lượng phải là số dương</p>-->
+        <p class="text-danger" *ngIf="loHangForm.controls.soLuong.hasError('pattern') && loHangForm.controls.soLuong.touched">Số lượng phải là số nguyên dương</p>
+      </div>
+      <div>
+        <label class="form-label">Ngày Nhập Hàng</label>
+        <input type="date" class="form-control" formControlName="ngayNhapHang">
+        <p class="text-danger" *ngIf="loHangForm.controls.ngayNhapHang.hasError('required') && loHangForm.controls.ngayNhapHang.touched">Không được để trống</p>
+      </div>
+      <div>
+        <label class="form-label">Ngày Sản Xuất</label>
+        <input type="date" class="form-control" formControlName="ngaySanXuat">
+        <p class="text-danger" *ngIf="loHangForm.controls.ngaySanXuat.hasError('required') && loHangForm.controls.ngaySanXuat.touched">Không được để trống</p>
+      </div>
+      <div>
+        <label class="form-label">Ngày Hết Hạn</label>
+        <input type="date" class="form-control" formControlName="ngayHetHan">
+        <p class="text-danger" *ngIf="loHangForm.controls.ngayHetHan.hasError('required') && loHangForm.controls.ngayHetHan.touched">Không được để trống</p>
+      </div>
+      <p class="text-danger" *ngIf="loHangForm.hasError('dateValid')">Lưu ý: Ngày sản xuất phải trước ngày hết hạn và ngày nhập hàng, ngày nhập hàng phải trước ngày hết hạn</p>
+      <br>
+      <button type="button" routerLink="/lo-hang/list" class="btn btn-danger mt-2 me-2">Trở lại</button>
+      <button type="submit" class="btn btn-primary mt-2">Thêm mới</button>
+    </form>
+  </div>
+  <div class="col-2"></div>
+</div>

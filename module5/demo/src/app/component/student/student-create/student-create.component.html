@@ -1,0 +1,47 @@
+<!--<br>-&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;<br>-->
+<!--<h3>Create Student</h3>-->
+<!--<label>ID</label>-->
+<!--<input type="text" #id><br>-->
+<!--<label>Name</label>-->
+<!--<input type="text" #name><br>-->
+<!--<label>Date of birth</label>-->
+<!--<input type="date" #dateOfBirth><br>-->
+<!--<label>Point</label>-->
+<!--<input type="number" #point><br>-->
+<!--<button type="button" (click)="addStudent(id.value,name.value, dateOfBirth.value, point.value)">Add Student</button>-->
+
+<!--Template driven form-->
+<!--<br>-&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;<br>-->
+<!--<form #templateForm = "ngForm" (ngSubmit)="addStudentWithTemplate(templateForm)">-->
+<!--<h3>Create Student</h3>-->
+<!--<label>ID</label>-->
+<!--&lt;!&ndash;  Control&ndash;&gt;-->
+<!--<input type="text" ngModel name="id"><br>-->
+<!--<label>Name</label>-->
+<!--<input type="text" ngModel name="name"><br>-->
+<!--<label>Date of birth</label>-->
+<!--<input type="date" ngModel name="dateOfBirth"><br>-->
+<!--<label>Point</label>-->
+<!--<input type="number" ngModel name="point"><br>-->
+<!--<button type="submit" >Add Student</button>-->
+<!--</form>-->
+
+<!--ReactiveForm-->
+<br>---------------------------------<br>
+<form [formGroup]="studentForm" (ngSubmit)="addStudentWithReactive()">
+  <h3>Create Student</h3>
+  <label>ID</label>
+  <!--  Control-->
+  <input type="text" formControlName="id" name="id"><br>
+  <p style="color: red" *ngIf="studentForm.controls.id.hasError('required') && studentForm.controls.id.touched">Id không được để trống</p>
+  <label>Name</label>
+  <input type="text" formControlName="name" name="name"><br>
+  <p style="color: red" *ngIf="studentForm.controls.name.hasError('minlength') && studentForm.controls.name.touched">Tên không được để trống</p>
+  <p style="color: red" *ngIf="studentForm.hasError('invalidName')">Tên không phải là HaiTT</p>
+  <label>Date of birth</label>
+  <input type="date" formControlName="dateOfBirth" name="dateOfBirth"><br>
+  <label>Point</label>
+  <input type="number" formControlName="point" name="point" min="9"><br>
+  <p style="color: red" *ngIf="studentForm.controls.point.hasError('invalidPoint')">Điểm không được nhỏ hơn 0</p>
+  <button type="submit" >Add Student</button>
+</form>

@@ -1,0 +1,100 @@
+<div class="row">
+  <div class="col-1"></div>
+  <div class="col-10 p-3 shadow shadow-lg rounded-3 my-5 bg-white">
+    <div class="d-flex justify-content-between px-2 mb-3">
+      <h3 class="mt-2 mb-3 py-2 text-secondary">DANH SÁCH LÔ HÀNG</h3>
+
+      <form [formGroup]="formSearch" (ngSubmit)="searchLoHang()"
+            class="input-group w-25 h-25 m-auto flex-nowrap d-flex align-items-center" method="get">
+        <input type="text" class="form-control" placeholder="Nhập tên sản phẩm" formControlName="nameProductSearch">
+        <button type="submit" class="btn btn-success">Tìm</button>
+      </form>
+      <form [formGroup]="formSearchDate" (ngSubmit)="searchLoHangByDate()"
+            class="input-group w-25 h-25 m-auto flex-nowrap d-flex align-items-center" method="get">
+        <input type="date" class="form-control" formControlName="ngayHetHanSearch">
+        <button type="submit" class="btn btn-success">Tìm</button>
+      </form>
+
+      <button style="border: none; background: none" routerLink="/lo-hang/create"><i
+        class="bi bi-plus-circle-fill fs-2 text-success"></i></button>
+    </div>
+
+    <table class="table table-hover">
+      <thead>
+      <tr>
+        <th>STT</th>
+        <th>Mã Lô Hàng</th>
+        <th>Sản Phảm</th>
+        <th>Giá tiền</th>
+        <th>Đơn vị</th>
+        <th>Số Lượng</th>
+        <th>Ngày Nhập Hàng</th>
+        <th>Ngày Sản Xuất</th>
+        <th>Ngày Hết Hạn</th>
+        <th></th>
+      </tr>
+      </thead>
+      <tbody>
+      <tr *ngFor="let item of danhSachLoHang, index as i">
+        <td>{{i + 1}}</td>
+        <td>{{item.id}}</td>
+        <td>{{item.sanPham.tenSanPham}}</td>
+        <td>{{item.sanPham.giaTien * item.soLuong | currency}}</td>
+        <td>{{item.sanPham.donVi}}</td>
+        <td>{{item.soLuong}}</td>
+        <td>{{item.ngayNhapHang}}</td>
+        <td>{{item.ngaySanXuat}}</td>
+        <td>{{item.ngayHetHan}}</td>
+        <td style="width: 150px">
+          <button class="btn btn-sm btn-warning me-2">Sửa</button>
+          <button (click)="infoDelete(item.id, item.id)" type="button" class="btn btn-sm btn-danger"
+                  data-bs-toggle="modal" data-bs-target="#exampleModal">Xoá
+          </button>
+        </td>
+      </tr>
+      </tbody>
+    </table>
+    <div class="row">
+      <nav aria-label="Page navigation example">
+        <ul class="pagination d-flex justify-content-center">
+          <li class="page-item">
+            <a class="page-link" href="#" aria-label="Previous">
+              <span aria-hidden="true">&laquo;</span>
+            </a>
+          </li>
+          <li class="page-item"><a class="page-link" href="#">1</a></li>
+          <li class="page-item"><a class="page-link" href="#">2</a></li>
+          <li class="page-item"><a class="page-link" href="#">3</a></li>
+          <li class="page-item">
+            <a class="page-link" href="#" aria-label="Next">
+              <span aria-hidden="true">&raquo;</span>
+            </a>
+          </li>
+        </ul>
+      </nav>
+    </div>
+  </div>
+  <div class="col-1"></div>
+</div>
+
+<!-- Modal -->
+<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">XOÁ LÔ HÀNG</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        Xoá lô hàng <span class="text-danger fw-bold" id="delName"></span>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+        <button (click)="deleteLoHang(delId)" type="button" data-bs-dismiss="modal" class="btn btn-primary">OK</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+

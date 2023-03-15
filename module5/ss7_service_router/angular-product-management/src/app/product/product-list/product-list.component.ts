@@ -18,7 +18,13 @@ export class ProductListComponent implements OnInit {
   }
 
   getAll() {
-    this.products = this.productService.getAll();
+    this.productService.getAll().subscribe(next => {
+      this.products = next;
+    }, error => {
+
+    }, () =>{
+
+    });
   }
 
   showFormEdit(id: number) {
@@ -26,7 +32,8 @@ export class ProductListComponent implements OnInit {
   }
 
   deleteProduct(id: number) {
-    this.productService.deleteProduct(id);
-    this.getAll()
+    this.productService.deleteProduct(id).subscribe(next => {
+      this.getAll()
+    });
   }
 }

@@ -2,10 +2,6 @@
 <form [formGroup]="productForm" (ngSubmit)="submit()">
   <table>
     <tr>
-      <td>Mã sản phẩm:</td>
-      <td><input type="number" formControlName="id"></td>
-    </tr>
-    <tr>
       <td>Tên sản phẩm:</td>
       <td><input type="text" formControlName="name"></td>
     </tr>
@@ -13,10 +9,24 @@
       <td>Giá sản phẩm</td>
       <td><input type="number" formControlName="price"></td>
     </tr>
+    <p style="color: red" *ngIf="productForm.controls.price.hasError('required') && productForm.controls.price.touched">Giá sản phẩm không được để trống</p>
+    <p style="color: red" *ngIf="productForm.controls.price.hasError('min')">Giá sản phẩm không được bé hơn 0</p>
     <tr>
       <td>Mô tả về sản phẩm</td>
       <td><input type="text" formControlName="description"></td>
     </tr>
+    <tr>
+      <td>Danh mục</td>
+      <select formControlName="category" [compareWith]="compareFn" [(ngModel)]="defaultItem">
+        <option *ngFor="let category of categories" [ngValue]="category">{{category.name}}</option>
+      </select>
+    </tr>
+    <tr>
+      <td>Ngày bán</td>
+      <td><input type="date" formControlName="saleDate"></td>
+    </tr>
+    <p style="color: red" *ngIf="productForm.controls.saleDate.hasError('required') && productForm.controls.saleDate.touched">Ngày bán không được để trống</p>
+    <p style="color: red" *ngIf="productForm.controls.saleDate.hasError('saleDateValid') && productForm.controls.saleDate.touched">Ngày bán không được trước ngày hiện tại</p>
     <tr>
       <td></td>
       <td><button>Tạo mới</button></td>

@@ -1,0 +1,130 @@
+{
+  "generals": [
+    {
+      "id": 1,
+      "name": "Yasuo",
+      "price": "6300",
+      "meetingDate": "2023-03-16",
+      "position": {
+        "id": 3,
+        "name": "MID"
+      }
+    },
+    {
+      "id": "NV-0001",
+      "name": "123",
+      "price": 123,
+      "meetingDate": "2023-03-16",
+      "position": {
+        "id": 1,
+        "name": "TOP"
+      }
+    },
+    {
+      "id": "NV-1234",
+      "name": "Hello123",
+      "price": 123,
+      "meetingDate": "2023-03-16",
+      "position": {
+        "id": 1,
+        "name": "TOP"
+      }
+    }
+  ],
+  "position": [
+    {
+      "id": 1,
+      "name": "TOP"
+    },
+    {
+      "id": 2,
+      "name": "JUNGLE"
+    },
+    {
+      "id": 3,
+      "name": "MID"
+    },
+    {
+      "id": 4,
+      "name": "AD"
+    },
+    {
+      "id": 5,
+      "name": "SP"
+    }
+  ],
+  "san-pham": [
+    {
+      "tenSanPham": "Iphone 11",
+      "xuatXu": "Korea",
+      "giaTien": 10000000,
+      "donVi": "Cái"
+    },
+    {
+      "tenSanPham": "Samsung Note 20",
+      "xuatXu": "Japan",
+      "giaTien": 12000000,
+      "donVi": "Cái"
+    },
+    {
+      "tenSanPham": "Dell",
+      "xuatXu": "VN",
+      "giaTien": 20000000,
+      "donVi": "Cái"
+    }
+  ],
+  "lo-hang": [
+    {
+      "id": "LH-0001",
+      "sanPham": {
+        "tenSanPham": "Iphone 11",
+        "xuatXu": "Korea",
+        "giaTien": 10000000,
+        "donVi": "Cái"
+      },
+      "soLuong": 10,
+      "ngayNhapHang": "2023-01-01",
+      "ngaySanXuat": "2023-01-01",
+      "ngayHetHan": "2023-01-01"
+    },
+    {
+      "id": "LH-7894",
+      "sanPham": {
+        "tenSanPham": "Iphone 11",
+        "xuatXu": "Korea",
+        "giaTien": 10000000,
+        "donVi": "Cái"
+      },
+      "soLuong": 1,
+      "ngayNhapHang": "2023-03-09",
+      "ngaySanXuat": "2023-03-24",
+      "ngayHetHan": "2023-03-19"
+    },
+    {
+      "id": "LH-0003",
+      "sanPham": {
+        "tenSanPham": "Samsung Note 20",
+        "xuatXu": "Japan",
+        "giaTien": 11000000,
+        "donVi": "Cái"
+      },
+      "soLuong": 12,
+      "ngayNhapHang": "2023-03-12",
+      "ngaySanXuat": "2023-03-07",
+      "ngayHetHan": "2023-03-17"
+    },
+    {
+      "id": "LH-1235",
+      "sanPham": {
+        "tenSanPham": "Dell",
+        "xuatXu": "VN",
+        "giaTien": 20000000,
+        "donVi": "Cái"
+      },
+      "soLuong": 12,
+      "ngayNhapHang": "2023-03-15",
+      "ngaySanXuat": "2023-03-12",
+      "ngayHetHan": "2023-03-19"
+    }
+  ]
+}

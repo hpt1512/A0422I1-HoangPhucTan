@@ -17,6 +17,7 @@ import {NavbarComponent} from './component/navbar/navbar.component';
 import {ReactiveFormsModule} from '@angular/forms';
 import {BrowserAnimationsModule} from "@angular/platform-browser/animations";
 import {ToastrModule} from "ngx-toastr";
+import {NgxPaginationModule} from "ngx-pagination";
 
 @NgModule({
   declarations: [
@@ -38,7 +39,8 @@ import {ToastrModule} from "ngx-toastr";
         AppRoutingModule,
         ReactiveFormsModule,
         ToastrModule.forRoot(),
-        BrowserAnimationsModule
+        BrowserAnimationsModule,
+        NgxPaginationModule
     ],
   providers: [],
   bootstrap: [AppComponent]

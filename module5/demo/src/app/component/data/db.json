@@ -1,0 +1,84 @@
+{
+  "students": [
+    {
+      "id": 1,
+      "name": "json-server",
+      "dateOfBirth": "1998-01-01",
+      "point": 9,
+      "classroom": {
+        "id": 1,
+        "name": "a0422i1"
+      }
+    },
+    {
+      "id": 2,
+      "name": "HaiTT",
+      "dateOfBirth": "1998-01-01",
+      "point": 9,
+      "classroom": {
+        "id": 1,
+        "name": "a0422i1"
+      }
+    },
+    {
+      "id": 3,
+      "name": "HaiTT",
+      "dateOfBirth": "2023-03-08",
+      "point": 5,
+      "classroom": {
+        "id": 1,
+        "name": "a0422i1"
+      }
+    },
+    {
+      "id": 4,
+      "name": "Khai",
+      "dateOfBirth": "2023-03-14",
+      "point": 98,
+      "classroom": {
+        "id": 1,
+        "name": "a0422i1"
+      }
+    },
+    {
+      "id": 5,
+      "name": "Duyet",
+      "dateOfBirth": "2023-03-07",
+      "point": 5,
+      "classroom": {
+        "id": 1,
+        "name": "a0422i1"
+      }
+    },
+    {
+      "id": 6,
+      "name": "Tai",
+      "dateOfBirth": "2023-03-13",
+      "point": 8,
+      "classroom": {
+        "id": 1,
+        "name": "a0422i1"
+      }
+    },
+    {
+      "id": 7,
+      "name": "Tri",
+      "dateOfBirth": "2023-03-13",
+      "point": 9,
+      "classroom": {
+        "id": 1,
+        "name": "a0422i1"
+      }
+    }
+  ],
+  "classrooms": [
+    {
+      "id": 1,
+      "name": "a0422i1"
+    },
+    {
+      "id": 2,
+      "name": "a0222i1"
+    }
+  ]
+}

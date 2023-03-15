@@ -1,0 +1,7 @@
+<h1>Thông tin học sinh</h1>
+<p [ngStyle]="{'color': color}">Hello A04</p>
+<span>ID: </span>{{student.id}}
+<span>Name: </span>{{student.name}}
+<!--<input type="text" [value]="student.name" (keyup)="changeNameStudent(name.value)" #name>-->
+<input type="text" [(ngModel)]="student.name" #name>
+<button class="btn btn-info" (click)="changeNameStudent(name.value)">Change Name</button>

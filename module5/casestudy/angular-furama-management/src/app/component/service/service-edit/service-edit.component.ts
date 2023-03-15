@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {ActivatedRoute, Router} from '@angular/router';
 import {FacilityService} from '../../../service/facility/facility.service';
 import {Facility} from '../../../model/facility';
@@ -7,6 +7,7 @@ import {ServiceType} from '../../../model/service-type';
 import {RentTypeService} from '../../../service/rent-type/rent-type.service';
 import {ServiceTypeService} from '../../../service/service-type/service-type.service';
 import {FormControl, FormGroup, Validators} from "@angular/forms";
+import {ToastrService} from "ngx-toastr";
 
 @Component({
   selector: 'app-service-edit',
@@ -18,11 +19,13 @@ export class ServiceEditComponent implements OnInit {
   facility: Facility;
   rentTypes: RentType[] = [];
   serviceTypes: ServiceType[] = [];
+
   constructor(private activatedRoute: ActivatedRoute,
               private facilityService: FacilityService,
               private rentTypeService: RentTypeService,
               private serviceTypeService: ServiceTypeService,
-              private router: Router) {
+              private router: Router,
+              private toast: ToastrService) {
     this.activatedRoute.paramMap.subscribe(next => {
       const id = next.get('id');
       if (id != null) {
@@ -44,15 +47,22 @@ export class ServiceEditComponent implements OnInit {
       serviceType: new FormControl(this.facility.serviceType, [Validators.required]),
       standardRoom: new FormControl(this.facility.standardRoom, [Validators.required]),
       descriptionOtherConvenience: new FormControl(this.facility.descriptionOtherConvenience, [Validators.required]),
-      poolArea: new FormControl(this.facility.poolArea, [Validators.required, Validators.min(0)]),
-      floor: new FormControl(this.facility.floor, [Validators.required, Validators.min(0)]),
+      poolArea: new FormControl(this.facility.poolArea, [Validators.required, Validators.min(0), Validators.pattern('^[0-9()]+$')]),
+      floor: new FormControl(this.facility.floor, [Validators.required, Validators.min(0), Validators.pattern('^[0-9()]+$')]),
     });
     this.rentTypes = this.rentTypeService.getAll();
     this.serviceTypes = this.serviceTypeService.getAll();
   }
 
   ngOnInit(): void {
-    console.log(document.getElementById('imgDiv'))
+    let input = document.getElementById('imageEdit');
+    this.readUrl(input)
+  }
+
+  readUrl(input: any) {
+    console.log(input)
+    console.log(input.files)
+    // input.files = new File([''], '../assets/img/service/service1.png')
   }
 
   updateFacility() {
@@ -60,7 +70,11 @@ export class ServiceEditComponent implements OnInit {
     if (this.serviceForm.valid) {
       this.facilityService.updateFacility(this.facility.id, this.serviceForm.value);
       this.router.navigateByUrl('');
+      this.toast.success("Cập nhật thông tin dịch vụ thành công");
+    } else {
+      this.toast.error("Dữ liệu không hợp lệ, vui lòng kiểm tra lại")
     }
+    console.log(this.serviceForm.value);
     console.log(this.facilityService.getAll());
   }
 

@@ -27,17 +27,17 @@ export class ServiceCreateComponent implements OnInit {
   ngOnInit(): void {
     this.serviceForm = new FormGroup({
         id: new FormControl('', [Validators.required]),
-        name: new FormControl('', [Validators.required, Validators.pattern('^[^0-9()]+$')]),
+        name: new FormControl('', [Validators.required, Validators.pattern('^[^0-9()]+$')]), // Ko dc co so
         image: new FormControl('', [Validators.required]),
         area: new FormControl('', [Validators.required, Validators.min(0)]),
         cost: new FormControl('', [Validators.required, Validators.min(0)]),
         peopleMax: new FormControl('', [Validators.required, Validators.min(0)]),
         rentType: new FormControl('', [Validators.required]),
         serviceType: new FormControl('', [Validators.required]),
-        standardRoom: new FormControl('', [Validators.required]),
+        standardRoom: new FormControl('', [Validators.required, Validators.pattern('^0[0-9\\-\\+]{9}$')]), // SDT
         descriptionOtherConvenience: new FormControl('', [Validators.required]),
-        poolArea: new FormControl('', [Validators.required, Validators.min(0)]),
-        floor: new FormControl('', [Validators.required, Validators.min(0)]),
+        poolArea: new FormControl('', [Validators.required, Validators.min(0), Validators.pattern('^[0-9()]+$')]), // So nguyen
+        floor: new FormControl('', [Validators.required, Validators.min(0), Validators.pattern('^[0-9()]+$')]),
       }
     );
   }

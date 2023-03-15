@@ -1,0 +1,29 @@
+<button class="btn btn-info" routerLink="/create">Create Student</button>
+<table class="table table-hover" width="100%">
+  <thead>
+  <tr>
+    <th>ID</th>
+    <th>Name</th>
+    <th>DateOfBirth</th>
+    <th>Point</th>
+    <th>Classroom</th>
+    <th>Rank</th>
+    <th>Detail</th>
+  </tr>
+  </thead>
+  <tbody>
+  <tr *ngFor="let item of students, index as i" (click)="this.student = item">
+    <td>{{i}}</td>
+    <td>{{item.name|uppercase|slice:0:3}}...<a>Xem thêm</a></td>
+    <td>{{item.dateOfBirth | date: "EEEE, MMMM d, y"}}</td>
+    <td>{{item.point}}</td>
+    <td>{{item.classroom.name}}</td>
+    <td *ngIf="item.point <=7; else studentBlock">Not Good</td>
+    <ng-template #studentBlock>
+      <td>Good</td>
+    </ng-template>
+    <td><button [routerLink]="['/detail', item.id]" class="btn btn-warning">Detail</button>
+      <button (click)="info(item.id)" class="btn btn-warning">Detail</button></td>
+  </tr>
+  </tbody>
+</table>

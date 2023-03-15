@@ -1,0 +1,35 @@
+<div class="row">
+  <div class="col-2"></div>
+  <div class="col-8 p-3 pb-5 shadow shadow-lg rounded-3 my-5 bg-white">
+    <h3 class="mt-2 mb-3 py-2 text-secondary">UPDATE GENERALS</h3>
+    <form class="px-5" [formGroup]="generalsForm" (ngSubmit)="updateGenerals()" *ngIf="generalsForm">
+
+      <div>
+        <label class="form-label">ID</label>
+        <input readonly type="text" class="form-control" formControlName="id">
+      </div>
+      <div>
+        <label class="form-label">Name</label>
+        <input type="text" class="form-control" formControlName="name">
+      </div>
+      <div>
+        <label class="form-label">Price</label>
+        <input type="text" class="form-control" formControlName="price">
+      </div>
+      <div>
+        <label class="form-label">Meeting Date</label>
+        <input type="date" class="form-control" formControlName="meetingDate">
+      </div>
+      <div>
+        <label class="form-label">Position</label>
+        <select class="form-select" [compareWith]="compareFn" formControlName="position">
+          <option *ngFor="let position of positions" [ngValue]="position">{{position.name}}</option>
+        </select>
+      </div>
+      <br>
+      <button type="button" routerLink="/generals/list" class="btn btn-danger mt-2 me-2">Back</button>
+      <button type="submit" class="btn btn-primary mt-2">Update</button>
+    </form>
+  </div>
+  <div class="col-2"></div>
+</div>
